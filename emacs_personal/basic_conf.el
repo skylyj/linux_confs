@@ -189,3 +189,31 @@
 (require 'neotree)
 ;; 这样mac open file的时候不会重复打开frame了，始终在一个frame里面
 (setq ns-pop-up-frames nil)
+
+(use-package dashboard
+  :ensure t
+  :config
+  (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
+  (setq dashboard-projects-backend 'projectile) ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
+  (setq dashboard-startup-banner 'official) ;; 也可以自定义图片
+  (setq dashboard-items '((recents  . 5)   ;; 显示多少个最近文件
+			  (bookmarks . 5)  ;; 显示多少个最近书签
+			  (projects . 10))) ;; 显示多少个最近项目
+  (dashboard-setup-startup-hook))
+(use-package marginalia
+  :ensure t
+  :init (marginalia-mode)
+  :bind (:map minibuffer-local-map
+	      ("M-A" . marginalia-cycle)))
+
+;; for multiple cursor
+;; Expand region. (Also from Magnar Sveen)
+(global-set-key (kbd "C-M-j") 'mc/mark-all-dwim) ; both marked and unmarked region. multiple presses.
+(global-set-key (kbd "C-M-l") 'er/expand-region) ; only type once, then l, -, 0
+;; Select region first, then create cursors.
+(global-set-key (kbd "C-M-/") 'mc/mark-all-like-this) ; select text first. finds all occurrences.
+(global-set-key (kbd "C-M-,") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-M-.") 'mc/mark-next-like-this)
+;; Skip this match and move to next one. (Note YouTube won't allow angle brackets here.)
+(global-set-key (kbd "C-M-lt") 'mc/skip-to-previous-like-this)
+(global-set-key (kbd "C-M-gt") 'mc/skip-to-next-like-this)

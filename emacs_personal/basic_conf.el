@@ -203,6 +203,7 @@
 			  (bookmarks . 5)  ;; 显示多少个最近书签
 			  (projects . 10))) ;; 显示多少个最近项目
   (dashboard-setup-startup-hook))
+
 (use-package marginalia
   :ensure t
   :init (marginalia-mode)
@@ -213,7 +214,8 @@
   :ensure t
   :init
   (setq conda-anaconda-home (expand-file-name "~/miniforge3/"))
-  (setq conda-env-home-directory (expand-file-name "~/miniforge3"))
+  (setq conda-env-home-directory (expand-file-name "~/miniforge3")))
+
 
 ;; for multiple cursor
 ;; Expand region. (Also from Magnar Sveen)
@@ -378,7 +380,6 @@
     ;; (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)
     (define-key map  (kbd "C-x g") 'magit-status)
     (define-key map (kbd "C-c SPC") 'ace-jump-mode)
-    (define-key map (kbd "C-x SPC") 'rectangle-mark-mode)
     map)
   "my-keys-minor-mode keymap.")
 

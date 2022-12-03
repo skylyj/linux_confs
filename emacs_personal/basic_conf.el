@@ -1,7 +1,6 @@
 ;; 打开输入法晃屏幕的问题
 ;;https://emacs-china.org/t/topic/186/25
 ;(setq redisplay-dont-pause nil)
-
                                         ; config for new frames
 (defun new-frame-config ()
   (interactive)
@@ -210,6 +209,12 @@
   :bind (:map minibuffer-local-map
 	      ("M-A" . marginalia-cycle)))
 
+(use-package conda
+  :ensure t
+  :init
+  (setq conda-anaconda-home (expand-file-name "~/miniforge3/"))
+  (setq conda-env-home-directory (expand-file-name "~/miniforge3"))
+
 ;; for multiple cursor
 ;; Expand region. (Also from Magnar Sveen)
 (global-set-key (kbd "C-M-j") 'mc/mark-all-dwim) ; both marked and unmarked region. multiple presses.
@@ -370,17 +375,21 @@
 
 (defvar my-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)
-    (define-key projectile-mode-map (kbd "C-x g") 'magit-status)
+    ;; (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)
+    (define-key map  (kbd "C-x g") 'magit-status)
+    (define-key map (kbd "C-c SPC") 'ace-jump-mode)
+    (define-key map (kbd "C-x SPC") 'rectangle-mark-mode)
     map)
   "my-keys-minor-mode keymap.")
 
-(define-minor-mode my-keys-minor-mode
+(define-minor-mode my-mode
   "A minor mode so that my key settings override annoying major modes."
   :init-value t
-  :lighter " my-keys")
+  :lighter " my-mode"
+  :keymap my-keys-minor-mode-map
+  )
 
-(my-keys-minor-mode 1)
+(my-mode 1)
 
 
 (require 'org)
@@ -400,3 +409,23 @@
 ;; yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
+
+
+;;
+;; enable a more powerful jump back function from ace jump mode
+;;
+(autoload
+  'ace-jump-mode-pop-mark
+  "ace-jump-mode"
+  "Ace jump back:-)"
+  t)
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+
+
+
+(add-to-list 'load-path (concat user-emacs-directory "/icollect/highlight-global/" ))
+
+(load "highlight-global")

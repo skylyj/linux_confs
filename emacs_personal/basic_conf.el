@@ -407,23 +407,63 @@
 (add-to-list 'load-path (concat user-emacs-directory "/icollect/highlight-global/" ))
 
 (load "highlight-global")
-
+(setq-default smartparens-strict-mode nil)
 ;; PYTHON
+;; 关于anaconda，先安装conda，使用conda-activate可以切换conda环境
 (use-package conda
   :ensure t
   :init
   (setq conda-anaconda-home (expand-file-name "~/miniforge3/"))
   (setq conda-env-home-directory (expand-file-name "~/miniforge3")))
 
-(setq-default indent-tabs-mode nil)
-(setq-default smartparens-strict-mode nil)
-(setq-default tab-width 4)
-(add-hook 'python-mode-hook '(lambda ()
-                               (setq python-indent 4)))
+
+(use-package anaconda-mode
+  :ensure t
+  :bind (("C-c C-x" . next-error))
+  :config
+  (add-hook 'python-mode-hook 'anaconda-mode)
+  (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+  )
+
+(use-package company-anaconda
+  :ensure t
+  :config
+  (eval-after-load "company"
+    '(add-to-list 'company-backends '(company-anaconda))))
+
+
+(use-package highlight-indent-guides
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'highlight-indent-guides-mode)
+  (setq highlight-indent-guides-method 'character))
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)
+            (setq python-indent-offset 4)))
+
+;; 可以让imenu 平铺起来flat
+(defun python-imenu-use-flat-index
+    ()
+  (setq imenu-create-index-function
+        #'python-imenu-create-flat-index))
+
+(add-hook 'python-mode-hook
+          #'python-imenu-use-flat-index)
+
+;; (setq-default indent-tabs-mode nil)
+;; (setq-default tab-width 4)
+;; (add-hook 'python-mode-hook '(lambda ()
+;;                                (setq python-indent 4)))
+
+;; 有问题的话，用这个
+;; python-shell-interpreter-args "--colors=Linux --profile=default --simple-prompt"
 
 (setq
  python-shell-interpreter "ipython"
- python-shell-interpreter-args "--colors=Linux --profile=default --simple-prompt"
+ python-shell-interpreter-args "--colors=Linux --profile=default"
  python-shell-prompt-regexp "In \\[[0-9]+\\]: "
  python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
  python-shell-completion-setup-code
@@ -434,14 +474,8 @@
  "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
 
-;; (add-hook 'python-mode-hook
-;;           (lambda ()
-;;             (setq indent-tabs-mode t)
-;;             (setq tab-width 4)
-;;             (setq python-indent-offset 4)))
-(add-hook 'python-mode-hook 'anaconda-mode)
-(eval-after-load "company"
-  '(add-to-list 'company-backends 'company-anaconda))
+;; (eval-after-load "company"
+;;   '(add-to-list 'company-backends 'company-anaconda))
 ;;evil-numbers
 (require 'evil-numbers)
 (global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)

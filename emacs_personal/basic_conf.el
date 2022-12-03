@@ -2,6 +2,7 @@
 ;;https://emacs-china.org/t/topic/186/25
 ;(setq redisplay-dont-pause nil)
                                         ; config for new frames
+(scroll-bar-mode -1)
 (defun new-frame-config ()
   (interactive)
   (set-frame-font "Menlo-18")
@@ -113,10 +114,6 @@
 ;        try-complete-lisp-symbol-partially
 ;        try-complete-lisp-symbol))
 
-;(setq-default indent-tabs-mode nil)
-;(setq-default tab-width 4)
-;(add-hook 'python-mode-hook '(lambda ()
-; (setq python-indent 4)))
 
 ;(cond
 ; ((string-equal system-type "windows-nt") ; Microsoft Windows
@@ -210,25 +207,22 @@
   :bind (:map minibuffer-local-map
 	      ("M-A" . marginalia-cycle)))
 
-(use-package conda
-  :ensure t
-  :init
-  (setq conda-anaconda-home (expand-file-name "~/miniforge3/"))
-  (setq conda-env-home-directory (expand-file-name "~/miniforge3")))
 
 
 ;; for multiple cursor
 ;; Expand region. (Also from Magnar Sveen)
-(global-set-key (kbd "C-M-j") 'mc/mark-all-dwim) ; both marked and unmarked region. multiple presses.
-(global-set-key (kbd "C-M-l") 'er/expand-region) ; only type once, then l, -, 0
-;; Select region first, then create cursors.
-(global-set-key (kbd "C-M-/") 'mc/mark-all-like-this) ; select text first. finds all occurrences.
-(global-set-key (kbd "C-M-,") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-M-.") 'mc/mark-next-like-this)
-;; Skip this match and move to next one. (Note YouTube won't allow angle brackets here.)
-(global-set-key (kbd "C-M-<") 'mc/skip-to-previous-like-this)
-(global-set-key (kbd "C-M->") 'mc/skip-to-next-like-this)
-
+(use-package multiple-cursors
+  :bind (("C->"           . mc/mark-next-like-this)
+         ("C-<"           . mc/mark-previous-like-this)
+         ("C-M->"         . mc/skip-to-next-like-this)
+         ("C-M-<"         . mc/skip-to-previous-like-this)
+         ("C-c C-<"       . mc/mark-all-like-this)
+         ("C-S-c C-S-c"   . mc/edit-lines)
+         ("C-S-<mouse-1>" . mc/add-cursor-on-click)
+         :map mc/keymap
+         ("C-|" . mc/vertical-align-with-space))
+  :config
+  (setq mc/insert-numbers-default 1))
 
 ;;google this
 (google-this-mode 1)
@@ -289,7 +283,7 @@
         (vterm-send-string compile-command t)
         (vterm-send-return)))))
 ;;
-(good-scroll-mode 1)
+(good-scroll-mode -1)
 (beacon-mode 1)
 
 (require 'highlight-symbol)
@@ -375,23 +369,6 @@
 
 (projectile-rails-global-mode)
 
-(defvar my-keys-minor-mode-map
-  (let ((map (make-sparse-keymap)))
-    ;; (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)
-    (define-key map  (kbd "C-x g") 'magit-status)
-    (define-key map (kbd "C-c SPC") 'ace-jump-mode)
-    map)
-  "my-keys-minor-mode keymap.")
-
-(define-minor-mode my-mode
-  "A minor mode so that my key settings override annoying major modes."
-  :init-value t
-  :lighter " my-mode"
-  :keymap my-keys-minor-mode-map
-  )
-
-(my-mode 1)
-
 
 (require 'org)
 
@@ -423,10 +400,82 @@
 (eval-after-load "ace-jump-mode"
   '(ace-jump-mode-enable-mark-sync))
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+;; (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
 
 
 (add-to-list 'load-path (concat user-emacs-directory "/icollect/highlight-global/" ))
 
 (load "highlight-global")
+
+;; PYTHON
+(use-package conda
+  :ensure t
+  :init
+  (setq conda-anaconda-home (expand-file-name "~/miniforge3/"))
+  (setq conda-env-home-directory (expand-file-name "~/miniforge3")))
+
+(setq-default indent-tabs-mode nil)
+(setq-default smartparens-strict-mode nil)
+(setq-default tab-width 4)
+(add-hook 'python-mode-hook '(lambda ()
+                               (setq python-indent 4)))
+
+(setq
+ python-shell-interpreter "ipython"
+ python-shell-interpreter-args "--colors=Linux --profile=default --simple-prompt"
+ python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+ python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+ python-shell-completion-setup-code
+ "from IPython.core.completerlib import module_completion"
+ python-shell-completion-module-string-code
+ "';'.join(module_completion('''%s'''))\n"
+ python-shell-completion-string-code
+ "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
+
+
+;; (add-hook 'python-mode-hook
+;;           (lambda ()
+;;             (setq indent-tabs-mode t)
+;;             (setq tab-width 4)
+;;             (setq python-indent-offset 4)))
+(add-hook 'python-mode-hook 'anaconda-mode)
+(eval-after-load "company"
+  '(add-to-list 'company-backends 'company-anaconda))
+;;evil-numbers
+(require 'evil-numbers)
+(global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
+(global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
+(global-set-key (kbd "C-c C-+") 'evil-numbers/inc-at-pt-incremental)
+(global-set-key (kbd "C-c C--") 'evil-numbers/dec-at-pt-incremental)
+
+;; 最后的键盘设置
+(defvar my-keys-minor-mode-map
+  (let ((map (make-sparse-keymap)))
+    ;; (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)
+    (define-key map  (kbd "C-x g") 'magit-status)
+    (define-key map (kbd "C-c SPC") 'ace-jump-mode)
+    (define-key map (kbd "C-x SPC") 'rectangle-mark-mode)
+    map)
+  "my-keys-minor-mode keymap.")
+
+(define-minor-mode my-mode
+  "A minor mode so that my key settings override annoying major modes."
+  :init-value t
+  :lighter " my-mode"
+  :keymap my-keys-minor-mode-map
+  )
+
+(my-mode 1)
+
+;; 这样可以使得compile window 优先是split-window-vertically
+(setq split-width-threshold nil)
+(setq split-height-threshold 0)
+
+;; (add-to-list 'load-path "~/Github/PrivateHub/linux_confs/emacs-jedi-direx/")
+;; (add-hook 'python-mode-hook 'jedi:setup)
+;; (setq jedi:complete-on-dot t)
+;(load "jedi-direx")
+;(eval-after-load "python"
+;  '(define-key python-mode-map "\C-cx" 'jedi-direx:pop-to-buffer))
+;(add-hook 'jedi-mode-hook 'jedi-direx:setup)

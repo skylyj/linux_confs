@@ -1,0 +1,317 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("Emacs.org"
+ (filename . "~/Github/PrivateHub/org/Org/Linux/Emacs.org")
+ (front-context-string)
+ (rear-context-string . "'css)\n#+END_SRC\n")
+ (position . 35169))
+(#("roasSampleGenerate" 0 18
+   (face
+    ((:foreground "#F0DFAF")
+     ivy-current-match)))
+ (filename . "~/Gitlab/sample-factory/src/main/scala/com/mobvista/di/sampleFactory/roasSampleGenerate/")
+ (front-context-string . "FeatureUtils.sca")
+ (rear-context-string . "93 Nov 21 20:51 ")
+ (position . 395))
+("ishare"
+ (filename . "~/OneDrive/Work/BaiduWork/office/ppt/ishare/")
+ (front-context-string . "1.8-06-度量检索-连义江.")
+ (rear-context-string . "16 Jan  8  2018 ")
+ (position . 287))
+("ltv_model"
+ (filename . "~/Gitlab/ltv_model/")
+ (front-context-string . "README.md\n  drwx")
+ (rear-context-string . "35 Nov  9 11:45 ")
+ (position . 366))
+("fast_routine"
+ (filename . "~/Gitlab/offline_routine_job/SDK/ranking/osiris/job/saas/fast_routine/")
+ (front-context-string . "pack.sh\n  -rw-r-")
+ (rear-context-string . "32 Nov  8 19:50 ")
+ (position . 723))
+("Books"
+ (filename . "~/OneDrive/Books/")
+ (front-context-string . "MachineLearning\n")
+ (rear-context-string . "92 Oct 21 09:23 ")
+ (position . 244))
+("LTV_Prediction"
+ (filename . "~/OneDrive/Papers/CTR/LTV_Prediction/")
+ (front-context-string . "A DEEP PROBABILI")
+ (rear-context-string . "73 Nov 11 14:06 ")
+ (position . 270))
+("CTR"
+ (filename . "~/OneDrive/Papers/CTR/")
+ (front-context-string . "1601.02376.pdf\n ")
+ (rear-context-string . "17 Sep 24  2017 ")
+ (position . 260))
+("ranker"
+ (filename . "~/Gitlab/ranker/")
+ (front-context-string . "features\n  drwxr")
+ (rear-context-string . "20 Oct 13 22:25 ")
+ (position . 1726))
+("code_exams"
+ (filename . "~/Github/Private/code_exams/")
+ (front-context-string . ".cplus_basic.cpp")
+ (rear-context-string . "88 Aug 27 12:09 ")
+ (position . 260))
+("pom.xml"
+ (filename . "~/Gitlab/offline_routine_job/SDK/ranking/osiris/pom.xml")
+ (front-context-string . "<?xml version=\"1")
+ (rear-context-string)
+ (position . 1))
+("saas_dsp"
+ (filename . "~/Gitlab/saas_dsp/")
+ (front-context-string . ".gitmodules\n  dr")
+ (rear-context-string . "27 Jul 23 10:59 ")
+ (position . 377))
+("demand_context.proto"
+ (filename . "~/Gitlab/protocols/proto/core_model/demand_context.proto")
+ (front-context-string)
+ (rear-context-string . "; //冷启动后，正常投放\n}\n")
+ (position . 3646))
+("roas"
+ (filename . "~/Gitlab/sample-factory/azkaban/saas_sample_generate/roas/")
+ (front-context-string . "roasSample.yml\n ")
+ (rear-context-string . "84 Oct 21 17:16 ")
+ (position . 417))
+(#("casedebug" 0 9
+   (face
+    ((:foreground #1="#F0DFAF")
+     ivy-current-match
+     (:foreground #1#)
+     ivy-current-match)))
+ (filename . "~/Gitlab/casedebug/")
+ (front-context-string)
+ (rear-context-string . "56 Oct 26 22:07 ")
+ (position . 1053))
+("GithubPrivate"
+ (filename . "~/Github/Private/")
+ (front-context-string)
+ (rear-context-string . "28 Oct 29 22:34 ")
+ (position . 303))
+("protocols"
+ (filename . "~/Gitlab/protocols/")
+ (front-context-string . "proto\n  -rw-r--r")
+ (rear-context-string . "08 Oct 20 11:23 ")
+ (position . 830))
+("stdrank.proto"
+ (filename . "~/Gitlab/protocols/proto/standard_rs/stdrank.proto")
+ (front-context-string . "    notarget_cpc")
+ (rear-context-string . "target_cpm = 1;\n")
+ (position . 8290))
+("sample-factory"
+ (filename . "~/Gitlab/sample-factory/")
+ (front-context-string . ".DS_Store\n  drwx")
+ (rear-context-string . "48 Oct 18 16:53 ")
+ (position . 260))
+("Gitlab"
+ (filename . "~/Gitlab/")
+ (front-context-string . "alg_demo\n  drwxr")
+ (rear-context-string . "00 Oct 23 21:20 ")
+ (position . 364))
+("mobvista.org"
+ (filename . "~/Github/PrivateHub/org/Org/Work/Mobvista/mobvista.org")
+ (front-context-string . "nrr 粗排 campaignR")
+ (rear-context-string . "om\n* layer\n  - c")
+ (position . 363))
+("osiris"
+ (filename . "~/Gitlab/offline_routine_job/SDK/ranking/osiris/")
+ (front-context-string . ".gitignore\n  drw")
+ (rear-context-string . "24 Jun  2 10:43 ")
+ (position . 276))
+("offline_routine_job"
+ (filename . "~/Gitlab/offline_routine_job/")
+ (front-context-string . ".DS_Store\n  drwx")
+ (rear-context-string . "48 Sep 21 18:07 ")
+ (position . 264))
+("itools"
+ (filename . "~/Gitlab/Private/itools/")
+ (front-context-string . "README.md\n  drwx")
+ (rear-context-string . "16 Sep  6 19:57 ")
+ (position . 426))
+("jacobi"
+ (filename . "~/Gitlab/jacobi/")
+ (front-context-string . ".git\n  drwxr-xr-")
+ (rear-context-string . "80 Aug 18 19:14 ")
+ (position . 244))
+("train_data_flow"
+ (filename . "~/Gitlab/train_data_flow/")
+ (front-context-string . ".DS_Store\n  drwx")
+ (rear-context-string . "48 Aug  1 10:30 ")
+ (position . 253))
+("meeting.org"
+ (filename . "~/Github/PrivateHub/org/Org/Work/Mobvista/meeting/meeting.org")
+ (front-context-string . "* talks\n** 吐槽会议 ")
+ (rear-context-string)
+ (position . 1))
+("resume"
+ (filename . "~/OneDrive/Documents/JobHunting/resume/")
+ (front-context-string . "谈话.org\n  -rwxr-x")
+ (rear-context-string . "08 Oct 24 10:32 ")
+ (position . 736))
+("ForDocker"
+ (filename . "~/ForDocker/")
+ (front-context-string . "Dockerfile.rails")
+ (rear-context-string . "04 May 19 23:22 ")
+ (position . 239))
+("alg_demo"
+ (filename . "~/Gitlab/alg_demo/")
+ (front-context-string . "build.sh\n  drwxr")
+ (rear-context-string . "47 May 25 16:47 ")
+ (position . 791))
+(#("Mobvista" 0 8
+   (face
+    ((:foreground #1="#F0DFAF")
+     ivy-current-match
+     (:foreground #1#)
+     ivy-current-match
+     (:foreground #1#)
+     ivy-current-match
+     (:foreground #1#)
+     ivy-current-match
+     (:foreground #1#)
+     ivy-current-match)))
+ (filename . "~/Github/PrivateHub/org/Org/Work/Mobvista/")
+ (front-context-string . "interview_mob.or")
+ (rear-context-string . "05 Apr 21 15:59 ")
+ (position . 1761))
+("Program"
+ (filename . "~/Github/PrivateHub/org/Org/Program/")
+ (front-context-string . ".org\n  -rw------")
+ (rear-context-string . "ct 30  2018 ruby")
+ (position . 2519))
+("HandOver"
+ (filename . "~/OneDrive/Work/HandOver/")
+ (front-context-string . "Demo工具文档\n  -rw--")
+ (rear-context-string . "28 Jun 21 15:35 ")
+ (position . 264))
+("Linux"
+ (filename . "~/Github/PrivateHub/org/Org/Linux/")
+ (front-context-string . "commands.org\n  -")
+ (rear-context-string . "82 Mar 25  2020 ")
+ (position . 341))
+("JobHunting"
+ (filename . "~/OneDrive/Documents/JobHunting/")
+ (front-context-string . "job_prepare.org\n")
+ (rear-context-string . "66 Apr 30  2021 ")
+ (position . 384))
+("RobustPI"
+ (filename . "~/coding/iCode/papers/meetings/RobustPI/")
+ (front-context-string . "robustPI.tex\n  -")
+ (rear-context-string . "43 Apr 15 08:30 ")
+ (position . 1453))
+("SynonymousRole"
+ (filename . "~/coding/iCode/papers/meetings/SynonymousRole/")
+ (front-context-string . "synonymous_role.")
+ (rear-context-string . "15 Mar 29 11:14 ")
+ (position . 1523))
+("Life"
+ (filename . "~/Github/PrivateHub/org/Org/Life/")
+ (front-context-string . "info.org\n  -rwxr")
+ (rear-context-string . "35 Jan  5  2019 ")
+ (position . 628))
+("meetings"
+ (filename . "~/coding/iCode/papers/meetings/")
+ (front-context-string . "concept_pattern\n")
+ (rear-context-string . "12 Feb  6 11:23 ")
+ (position . 316))
+("t9"
+ (filename . "~/OneDrive/Work/office/ppt/shuzhi/t9/")
+ (front-context-string . "职称评定述职_连义江_t9.pp")
+ (rear-context-string . "02 Dec  6 21:58 ")
+ (position . 270))
+("shuzhi"
+ (filename . "~/OneDrive/Work/office/ppt/shuzhi/")
+ (front-context-string . ".DS_Store\n  -rw-")
+ (rear-context-string . "44 Dec  7 16:47 ")
+ (position . 267))
+("ppt"
+ (filename . "~/OneDrive/Work/office/ppt/")
+ (front-context-string . ".DS_Store\n  drwx")
+ (rear-context-string . "44 Dec  7 18:58 ")
+ (position . 261))
+("bert_pytorch"
+ (filename . "~/coding/iCode/coherence/bert_only_mask/bert_pytorch/")
+ (front-context-string . "__init__.py\n  -r")
+ (rear-context-string . "24 May 11  2019 ")
+ (position . 334))
+(#("quotient_retrieval" 0 18
+   (face
+    ((:foreground "#F0DFAF")
+     ivy-current-match)))
+ (filename . "~/coding/iCode/papers/meetings/quotient_retrieval/")
+ (front-context-string . "quotient_retriev")
+ (rear-context-string . "55 Nov 13 19:08 ")
+ (position . 986))
+("Information"
+ (filename . "~/OneDrive/Documents/Information/")
+ (front-context-string . "yihaoyouhui\n  -r")
+ (rear-context-string . "15 Sep 29  2016 ")
+ (position . 863))
+("concept_pattern"
+ (filename . "~/coding/iCode/papers/meetings/concept_pattern/")
+ (front-context-string . "pattern_retrieva")
+ (rear-context-string . "97 Feb  5 16:58 ")
+ (position . 2589))
+("paraphrase_www"
+ (filename . "~/coding/iCode/papers/meetings/paraphrase_www/")
+ (front-context-string . "paraphrase.tex\n ")
+ (rear-context-string . "14 Oct 12 10:21 ")
+ (position . 2152))
+("funnelOptimization"
+ (filename . "~/Github/PrivateHub/org/Org/Work/Baidu/Project/funnelOptimization/")
+ (front-context-string . "bs_redesign.org\n")
+ (rear-context-string . "38 Aug 31 15:23 ")
+ (position . 398))
+("arxiv"
+ (filename . "~/coding/iCode/papers/arxiv/")
+ (front-context-string)
+ (rear-context-string . "88 Aug  5 10:49 ")
+ (position . 253))
+("papers"
+ (filename . "~/OneDrive/Papers/")
+ (front-context-string . "1702.07463.pdf\n ")
+ (rear-context-string . "13 Apr 30  2020 ")
+ (position . 255))
+("coding.net"
+ (filename . "~/coding/coding.net/")
+ (front-context-string . "paraphrase_paper")
+ (rear-context-string . "84 May 18 18:07 ")
+ (position . 245))
+("office"
+ (filename . "~/OneDrive/Work/office/")
+ (front-context-string . "ppt\n  drwxr-xr-x")
+ (rear-context-string . "12 May 13 20:03 ")
+ (position . 568))
+("report"
+ (filename . "~/Github/PrivateHub/org/Org/Work/Baidu/report/")
+ (front-context-string . "zhouhui.org\n  -r")
+ (rear-context-string . "97 Sep 29  2016 ")
+ (position . 457))
+("Work"
+ (filename . "~/OneDrive/Work/")
+ (front-context-string . "产品定义\n  drwxr-xr-")
+ (rear-context-string . "28 Apr 15 14:20 ")
+ (position . 1147))
+("Org"
+ (filename . "~/Github/PrivateHub/org/Org/")
+ (front-context-string . "revealPPT\n  drwx")
+ (rear-context-string . "20 Nov 21 09:21 ")
+ (position . 981))
+("personal"
+ (filename . "~/.emacs.d/personal/")
+ (front-context-string . "basic_conf.el\n  ")
+ (rear-context-string . "08 Apr 11 22:01 ")
+ (position . 573))
+("RailsDemo"
+ (filename . "~/Coding/iCode/lianyijiang/RailsDemo/")
+ (front-context-string . ".browserslistrc\n")
+ (rear-context-string . " 9 Mar 22 14:56 ")
+ (position . 273))
+("lianyijiang"
+ (filename . "~/Coding/iCode/lianyijiang/")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . "80 Mar 27 18:40 ")
+ (position . 256))
+)

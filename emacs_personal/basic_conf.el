@@ -2,6 +2,7 @@
 ;;https://emacs-china.org/t/topic/186/25
 ;(setq redisplay-dont-pause nil)
                                         ; config for new frames
+
 (scroll-bar-mode -1)
 (defun new-frame-config ()
   (interactive)
@@ -14,6 +15,7 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
 (setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
+
 
 ;; (global-set-key (kbd "H-b") 'backward-word) ; H is for hyper
 ;; (global-set-key (kbd "s-b") 'backward-word) ; lower case “s” is for super
@@ -31,7 +33,7 @@
 ;(global-set-key "\M-slhs" 'hs-show-all)
 ;(global-set-key [(meta ?/)] 'hippie-expand)
 (setq abbrev-file-name "~/.emacs.d/personal/.abbrev_defs") ;; 缺省的定义缩写的文件。
-(setq bookmark-default-file "~/.emacs.d/personal/.emacs.bmk") ;; 缺省书签文件的路径及文件名。
+(setq bookmark-default-file "~/.emacs.d/personal/bookmarks") ;; 缺省书签文件的路径及文件名。
 
 
 
@@ -308,9 +310,11 @@
   )
 
 (require 'smartscan)
-(smartscan-mode 1)
-(global-smartscan-mode t)
-(global-auto-highlight-symbol-mode t)
+(add-hook 'prog-mode-hook 'smartscan-mode)
+;; 注意只要在程序状态下启动smartscan就行了
+;; (smartscan-mode 1)
+;; (global-smartscan-mode t)
+;; (global-auto-highlight-symbol-mode t)
 
 (defun beautify-json ()
   (interactive)
@@ -438,12 +442,20 @@
   (add-hook 'python-mode-hook 'highlight-indent-guides-mode)
   (setq highlight-indent-guides-method 'character))
 
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable))
+
 (add-hook 'python-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil)
             (setq tab-width 4)
             (setq python-indent-offset 4)))
-
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq flycheck-pylintrc "~/.pylintrc")))
+;; PYTHON CONFIG END
 ;; 可以让imenu 平铺起来flat
 (defun python-imenu-use-flat-index
     ()

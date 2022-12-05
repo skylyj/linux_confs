@@ -2,7 +2,32 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("Emacs.org"
+(("estimator.py"
+ (filename . "~/Gitlab/ps/python/mindalpha/estimator.py")
+ (front-context-string . "#\n# Copyright 20")
+ (rear-context-string)
+ (position . 1))
+("mindalpha"
+ (filename . "~/Gitlab/ps/python/mindalpha/")
+ (front-context-string . "__init__.py\n  -r")
+ (rear-context-string . "06 Nov 25 08:55 ")
+ (position . 261))
+("ps"
+ (filename . "~/Gitlab/ps/")
+ (front-context-string . "python\n  -rwxr-x")
+ (rear-context-string . "92 Nov 25 08:55 ")
+ (position . 1047))
+("ipython_init.py"
+ (filename . "~/.ipython/profile_default/startup/ipython_init.py")
+ (front-context-string)
+ (rear-context-string . "='fancy_grid'))\n")
+ (position . 443))
+("tommy"
+ (filename . "/ssh:cndev:/home/tommy/")
+ (front-context-string . "Github\n  drwxrwx")
+ (rear-context-string . "96 Nov 19 16:39 ")
+ (position . 1688))
+("Emacs.org"
  (filename . "~/Github/PrivateHub/org/Org/Linux/Emacs.org")
  (front-context-string)
  (rear-context-string . "'css)\n#+END_SRC\n")
@@ -21,10 +46,8 @@
  (rear-context-string . "16 Jan  8  2018 ")
  (position . 287))
 ("ltv_model"
- (filename . "~/Gitlab/ltv_model/")
- (front-context-string . "README.md\n  drwx")
- (rear-context-string . "35 Nov  9 11:45 ")
- (position . 366))
+ (handler . eshell-bookmark--restore)
+ (filename . "/Users/mobvista/Gitlab/ltv_model/roas/"))
 ("fast_routine"
  (filename . "~/Gitlab/offline_routine_job/SDK/ranking/osiris/job/saas/fast_routine/")
  (front-context-string . "pack.sh\n  -rw-r-")

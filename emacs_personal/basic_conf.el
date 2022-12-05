@@ -198,7 +198,7 @@
   (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
   (setq dashboard-projects-backend 'projectile) ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
   (setq dashboard-startup-banner 'official) ;; 也可以自定义图片
-  (setq dashboard-items '((recents  . 5)   ;; 显示多少个最近文件
+  (setq dashboard-items '((recents  . 15)   ;; 显示多少个最近文件
 			  (bookmarks . 5)  ;; 显示多少个最近书签
 			  (projects . 10))) ;; 显示多少个最近项目
   (dashboard-setup-startup-hook))
@@ -455,6 +455,21 @@
 (add-hook 'python-mode-hook
           (lambda ()
             (setq flycheck-pylintrc "~/.pylintrc")))
+;; (defun python-reinstate-current-directory ()
+;;   "When running Python, add the current directory ('') to the head of sys.path.
+;; For reasons unexplained, run-python passes arguments to the
+;; interpreter that explicitly remove '' from sys.path. This means
+;; that, for example, using `python-send-buffer' in a buffer
+;; visiting a module's code will fail to find other modules in the
+;; same directory.
+
+;; Adding this function to `inferior-python-mode-hook' reinstates
+;; the current directory in Python's search path."
+;;   (python-send-string "sys.path[0:0] = ['']"))
+
+;; (add-hook 'inferior-python-mode-hook 'python-reinstate-current-directory)
+(setq python-remove-cwd-from-path nil)
+
 ;; PYTHON CONFIG END
 ;; 可以让imenu 平铺起来flat
 (defun python-imenu-use-flat-index
@@ -525,3 +540,22 @@
 ;(eval-after-load "python"
 ;  '(define-key python-mode-map "\C-cx" 'jedi-direx:pop-to-buffer))
 ;(add-hook 'jedi-mode-hook 'jedi-direx:setup)
+
+;; ESHELL
+(use-package eshell-bookmark
+  :after eshell
+  :config
+  (add-hook 'eshell-mode-hook #'eshell-bookmark-setup))
+
+(eval-after-load 'eshell
+  '(require 'eshell-autojump nil t))
+
+(setq eshell-last-dir-ring-size 500)
+
+;; ORG
+(use-package org-download
+  :bind ("C-S-y" . org-download-clipboard)
+  :config
+  (add-hook 'dired-mode-hook 'org-download-enable)
+  (setq-default org-download-heading-lvl nil)
+  (setq-default org-download-image-dir "./images"))

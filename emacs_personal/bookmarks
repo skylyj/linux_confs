@@ -2,7 +2,123 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("estimator.py"
+(("IVIEW"
+ (buffer
+  ("Linux"
+   (buffer . #3="Linux")
+   (handler . bookmark-view-handler-fallback))
+  (#1="Emacs.org"
+      (filename . "~/Github/PrivateHub/org/Org/Linux/Emacs.org")
+      (front-context-string . "\n* 重要插件的配置和使用\n  ")
+      (rear-context-string . "creenshot.png]]\n")
+      (position . 661)
+      (defaults #1#))
+  (#2="Emacs.org"
+      (filename . "~/Github/PrivateHub/org/Org/Linux/Emacs.org")
+      (front-context-string . "\n* 重要插件的配置和使用\n  ")
+      (rear-context-string . "creenshot.png]]\n")
+      (position . 661)
+      (defaults #2#)))
+ (filename . "*View[3]*")
+ (window
+  ((min-height . 8)
+   (min-width . 20)
+   (min-height-ignore . 4)
+   (min-width-ignore . 8)
+   (min-height-safe . 2)
+   (min-width-safe . 4)
+   (min-pixel-height . 168)
+   (min-pixel-width . 220)
+   (min-pixel-height-ignore . 84)
+   (min-pixel-width-ignore . 88)
+   (min-pixel-height-safe . 42)
+   (min-pixel-width-safe . 44))
+  hc
+  (pixel-width . 1916)
+  (pixel-height . 1002)
+  (total-width . 174)
+  (total-height . 48)
+  (normal-height . 1.0)
+  (normal-width . 1.0)
+  (combination-limit)
+  (vc
+   (pixel-width . 959)
+   (pixel-height . 1002)
+   (total-width . 87)
+   (total-height . 48)
+   (normal-height . 1.0)
+   (normal-width . 0.5)
+   (combination-limit)
+   (leaf
+    (pixel-width . 959)
+    (pixel-height . 498)
+    (total-width . 87)
+    (total-height . 24)
+    (normal-height . 0.5)
+    (normal-width . 1.0)
+    (buffer #3#
+            (selected . t)
+            (hscroll . 0)
+            (fringes 8 8 nil nil)
+            (margins nil)
+            (scroll-bars nil 0 t nil 0 t nil)
+            (vscroll . 0)
+            (dedicated)
+            (point . 334)
+            (start . 1))
+    (prev-buffers
+     (#4="Emacs.org" 661 661)
+     ("*Packages*" 33783 35734)
+     ("jacobi" 1 228)
+     ("*Bookmark List*" 1 1)))
+   (leaf #5=(last . t)
+         (pixel-width . 959)
+         (pixel-height . 504)
+         (total-width . 87)
+         (total-height . 24)
+         (normal-height . 0.5)
+         (normal-width . 1.0)
+         (buffer #4#
+                 (selected)
+                 (hscroll . 0)
+                 (fringes 8 8 nil nil)
+                 (margins nil)
+                 (scroll-bars nil 0 t nil 0 t nil)
+                 (vscroll . 0)
+                 (dedicated)
+                 (point . 661)
+                 (start . 661))))
+  (leaf #5#
+        (pixel-width . 957)
+        (pixel-height . 1002)
+        (total-width . 87)
+        (total-height . 48)
+        (normal-height . 1.0)
+        (normal-width . 0.5)
+        (buffer #4#
+                (selected)
+                (hscroll . 0)
+                (fringes 8 8 nil nil)
+                (margins nil)
+                (scroll-bars nil 0 t nil 0 t nil)
+                (vscroll . 0)
+                (dedicated)
+                (point . 661)
+                (start . 661))
+        (prev-buffers
+         (#4# 661 661))))
+ (handler . bookmark-view-handler))
+("81_jacobi"
+ (filename . "/ssh:81:/home/tommy/Gitlab/jacobi/")
+ (front-context-string . "app\n  drwxrwxr-x")
+ (rear-context-string . "96 Nov  8 22:50 ")
+ (position . 228))
+("host_81"
+ (filename . "/ssh:81:/home/tommy/")
+ (front-context-string . ".gnupg\n  -rw-r--")
+ (rear-context-string . "96 Sep 27  2021 ")
+ (position . 1691))
+("estimator.py"
  (filename . "~/Gitlab/ps/python/mindalpha/estimator.py")
  (front-context-string . "#\n# Copyright 20")
  (rear-context-string)
@@ -22,7 +138,7 @@
  (front-context-string)
  (rear-context-string . "='fancy_grid'))\n")
  (position . 443))
-("tommy"
+("host_cndev"
  (filename . "/ssh:cndev:/home/tommy/")
  (front-context-string . "Github\n  drwxrwx")
  (rear-context-string . "96 Nov 19 16:39 ")
@@ -85,9 +201,9 @@
  (position . 1))
 ("saas_dsp"
  (filename . "~/Gitlab/saas_dsp/")
- (front-context-string . ".gitmodules\n  dr")
- (rear-context-string . "27 Jul 23 10:59 ")
- (position . 377))
+ (front-context-string . "CMakeLists.txt\n ")
+ (rear-context-string . "18 Dec  6 13:42 ")
+ (position . 574))
 ("demand_context.proto"
  (filename . "~/Gitlab/protocols/proto/core_model/demand_context.proto")
  (front-context-string)

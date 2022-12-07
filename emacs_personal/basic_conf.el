@@ -296,32 +296,15 @@
 
 
 (setq path-to-ctags "/opt/homebrew/bin/ctags")
-(defun create-tags (dir-name)
-  "Create tags file."
-  (interactive "DDirectory: ")
-  (shell-command
-   (format "%s -f TAGS -e -R %s" path-to-ctags (directory-file-name dir-name)))
-  )
-
-(defun load-buffer ()
-  "load current elisp buffer"
-  (interactive)
-  (load-file (buffer-file-name))
-  )
-
+;; smartscan
 (require 'smartscan)
 (add-hook 'prog-mode-hook 'smartscan-mode)
 ;; 注意只要在程序状态下启动smartscan就行了
 ;; (smartscan-mode 1)
 ;; (global-smartscan-mode t)
-;; (global-auto-highlight-symbol-mode t)
 
-(defun beautify-json ()
-  (interactive)
-  (let ((b (if mark-active (min (point) (mark)) (point-min)))
-        (e (if mark-active (max (point) (mark)) (point-max))))
-    (shell-command-on-region b e
-                             "python -mjson.tool" (current-buffer) t)))
+;; HIGHLIGHT 自动高亮
+(global-auto-highlight-symbol-mode t)
 
 
 ;; (global-set-key (kbd "C-*")
@@ -559,3 +542,7 @@
   (add-hook 'dired-mode-hook 'org-download-enable)
   (setq-default org-download-heading-lvl nil)
   (setq-default org-download-image-dir "./images"))
+
+(require 'org-tree-slide)
+
+(setq org-hierarchical-todo-statistics nil)

@@ -312,47 +312,6 @@
 ;;                   (interactive)
 ;;                   (re-search-forward (format "\\b%s\\b" (thing-at-point 'word)))))
 
-;; cedet
-;; (require 'cedet)
-;; (global-ede-mode 1)                      ; Enable the Project management system
-;; (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
-;; (global-srecode-minor-mode 1)     ;; (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
-;; (global-srecode-minor-mode 1)            ; Enable template insertion menu
-
-
-;; (require 'semantic-ia)
-;; (require 'semantic-gcc)
-
-
-;; ;; Enable template insertion menu
-;; (global-srecode-minor-mode 1)
-
-;; (setq-mode-local c-mode semanticdb-find-default-throttle
-;;                  '(project unloaded system recursive))
-
-;; (defun my-semantic-hook ()
-;;   (imenu-add-to-menubar "TAGS"))
-
-;; (add-hook 'semantic-init-hooks 'my-semantic-hook)
-
-;; (require 'semanticdb)
-
-;; (global-semanticdb-minor-mode 1)
-
-;; (defun my-cedet-hook ()
-;;   (local-set-key [(control return)] 'semantic-ia-complete-symbol)
-;;   (local-set-key "/C-c?" 'semantic-ia-complete-symbol-menu)
-;;   (local-set-key "/C-c>" 'semantic-complete-analyze-inline)
-;;   (local-set-key "/C-cp" 'semantic-analyze-proto-impl-toggle))
-;; (add-hook 'c-mode-common-hook 'my-cedet-hook)
-
-;; (defun my-c-mode-cedet-hook ()
-;;   (local-set-key "." 'semantic-complete-self-insert)
-;;   (local-set-key ">" 'semantic-complete-self-insert))
-;; (add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
-
-;; (require 'ecb)
-;; (require 'ecb-autoloads)
 
 (projectile-rails-global-mode)
 
@@ -546,3 +505,110 @@
 (require 'org-tree-slide)
 
 (setq org-hierarchical-todo-statistics nil)
+
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+              (ggtags-mode 1))))
+
+(require 'ggtags)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+              (ggtags-mode 1))))
+
+(define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
+(setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+
+
+
+
+
+;; cedet and ecb
+;; (load-file "~/.emacs.d/icollect/cedet-1.1/common/cedet.el")
+;; (semantic-load-enable-code-helpers)
+;; (require 'cedet)
+;; (global-ede-mode 1)                      ; Enable the Project management system
+;; (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
+;; (global-srecode-minor-mode 1)     ;; (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
+;; (global-srecode-minor-mode 1)            ; Enable template insertion menu
+
+
+;; (require 'semantic-ia)
+;; (require 'semantic-gcc)
+
+
+;; ;; Enable template insertion menu
+;; (global-srecode-minor-mode 1)
+
+;; (setq-mode-local c-mode semanticdb-find-default-throttle
+;;                  '(project unloaded system recursive))
+
+;; (defun my-semantic-hook ()
+;;   (imenu-add-to-menubar "TAGS"))
+
+;; (add-hook 'semantic-init-hooks 'my-semantic-hook)
+
+;; (require 'semanticdb)
+
+;; (global-semanticdb-minor-mode 1)
+
+;; (defun my-cedet-hook ()
+;;   (local-set-key [(control return)] 'semantic-ia-complete-symbol)
+;;   (local-set-key "/C-c?" 'semantic-ia-complete-symbol-menu)
+;;   (local-set-key "/C-c>" 'semantic-complete-analyze-inline)
+;;   (local-set-key "/C-cp" 'semantic-analyze-proto-impl-toggle))
+;; (add-hook 'c-mode-common-hook 'my-cedet-hook)
+
+;; (defun my-c-mode-cedet-hook ()
+;;   (local-set-key "." 'semantic-complete-self-insert)
+;;   (local-set-key ">" 'semantic-complete-self-insert))
+;; (add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
+
+
+
+
+
+;; (require 'ecb)
+;; (require 'ecb-autoloads)
+;; (require 'cc-mode)
+;; (require 'semantic)
+
+;; (global-semanticdb-minor-mode 1)
+;; (global-semantic-idle-scheduler-mode 1)
+
+;; (semantic-mode 1)
+
+
+;; (add-to-list 'load-path "~/.emacs.d/icollect/ecb-snap/")
+;; (require 'ecb)
+
+;; (setq stack-trace-on-error t)
+
+;; (require 'cedet)
+;; (global-ede-mode t)
+;; (setq global-semantic-tag-folding-mode t)
+
+;; from https://github.com/abo-abo/swiper/issues/1068
+(defun my-ivy-with-thing-at-point (cmd &optional dir)
+  "Wrap a call to CMD with setting "
+  (let ((ivy-initial-inputs-alist
+         (list
+          (cons cmd (thing-at-point 'symbol)))))
+    (funcall cmd nil dir)))
+
+(use-package counsel
+  :config (setq counsel-ag-base-command "ag --vimgrep -a %s"))
+
+(defun my-counsel-ag-from-here (&optional dir)
+  "Start ag but from the directory the file is in (otherwise I would
+be using git-grep)."
+  (interactive "D")
+  (my-ivy-with-thing-at-point
+   'counsel-ag
+   (or dir (file-name-directory (buffer-file-name)))))
+
+(defun my-counsel-git-grep ()
+  (interactive)
+  (my-ivy-with-thing-at-point
+   'counsel-git-grep))

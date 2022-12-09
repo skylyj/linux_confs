@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("IVIEW"
+(("ltv_model.org"
+ (filename . "~/Gitlab/ltv_model/ltv_model.org")
+ (front-context-string)
+ (rear-context-string . "&var-layer=cnrr\n")
+ (position . 1435))
+("CV"
+ (filename . "~/OneDrive/Documents/JobHunting/resume/CV/")
+ (front-context-string . "连义江简历1_1.docx\n  ")
+ (rear-context-string . "63 Dec  7 20:01 ")
+ (position . 1209))
+("IVIEW"
  (buffer
   ("Linux"
    (buffer . #3="Linux")
@@ -286,9 +296,9 @@
  (position . 1))
 ("resume"
  (filename . "~/OneDrive/Documents/JobHunting/resume/")
- (front-context-string . "谈话.org\n  -rwxr-x")
- (rear-context-string . "08 Oct 24 10:32 ")
- (position . 736))
+ (front-context-string . "ltv.pptx\n  -rwx-")
+ (rear-context-string . "22 Nov 17 11:02 ")
+ (position . 672))
 ("ForDocker"
  (filename . "~/ForDocker/")
  (front-context-string . "Dockerfile.rails")

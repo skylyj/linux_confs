@@ -2,7 +2,32 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("ltv_model.org"
+(("RTags_3"
+ (filename . "~/Soft/rtags/src/ClangIndexer.cpp")
+ (front-context-string . "clang_getRangeSt")
+ (rear-context-string . "ocation start = ")
+ (position . 91299))
+("RTags_2"
+ (filename . "~/Soft/rtags/src/ClangIndexer.cpp")
+ (front-context-string . "clang_getRangeSt")
+ (rear-context-string . " createLocation(")
+ (position . 63948))
+("RTags_1"
+ (filename . "~/Soft/rtags/src/ClangIndexer.cpp")
+ (front-context-string . "clang_getRangeSt")
+ (rear-context-string . "pellingLocation(")
+ (position . 45516))
+("RTags_0"
+ (filename . "~/Soft/rtags/src/ClangIndexer.cpp")
+ (front-context-string . "clang_getRangeSt")
+ (rear-context-string . "on rangeStart = ")
+ (position . 1831))
+("meta-sample"
+ (filename . "~/Gitlab/meta-sample/")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . "84 Dec  9 14:02 ")
+ (position . 249))
+("ltv_model.org"
  (filename . "~/Gitlab/ltv_model/ltv_model.org")
  (front-context-string)
  (rear-context-string . "&var-layer=cnrr\n")

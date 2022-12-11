@@ -21,6 +21,7 @@
 ;; (global-set-key (kbd "s-b") 'backward-word) ; lower case “s” is for super
 
 (global-set-key (kbd "s-i nf") 'new-frame-config)
+(global-set-key (kbd "s-i C-s") 'swiper-isearch)
 (global-set-key (kbd "s-i gf") 'find-file-at-point)
 (global-set-key (kbd "s-i is") 'isearch-forward-symbol-at-point)
 (global-set-key "\C-xf" 'crux-recentf-find-file)
@@ -201,6 +202,11 @@
   (setq dashboard-items '((recents  . 15)   ;; 显示多少个最近文件
 			  (bookmarks . 5)  ;; 显示多少个最近书签
 			  (projects . 10))) ;; 显示多少个最近项目
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+
+
+
   (dashboard-setup-startup-hook))
 
 (use-package marginalia
@@ -235,6 +241,7 @@
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 (add-hook 'python-mode-hook 'hs-minor-mode)
 (add-hook 'go-mode 'hs-minor-mode)
+(add-hook 'c++-mode 'hs-minor-mode)
 (global-set-key (kbd "s-i C-s") 'hs-show-block)
 (global-set-key (kbd "s-i C-d") 'hs-hide-block)
 
@@ -360,7 +367,10 @@
   :ensure t
   :init
   (setq conda-anaconda-home (expand-file-name "~/miniforge3/"))
-  (setq conda-env-home-directory (expand-file-name "~/miniforge3")))
+  (setq conda-env-home-directory (expand-file-name "~/miniforge3"))
+  (setq-default mode-line-format (cons mode-line-format '(:exec conda-env-current-name)))
+  (conda-env-activate "tf26")
+  )
 
 
 (use-package anaconda-mode
@@ -396,7 +406,11 @@
             (setq python-indent-offset 4)))
 (add-hook 'python-mode-hook
           (lambda ()
-            (setq flycheck-pylintrc "~/.pylintrc")))
+            ;; (setq flycheck-python-pylint-executable "/Users/mobvista/miniforge3/envs/tf26/bin/pylint")
+            (setq flycheck-pylintrc "~/.pylintrc")
+            (setq flycheck-flake8rc "~/.config/flake8")
+            )
+          )
 ;; (defun python-reinstate-current-directory ()
 ;;   "When running Python, add the current directory ('') to the head of sys.path.
 ;; For reasons unexplained, run-python passes arguments to the
@@ -457,8 +471,10 @@
   (let ((map (make-sparse-keymap)))
     ;; (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)
     (define-key map  (kbd "C-x g") 'magit-status)
+    ;; (define-key map  (kbd "C-s") 'isearch-forward)
     (define-key map (kbd "C-c SPC") 'ace-jump-mode)
     (define-key map (kbd "C-x SPC") 'rectangle-mark-mode)
+    (move-text-default-bindings)
     map)
   "my-keys-minor-mode keymap.")
 
@@ -517,21 +533,74 @@
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
               (ggtags-mode 1))))
 
-(define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
 (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
 
 
+;; flycheck
+(require 'flycheck)
+;; Force flycheck to always use c++11 support. We use
+;; the clang language backend so this is set to clang
+(add-hook 'c++-mode-hook
+          (lambda () (setq flycheck-clang-language-standard "c++11")))
+;; Turn flycheck on everywhere
+(global-flycheck-mode)
+
+;; c++
+;; (use-package flycheck-clang-tidy
+;;   :after flycheck
+;;   :hook
+;;   (flycheck-mode . flycheck-clang-tidy-setup)
+;;   )
 
 
+;; (add-hook 'c++-mode-hook
+;;           (lambda () (setq flycheck-clang-include-path '("./iheader/" "./iheader2/" "./iheader3/"))
+;;             )
+;;           )
+;; (add-hook 'c++-mode-hook
+;;           (lambda () (setq flycheck-clang-include-path
+;;                            (list (expand-file-name "~/Gitlab/Private/itools/c++/iheader/")
+;;                                  (expand-file-name "~/Gitlab/Private/itools/c++/iheader/")
+;;                                  )
+;;                            )
+;;             )
+;;           )
 
 ;; cedet and ecb
+;; 自己下载的包
 ;; (load-file "~/.emacs.d/icollect/cedet-1.1/common/cedet.el")
-;; (semantic-load-enable-code-helpers)
-;; (require 'cedet)
 ;; (global-ede-mode 1)                      ; Enable the Project management system
 ;; (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
 ;; (global-srecode-minor-mode 1)     ;; (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
-;; (global-srecode-minor-mode 1)            ; Enable template insertion menu
+
+;; cedet
+;; 使用系统自带的cedet built-in
+;; (load-file "~/Soft/cedet/cedet-devel-load.el")
+;; (load-file "~/Soft/cedet/contrib/cedet-contrib-load.el")
+(require 'cc-mode)
+(require 'semantic)
+(require 'semantic/sb)
+(require 'srecode)
+
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (semantic-mode 1)
+            (global-semanticdb-minor-mode 1)
+            (global-semantic-idle-scheduler-mode 1)
+            (global-semantic-idle-completions-mode 1)
+            (global-semantic-decoration-mode 1)
+            (global-semantic-highlight-func-mode 1)
+            (global-semantic-stickyfunc-mode -1)
+            (global-semantic-idle-summary-mode 1)
+            (global-semantic-mru-bookmark-mode 1)
+            )
+          )
+
+;; (semanticdb-enable-gnu-global-databases 'c-mode)
+;; (semanticdb-enable-gnu-global-databases 'c++-mode)
+;; (set-default 'semantic-case-fold t)
+
+
 
 
 ;; (require 'semantic-ia)
@@ -566,29 +635,6 @@
 ;; (add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
 
 
-
-
-
-;; (require 'ecb)
-;; (require 'ecb-autoloads)
-;; (require 'cc-mode)
-;; (require 'semantic)
-
-;; (global-semanticdb-minor-mode 1)
-;; (global-semantic-idle-scheduler-mode 1)
-
-;; (semantic-mode 1)
-
-
-;; (add-to-list 'load-path "~/.emacs.d/icollect/ecb-snap/")
-;; (require 'ecb)
-
-;; (setq stack-trace-on-error t)
-
-;; (require 'cedet)
-;; (global-ede-mode t)
-;; (setq global-semantic-tag-folding-mode t)
-
 ;; from https://github.com/abo-abo/swiper/issues/1068
 (defun my-ivy-with-thing-at-point (cmd &optional dir)
   "Wrap a call to CMD with setting "
@@ -612,3 +658,163 @@ be using git-grep)."
   (interactive)
   (my-ivy-with-thing-at-point
    'counsel-git-grep))
+
+
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
+
+(use-package all-the-icons
+  :ensure t)
+
+(setq doom-theme 'doom-city-lights)
+
+(all-the-icons-ivy-rich-mode 1)
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+
+;(quelpa
+; '(quelpa-use-package
+;   :fetcher git
+;   :url "https://github.com/quelpa/quelpa-use-package.git"))
+;(require 'quelpa-use-package)
+
+;; (use-package org-sidebar
+;;   :quelpa (org-sidebar :fetcher github :repo "alphapapa/org-sidebar"))
+
+(with-eval-after-load 'sr-speedbar
+  (add-hook 'speedbar-visiting-file-hook
+            #'(lambda () (select-window (next-window))) t))
+
+
+(use-package treemacs
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'winum
+    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+  :config
+  (progn
+    (setq treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
+          treemacs-deferred-git-apply-delay        0.5
+          treemacs-directory-name-transformer      #'identity
+          treemacs-display-in-side-window          t
+          treemacs-eldoc-display                   'simple
+          treemacs-file-event-delay                2000
+          treemacs-file-extension-regex            treemacs-last-period-regex-value
+          treemacs-file-follow-delay               0.2
+          treemacs-file-name-transformer           #'identity
+          treemacs-follow-after-init               t
+          treemacs-expand-after-init               t
+          treemacs-find-workspace-method           'find-for-file-or-pick-first
+          treemacs-git-command-pipe                ""
+          treemacs-goto-tag-strategy               'refetch-index
+          treemacs-header-scroll-indicators        '(nil . "^^^^^^")
+          treemacs-hide-dot-git-directory          t
+          treemacs-indentation                     2
+          treemacs-indentation-string              " "
+          treemacs-is-never-other-window           nil
+          treemacs-max-git-entries                 5000
+          treemacs-missing-project-action          'ask
+          treemacs-move-forward-on-expand          nil
+          treemacs-no-png-images                   nil
+          treemacs-no-delete-other-windows         t
+          treemacs-project-follow-cleanup          nil
+          treemacs-persist-file                    (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+          treemacs-position                        'left
+          treemacs-read-string-input               'from-child-frame
+          treemacs-recenter-distance               0.1
+          treemacs-recenter-after-file-follow      nil
+          treemacs-recenter-after-tag-follow       nil
+          treemacs-recenter-after-project-jump     'always
+          treemacs-recenter-after-project-expand   'on-distance
+          treemacs-litter-directories              '("/node_modules" "/.venv" "/.cask")
+          treemacs-show-cursor                     nil
+          treemacs-show-hidden-files               t
+          treemacs-silent-filewatch                nil
+          treemacs-silent-refresh                  nil
+          treemacs-sorting                         'alphabetic-asc
+          treemacs-select-when-already-in-treemacs 'move-back
+          treemacs-space-between-root-nodes        t
+          treemacs-tag-follow-cleanup              t
+          treemacs-tag-follow-delay                1.5
+          treemacs-text-scale                      nil
+          treemacs-user-mode-line-format           nil
+          treemacs-user-header-line-format         nil
+          treemacs-wide-toggle-width               70
+          treemacs-width                           35
+          treemacs-width-increment                 1
+          treemacs-width-is-initially-locked       t
+          treemacs-workspace-switch-cleanup        nil)
+
+    ;; The default width and height of the icons is 22 pixels. If you are
+    ;; using a Hi-DPI display, uncomment this to double the icon size.
+    ;;(treemacs-resize-icons 44)
+
+    (treemacs-follow-mode t)
+    (treemacs-filewatch-mode t)
+    (treemacs-fringe-indicator-mode 'always)
+    (when treemacs-python-executable
+      (treemacs-git-commit-diff-mode t))
+
+    (pcase (cons (not (null (executable-find "git")))
+                 (not (null treemacs-python-executable)))
+      (`(t . t)
+       (treemacs-git-mode 'deferred))
+      (`(t . _)
+       (treemacs-git-mode 'simple)))
+
+    (treemacs-hide-gitignored-files-mode nil))
+  :bind
+  (:map global-map
+        ("M-0"       . treemacs-select-window)
+        ("C-x t 1"   . treemacs-delete-other-windows)
+        ("C-x t t"   . treemacs)
+        ("C-x t d"   . treemacs-select-directory)
+        ("C-x t B"   . treemacs-bookmark)
+        ("C-x t C-t" . treemacs-find-file)
+        ("C-x t M-t" . treemacs-find-tag)))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :hook (dired-mode . treemacs-icons-dired-enable-once)
+  :ensure t)
+
+(use-package treemacs-magit
+  :after (treemacs magit)
+  :ensure t)
+
+(use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
+  :after (treemacs persp-mode) ;;or perspective vs. persp-mode
+  :ensure t
+  :config (treemacs-set-scope-type 'Perspectives))
+
+(use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
+  :after (treemacs)
+  :ensure t
+  :config (treemacs-set-scope-type 'Tabs))
+
+
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
+(add-to-list 'load-path (concat user-emacs-directory "/icollect/hideshowvis/" ))
+(require 'hideshowvis)
+
+(autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
+
+(autoload 'hideshowvis-minor-mode
+  "hideshowvis"
+  "Will indicate regions foldable with hideshow in the fringe."
+  'interactive)
+
+
+(dolist (hook (list 'emacs-lisp-mode-hook
+                    'python-mode-hook
+                    'c++-mode-hook))
+  (add-hook hook 'hideshowvis-enable))
+(hideshowvis-symbols)
+;; (require 'origami)

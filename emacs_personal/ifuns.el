@@ -21,3 +21,4 @@
         (e (if mark-active (max (point) (mark)) (point-max))))
     (shell-command-on-region b e
                              "python -mjson.tool" (current-buffer) t)))
+;;

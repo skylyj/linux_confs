@@ -1,12 +1,10 @@
-(setq path-to-ctags "/opt/homebrew/opt/ctags/bin/ctags")
+(setq path-to-ctags "/Users/mobvista/local/bin/ctags")
 (defun create-tags (dir-name)
   "Create tags file."
   (interactive "DDirectory: ")
-  (shell-command
-   (format "/opt/homebrew/opt/ctags/bin/ctags -f %s/TAGS -e -R %s" (directory-file-name dir-name) (directory-file-name dir-name))
-   )
+  (shell-command-to-string
+   (format "%s -f TAGS -e -R %s" path-to-ctags (directory-file-name dir-name)))
   )
-;; (format "%s -f TAGS -e -R %s" path-to-ctags (directory-file-name dir-name)))
 
 (defun load-buffer ()
   "load current elisp buffer"

@@ -2,36 +2,31 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("RTags_3"
- (filename . "~/Soft/rtags/src/ClangIndexer.cpp")
- (front-context-string . "clang_getRangeSt")
- (rear-context-string . "ocation start = ")
- (position . 91299))
-("RTags_2"
- (filename . "~/Soft/rtags/src/ClangIndexer.cpp")
- (front-context-string . "clang_getRangeSt")
- (rear-context-string . " createLocation(")
- (position . 63948))
-("RTags_1"
- (filename . "~/Soft/rtags/src/ClangIndexer.cpp")
- (front-context-string . "clang_getRangeSt")
- (rear-context-string . "pellingLocation(")
- (position . 45516))
-("RTags_0"
- (filename . "~/Soft/rtags/src/ClangIndexer.cpp")
- (front-context-string . "clang_getRangeSt")
- (rear-context-string . "on rangeStart = ")
- (position . 1831))
+(("ctags_init"
+ (filename . "~/.ctags")
+ (front-context-string . "--langdef=scala\n")
+ (rear-context-string)
+ (position . 1))
+(".ctags"
+ (filename . "~/.ctags")
+ (front-context-string . "--langdef=scala\n")
+ (rear-context-string)
+ (position . 1))
+("ltv_model"
+ (filename . "~/Gitlab/offline/ltv_model/")
+ (front-context-string . "roas\n  drwxr-xr-")
+ (rear-context-string . " Dec 12 15:03   ")
+ (position . 835))
+("featuremonitor"
+ (filename . "~/Gitlab/offline/featuremonitor/")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . " Dec 12 14:40   ")
+ (position . 274))
 ("meta-sample"
  (filename . "~/Gitlab/meta-sample/")
  (front-context-string . ".git\n  -rw-r--r-")
  (rear-context-string . "84 Dec  9 14:02 ")
  (position . 249))
-("ltv_model.org"
- (filename . "~/Gitlab/ltv_model/ltv_model.org")
- (front-context-string)
- (rear-context-string . "&var-layer=cnrr\n")
- (position . 1435))
 ("CV"
  (filename . "~/OneDrive/Documents/JobHunting/resume/CV/")
  (front-context-string . "连义江简历1_1.docx\n  ")
@@ -170,9 +165,9 @@
  (position . 1047))
 ("ipython_init.py"
  (filename . "~/.ipython/profile_default/startup/ipython_init.py")
- (front-context-string)
- (rear-context-string . "='fancy_grid'))\n")
- (position . 443))
+ (front-context-string . "from tabulate im")
+ (rear-context-string . " import metrics\n")
+ (position . 113))
 ("host_cndev"
  (filename . "/ssh:cndev:/home/tommy/")
  (front-context-string . "Github\n  drwxrwx")
@@ -196,9 +191,6 @@
  (front-context-string . "kickoff\n  drwx--")
  (rear-context-string . " Feb  8  2022   ")
  (position . 1698))
-("ltv_model"
- (handler . eshell-bookmark--restore)
- (filename . "/Users/mobvista/Gitlab/ltv_model/roas/"))
 ("fast_routine"
  (filename . "~/Gitlab/offline_routine_job/SDK/ranking/osiris/job/saas/fast_routine/")
  (front-context-string . "pack.sh\n  -rw-r-")
@@ -235,10 +227,10 @@
  (rear-context-string)
  (position . 1))
 ("saas_dsp"
- (filename . "~/Gitlab/saas_dsp/")
- (front-context-string . "CMakeLists.txt\n ")
- (rear-context-string . "18 Dec  6 13:42 ")
- (position . 574))
+ (filename . "~/Gitlab/online/saas_dsp/")
+ (front-context-string . ".dir-locals.el\n ")
+ (rear-context-string . " Dec 10 17:21   ")
+ (position . 274))
 ("demand_context.proto"
  (filename . "~/Gitlab/protocols/proto/core_model/demand_context.proto")
  (front-context-string)
@@ -255,7 +247,7 @@
      ivy-current-match
      (:foreground #1#)
      ivy-current-match)))
- (filename . "~/Gitlab/casedebug/")
+ (filename . "~/Gitlab/offline/casedebug/")
  (front-context-string)
  (rear-context-string . "56 Oct 26 22:07 ")
  (position . 1053))

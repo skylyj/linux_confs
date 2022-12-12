@@ -51,43 +51,73 @@
 ;; (setq rtags-display-result-backend 'helm)
 
 
+;; (use-package company-tabnine
+;;   :ensure t
+;;   :config
+;;   (add-to-list 'company-backends #'company-tabnine)
+;;   ;; Trigger completion immediately.
+;;   (setq company-idle-delay 0)
+;;   ;; Number the candidates (use M-1, M-2 etc to select completions).
+;;   (setq company-show-numbers t)
+
+;;   )
 
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; Set up helm
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; Load helm and set M-x to helm, buffer to helm, and find files to herm
-(require 'helm-config)
-(require 'helm)
-(require 'helm-ls-git)
-(require 'helm-ctest)
-;; Use C-c h for helm instead of C-x c
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-unset-key (kbd "C-x c"))
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-;; (global-set-key (kbd "C-c t") 'helm-ctest)
 
-(setq
- helm-split-window-in-side-p           t
-   ; open helm buffer inside current window,
-   ; not occupy whole other window
- helm-move-to-line-cycle-in-source     t
-   ; move to end or beginning of source when
-   ; reaching top or bottom of source.
- helm-ff-search-library-in-sexp        t
-   ; search for library in `require' and `declare-function' sexp.
- helm-scroll-amount                    8
-   ; scroll 8 lines other window using M-<next>/M-<prior>
- helm-ff-file-name-history-use-recentf t
- ;; Allow fuzzy matches in helm semantic
- helm-semantic-fuzzy-match t
- helm-imenu-fuzzy-match    t)
-;; Have helm automaticaly resize the window
-(helm-autoresize-mode 1)
-(setq rtags-use-helm t)
-(require 'helm-flycheck) ;; Not necessary if using ELPA package
-(eval-after-load 'flycheck
-  '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
+;; (use-package citre
+;;   :defer t
+;;   :init
+;;   ;; This is needed in `:init' block for lazy load to work.
+;;   (require 'citre-config)
+;;   ;; Bind your frequently used commands.  Alternatively, you can define them
+;;   ;; in `citre-mode-map' so you can only use them when `citre-mode' is enabled.
+;;   (global-set-key (kbd "C-x c j") 'citre-jump)
+;;   (global-set-key (kbd "C-x c J") 'citre-jump-back)
+;;   (global-set-key (kbd "C-x c p") 'citre-ace-peek)
+;;   (global-set-key (kbd "C-x c u") 'citre-update-this-tags-file)
+;;   :config
+;;   (setq
+;;    ;; Set these if readtags/ctags is not in your PATH.
+;;    citre-readtags-program "/path/to/readtags"
+;;    citre-ctags-program "/path/to/ctags"
+;;    ;; Set these if gtags/global is not in your PATH (and you want to use the
+;;    ;; global backend)
+;;    citre-gtags-program "/path/to/gtags"
+;;    citre-global-program "/path/to/global"
+;;    ;; Set this if you use project management plugin like projectile.  It's
+;;    ;; used for things like displaying paths relatively, see its docstring.
+;;    citre-project-root-function #'projectile-project-root
+;;    ;; Set this if you want to always use one location to create a tags file.
+;;    citre-default-create-tags-file-location 'global-cache
+;;    ;; See the "Create tags file" section above to know these options
+;;    citre-use-project-root-when-creating-tags t
+;;    citre-prompt-language-for-ctags-command t
+;;    ;; By default, when you open any file, and a tags file can be found for it,
+;;    ;; `citre-mode' is automatically enabled.  If you only want this to work for
+;;    ;; certain modes (like `prog-mode'), set it like this.
+;;    citre-auto-enable-citre-mode-modes '(prog-mode)))
+
+
+
+
+;; (use-package helm-gtags
+;;   :after (helm)
+;;   :init
+;;   (add-hook 'c-mode-hook 'helm-gtags-mode)
+;;   (add-hook 'c++-mode-hook 'helm-gtags-mode)
+;;   (add-hook 'asm-mode-hook 'helm-gtags-mode)
+
+;;   :config
+;;   ;; customize
+;;   (custom-set-variables
+;;    '(helm-gtags-path-style 'relative)
+;;    '(helm-gtags-ignore-case t)
+;;    '(helm-gtags-auto-update t)))
+
+;; :bind
+;; (:map helm-gtags-mode-map
+;;       ("M-t" . helm-gtags-find-tag)
+;;       ("M-r" . helm-gtags-find-rtag)
+;;       ("M-s" . helm-gtags-find-symbol)
+;;       ("M-," . helm-gtags-previous-history)
+;;       ("M-." . helm-gtags-next-history)))

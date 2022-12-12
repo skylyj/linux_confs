@@ -23,13 +23,12 @@
 (global-set-key (kbd "s-i nf") 'new-frame-config)
 (global-set-key (kbd "s-i C-s") 'swiper-isearch)
 (global-set-key (kbd "s-i gf") 'find-file-at-point)
-(global-set-key (kbd "s-i is") 'isearch-forward-symbol-at-point)
+(global-set-key (kbd "s-i *") 'isearch-forward-symbol-at-point)
+(global-set-key (kbd "s-i ttl") 'toggle-truncate-lines)
 (global-set-key "\C-xf" 'crux-recentf-find-file)
 (global-set-key "\C-xg" 'magit-status)
 
 (global-set-key "\C-z" 'set-mark-command)
-(global-set-key "\M-sr" 'query-replace-regexp)
-(global-set-key "\M-slt" 'toggle-truncate-lines)
 ;(global-set-key "\M-slhh" 'hs-hide-all)
 ;(global-set-key "\M-slhs" 'hs-show-all)
 ;(global-set-key [(meta ?/)] 'hippie-expand)
@@ -466,27 +465,6 @@
 (global-set-key (kbd "C-c C-+") 'evil-numbers/inc-at-pt-incremental)
 (global-set-key (kbd "C-c C--") 'evil-numbers/dec-at-pt-incremental)
 
-;; 最后的键盘设置
-(defvar my-keys-minor-mode-map
-  (let ((map (make-sparse-keymap)))
-    ;; (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)
-    (define-key map  (kbd "C-x g") 'magit-status)
-    ;; (define-key map  (kbd "C-s") 'isearch-forward)
-    (define-key map (kbd "C-c SPC") 'ace-jump-mode)
-    (define-key map (kbd "C-x SPC") 'rectangle-mark-mode)
-    (move-text-default-bindings)
-    map)
-  "my-keys-minor-mode keymap.")
-
-(define-minor-mode my-mode
-  "A minor mode so that my key settings override annoying major modes."
-  :init-value t
-  :lighter " my-mode"
-  :keymap my-keys-minor-mode-map
-  )
-
-(my-mode 1)
-
 ;; 这样可以使得compile window 优先是split-window-vertically
 (setq split-width-threshold nil)
 (setq split-height-threshold 0)
@@ -522,18 +500,21 @@
 
 (setq org-hierarchical-todo-statistics nil)
 
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-              (ggtags-mode 1))))
+;; (add-hook 'c-mode-common-hook
+;;           (lambda ()
+;;             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+;;               (ggtags-mode 1))))
 
-(require 'ggtags)
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
-              (ggtags-mode 1))))
+;; (require 'ggtags)
+;; (add-hook 'c-mode-common-hook
+;;           (lambda ()
+;;             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+;;               (ggtags-mode 1))))
 
-(setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+;; (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+
+(require 'helm-xref)
+(setq xref-show-xrefs-function 'helm-xref-show-xrefs)
 
 
 ;; flycheck
@@ -818,3 +799,180 @@ be using git-grep)."
   (add-hook hook 'hideshowvis-enable))
 (hideshowvis-symbols)
 ;; (require 'origami)
+
+
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; Set up HELM
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; Load helm and set M-x to helm, buffer to helm, and find files to herm
+(require 'helm-config)
+(require 'helm)
+(require 'helm-ls-git)
+(require 'helm-ctest)
+;; Use C-c h for helm instead of C-x c
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+(setq
+ helm-split-window-in-side-p           t
+   ; open helm buffer inside current window,
+   ; not occupy whole other window
+ helm-move-to-line-cycle-in-source     t
+   ; move to end or beginning of source when
+   ; reaching top or bottom of source.
+ helm-ff-search-library-in-sexp        t
+   ; search for library in `require' and `declare-function' sexp.
+ helm-scroll-amount                    8
+   ; scroll 8 lines other window using M-<next>/M-<prior>
+ helm-ff-file-name-history-use-recentf t
+ ;; Allow fuzzy matches in helm semantic
+ helm-semantic-fuzzy-match t
+ helm-imenu-fuzzy-match    t)
+;; Have helm automaticaly resize the window
+(helm-autoresize-mode 1)
+(setq rtags-use-helm t)
+(require 'helm-flycheck) ;; Not necessary if using ELPA package
+(eval-after-load 'flycheck
+  '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
+
+(require 'swiper-helm)
+
+
+;; MY-MODE
+(defvar my-keys-minor-mode-map
+  (let ((map (make-sparse-keymap)))
+    ;; (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)
+    (define-key map  (kbd "C-x g") 'magit-status)
+    (define-key map  (kbd "C-s") 'isearch-forward)
+    (define-key map (kbd "C-c SPC") 'ace-jump-mode)
+    (define-key map (kbd "C-x SPC") 'rectangle-mark-mode)
+    (move-text-default-bindings)
+    map)
+  "my-keys-minor-mode keymap.")
+
+(define-minor-mode my-mode
+  "A minor mode so that my key settings override annoying major modes."
+  :init-value t
+  :lighter  my-mode
+  :keymap my-keys-minor-mode-map
+  )
+
+(my-mode 1)
+(use-package centaur-tabs
+  :demand
+  :config
+  (centaur-tabs-mode t)
+  (setq centaur-tabs-set-icons t)
+  (setq centaur-tabs-style "rounded")
+  :bind
+  ("C-<prior>" . centaur-tabs-backward)
+  ("C-<next>" . centaur-tabs-forward))
+
+(global-set-key [remap goto-line] 'goto-line-preview)
+
+(use-package bm
+         :ensure t
+         :demand t
+
+         :init
+         ;; restore on load (even before you require bm)
+         (setq bm-restore-repository-on-load t)
+
+
+         :config
+         ;; Allow cross-buffer 'next'
+         (setq bm-cycle-all-buffers t)
+
+         ;; where to store persistant files
+         (setq bm-repository-file "~/.emacs.d/bm-repository")
+
+         ;; save bookmarks
+         (setq-default bm-buffer-persistence t)
+
+         ;; Loading the repository from file when on start up.
+         (add-hook 'after-init-hook 'bm-repository-load)
+
+         ;; Saving bookmarks
+         (add-hook 'kill-buffer-hook #'bm-buffer-save)
+
+         ;; Saving the repository to file when on exit.
+         ;; kill-buffer-hook is not called when Emacs is killed, so we
+         ;; must save all bookmarks first.
+         (add-hook 'kill-emacs-hook #'(lambda nil
+                                          (bm-buffer-save-all)
+                                          (bm-repository-save)))
+
+         ;; The `after-save-hook' is not necessary to use to achieve persistence,
+         ;; but it makes the bookmark data in repository more in sync with the file
+         ;; state.
+         (add-hook 'after-save-hook #'bm-buffer-save)
+
+         ;; Restoring bookmarks
+         (add-hook 'find-file-hooks   #'bm-buffer-restore)
+         (add-hook 'after-revert-hook #'bm-buffer-restore)
+
+         ;; The `after-revert-hook' is not necessary to use to achieve persistence,
+         ;; but it makes the bookmark data in repository more in sync with the file
+         ;; state. This hook might cause trouble when using packages
+         ;; that automatically reverts the buffer (like vc after a check-in).
+         ;; This can easily be avoided if the package provides a hook that is
+         ;; called before the buffer is reverted (like `vc-before-checkin-hook').
+         ;; Then new bookmarks can be saved before the buffer is reverted.
+         ;; Make sure bookmarks is saved before check-in (and revert-buffer)
+         (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
+
+
+         :bind (("<f2>" . bm-next)
+                ("S-<f2>" . bm-previous)
+                ("C-<f2>" . bm-toggle))
+         )
+(use-package company-tabnine
+  :ensure t
+  :config
+  (add-to-list 'company-backends #'company-tabnine)
+  ;; Trigger completion immediately.
+  (setq company-idle-delay 0)
+  ;; Number the candidates (use M-1, M-2 etc to select completions).
+  (setq company-show-numbers t)
+
+  )
+
+
+
+;; (use-package citre
+;;   :defer t
+;;   :init
+;;   ;; This is needed in `:init' block for lazy load to work.
+;;   (require 'citre-config)
+;;   ;; Bind your frequently used commands.  Alternatively, you can define them
+;;   ;; in `citre-mode-map' so you can only use them when `citre-mode' is enabled.
+;;   (global-set-key (kbd "C-x c j") 'citre-jump)
+;;   (global-set-key (kbd "C-x c J") 'citre-jump-back)
+;;   (global-set-key (kbd "C-x c p") 'citre-ace-peek)
+;;   (global-set-key (kbd "C-x c u") 'citre-update-this-tags-file)
+;;   :config
+;;   (setq
+;;    ;; Set these if readtags/ctags is not in your PATH.
+;;    citre-readtags-program "/path/to/readtags"
+;;    citre-ctags-program "/path/to/ctags"
+;;    ;; Set these if gtags/global is not in your PATH (and you want to use the
+;;    ;; global backend)
+;;    citre-gtags-program "/path/to/gtags"
+;;    citre-global-program "/path/to/global"
+;;    ;; Set this if you use project management plugin like projectile.  It's
+;;    ;; used for things like displaying paths relatively, see its docstring.
+;;    citre-project-root-function #'projectile-project-root
+;;    ;; Set this if you want to always use one location to create a tags file.
+;;    citre-default-create-tags-file-location 'global-cache
+;;    ;; See the "Create tags file" section above to know these options
+;;    citre-use-project-root-when-creating-tags t
+;;    citre-prompt-language-for-ctags-command t
+;;    ;; By default, when you open any file, and a tags file can be found for it,
+;;    ;; `citre-mode' is automatically enabled.  If you only want this to work for
+;;    ;; certain modes (like `prog-mode'), set it like this.
+;;    citre-auto-enable-citre-mode-modes '(prog-mode)))

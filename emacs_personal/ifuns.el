@@ -1,7 +1,8 @@
+(setq path-to-ctags "/Users/mobvista/local/bin/ctags")
 (defun create-tags (dir-name)
   "Create tags file."
   (interactive "DDirectory: ")
-  (shell-command
+  (shell-command-to-string
    (format "%s -f TAGS -e -R %s" path-to-ctags (directory-file-name dir-name)))
   )
 

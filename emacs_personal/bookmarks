@@ -193,9 +193,9 @@
  (position . 395))
 ("ishare"
  (filename . "~/OneDrive/Work/BaiduWork/office/ppt/ishare/")
- (front-context-string . "1.8-06-度量检索-连义江.")
- (rear-context-string . "16 Jan  8  2018 ")
- (position . 287))
+ (front-context-string . "kickoff\n  drwx--")
+ (rear-context-string . " Feb  8  2022   ")
+ (position . 1698))
 ("ltv_model"
  (handler . eshell-bookmark--restore)
  (filename . "/Users/mobvista/Gitlab/ltv_model/roas/"))

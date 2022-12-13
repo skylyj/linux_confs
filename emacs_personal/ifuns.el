@@ -1,3 +1,4 @@
+;; ctags 使用的方法
 (setq path-to-ctags "/opt/homebrew/opt/ctags/bin/ctags")
 (defun create-tags (dir-name)
   "Create tags file."

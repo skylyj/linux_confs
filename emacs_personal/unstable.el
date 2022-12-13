@@ -216,12 +216,23 @@
 
 
 ;; tab 管理
-;; (use-package centaur-tabs
-;;   :demand
-;;   :config
-;;   (centaur-tabs-mode t)
-;;   (setq centaur-tabs-set-icons t)
-;;   (setq centaur-tabs-style "rounded")
-;;   (global-set-key (kbd "s-i tf") 'centaur-tabs-forward)
-;;   (global-set-key (kbd "s-i tb") 'centaur-tabs-backward)
-;;   )
+(use-package centaur-tabs
+  :demand
+  :config
+  (centaur-tabs-mode t)
+  (centaur-tabs-group-by-projectile-project)
+  (setq centaur-tabs-set-icons t)
+  (setq centaur-tabs-style "rounded")
+  (global-set-key (kbd "s-i tf") 'centaur-tabs-forward)
+  (global-set-key (kbd "s-i tb") 'centaur-tabs-backward)
+  (setq centaur-tabs-set-bar 'under)
+  ;; Note: If you're not using Spacmeacs, in order for the underline to display
+  ;; correctly you must add the following line:
+  (setq x-underline-at-descent-line t)
+  (setq centaur-tabs-enable-key-bindings t)
+  (setq centaur-tabs-gray-out-icons 'buffer)
+
+  ;; Note: If you're not using Spacmeacs, in order for the underline to display
+  ;; correctly you must add the following line:
+  (setq x-underline-at-descent-line t)
+  )

@@ -7,6 +7,15 @@
    (format "/opt/homebrew/opt/ctags/bin/ctags -f %s/TAGS -e -R %s" (directory-file-name dir-name) (directory-file-name dir-name))
    )
   )
+
+(defun create-tags2 (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (let ((icmd (format "/opt/homebrew/opt/ctags/bin/ctags -f %s/TAGS -e -R %s" (directory-file-name dir-name) (directory-file-name dir-name))))
+  (message icmd)
+  (shell-command icmd)
+  ))
+
 ;; (format "%s -f TAGS -e -R %s" path-to-ctags (directory-file-name dir-name)))
 
 (defun load-buffer ()
@@ -21,4 +30,16 @@
         (e (if mark-active (max (point) (mark)) (point-max))))
     (shell-command-on-region b e
                              "python -mjson.tool" (current-buffer) t)))
-;;
+
+(defun eshell-other-window ()
+  "Open a `shell' in a new window."
+  (interactive)
+  (let ((buf (eshell)))
+    (switch-to-buffer (other-buffer buf))
+    (switch-to-buffer-other-window buf)))
+
+(defun my-helm-ag-thing-at-point ()
+  "Search the symbol at point with `helm-ag'."
+  (interactive)
+  (let ((helm-ag-insert-at-point 'symbol))
+    (helm-do-ag-project-root)))

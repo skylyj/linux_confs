@@ -2,7 +2,37 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("ctags_init"
+(("OneDrive"
+ (filename . "~/OneDrive/")
+ (front-context-string . "Work\n  drwx-----")
+ (rear-context-string . " Nov 17 09:21   ")
+ (position . 1349))
+("NLP"
+ (filename . "~/OneDrive/Papers/NLP/")
+ (front-context-string . "AN EFFICIENT FRA")
+ (rear-context-string . " Oct 22  2018   ")
+ (position . 268))
+("baidu_ppt"
+ (filename . "~/OneDrive/PPT/baidu_ppt/")
+ (front-context-string . "shuzhi\n  drwx---")
+ (rear-context-string . " Dec 22 10:22   ")
+ (position . 884))
+("Retrieval"
+ (filename . "~/OneDrive/Papers/Retrieval/")
+ (front-context-string . "Optimizing Dense")
+ (rear-context-string . " Oct  7 18:15   ")
+ (position . 1059))
+("standard_rs.proto"
+ (filename . "~/Gitlab/online/protocols/proto/standard_rs/standard_rs.proto")
+ (front-context-string . "//juno structure")
+ (rear-context-string)
+ (position . 1))
+("meta-sample.proto"
+ (filename . "~/Gitlab/meta-sample/meta-sample.proto")
+ (front-context-string . "syntax = \"proto2")
+ (rear-context-string)
+ (position . 1))
+("ctags_init"
  (filename . "~/.ctags")
  (front-context-string . "--langdef=scala\n")
  (rear-context-string)
@@ -159,7 +189,7 @@
  (rear-context-string . "06 Nov 25 08:55 ")
  (position . 261))
 ("ps"
- (filename . "~/Gitlab/ps/")
+ (filename . "~/Gitlab/offline/ps/")
  (front-context-string . "python\n  -rwxr-x")
  (rear-context-string . "92 Nov 25 08:55 ")
  (position . 1047))
@@ -188,9 +218,9 @@
  (position . 395))
 ("ishare"
  (filename . "~/OneDrive/Work/BaiduWork/office/ppt/ishare/")
- (front-context-string . "kickoff\n  drwx--")
- (rear-context-string . " Feb  8  2022   ")
- (position . 1698))
+ (front-context-string . "..\n  -rw-r--r--@")
+ (rear-context-string . " Nov 17 09:19   ")
+ (position . 232))
 ("fast_routine"
  (filename . "~/Gitlab/offline_routine_job/SDK/ranking/osiris/job/saas/fast_routine/")
  (front-context-string . "pack.sh\n  -rw-r-")
@@ -232,10 +262,10 @@
  (rear-context-string . " Dec 10 17:21   ")
  (position . 274))
 ("demand_context.proto"
- (filename . "~/Gitlab/protocols/proto/core_model/demand_context.proto")
- (front-context-string)
- (rear-context-string . "; //冷启动后，正常投放\n}\n")
- (position . 3646))
+ (filename . "~/Gitlab/online/protocols/proto/core_model/demand_context.proto")
+ (front-context-string . "syntax = \"proto3")
+ (rear-context-string)
+ (position . 1))
 ("roas"
  (filename . "~/Gitlab/sample-factory/azkaban/saas_sample_generate/roas/")
  (front-context-string . "roasSample.yml\n ")
@@ -297,7 +327,7 @@
  (rear-context-string . "16 Sep  6 19:57 ")
  (position . 426))
 ("jacobi"
- (filename . "~/Gitlab/jacobi/")
+ (filename . "~/Gitlab/offline/jacobi/")
  (front-context-string . ".git\n  drwxr-xr-")
  (rear-context-string . "80 Aug 18 19:14 ")
  (position . 244))
@@ -388,15 +418,15 @@
  (rear-context-string . "02 Dec  6 21:58 ")
  (position . 270))
 ("shuzhi"
- (filename . "~/OneDrive/Work/office/ppt/shuzhi/")
- (front-context-string . ".DS_Store\n  -rw-")
- (rear-context-string . "44 Dec  7 16:47 ")
- (position . 267))
+ (filename . "~/OneDrive/Work/BaiduWork/office/ppt/shuzhi/")
+ (front-context-string . "t7\n  drwx------ ")
+ (rear-context-string . " Dec 22 10:23   ")
+ (position . 963))
 ("ppt"
- (filename . "~/OneDrive/Work/office/ppt/")
- (front-context-string . ".DS_Store\n  drwx")
- (rear-context-string . "44 Dec  7 18:58 ")
- (position . 261))
+ (filename . "~/OneDrive/PPT/")
+ (front-context-string . "baidu_ppt\n  drwx")
+ (rear-context-string . " Dec 27 09:36   ")
+ (position . 314))
 ("bert_pytorch"
  (filename . "~/coding/iCode/coherence/bert_only_mask/bert_pytorch/")
  (front-context-string . "__init__.py\n  -r")
@@ -437,19 +467,19 @@
  (position . 253))
 ("papers"
  (filename . "~/OneDrive/Papers/")
- (front-context-string . "1702.07463.pdf\n ")
- (rear-context-string . "13 Apr 30  2020 ")
- (position . 255))
+ (front-context-string . "CTR\n  drwx------")
+ (rear-context-string . " Nov 13 21:00   ")
+ (position . 811))
 ("coding.net"
  (filename . "~/coding/coding.net/")
  (front-context-string . "paraphrase_paper")
  (rear-context-string . "84 May 18 18:07 ")
  (position . 245))
 ("office"
- (filename . "~/OneDrive/Work/office/")
- (front-context-string . "ppt\n  drwxr-xr-x")
- (rear-context-string . "12 May 13 20:03 ")
- (position . 568))
+ (filename . "~/OneDrive/Work/BaiduWork/office/")
+ (front-context-string . ".DS_Store\n  drwx")
+ (rear-context-string . " Nov 17 10:34   ")
+ (position . 273))
 ("report"
  (filename . "~/Github/PrivateHub/org/Org/Work/Baidu/report/")
  (front-context-string . "zhouhui.org\n  -r")

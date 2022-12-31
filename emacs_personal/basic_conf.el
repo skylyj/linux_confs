@@ -3,6 +3,17 @@
 ;(setq redisplay-dont-pause nil)
                                         ; config for new frames
 
+;; proxy
+;; (setq url-proxy-services '(("no_proxy" . "work\\.com")
+;;                            ("http" . "127.0.0.1:7890")
+;;                            ("https" . "127.0.0.1:7890")
+;;                            )
+;;       )
+
+;; (require 'socks)
+;; (setq erc-server-connect-function 'socks-open-network-stream)
+;; (setq socks-server '("My Proxy" "127.0.0.1" 7890 5))
+
 (scroll-bar-mode -1)
 (defun new-frame-config ()
   (interactive)
@@ -23,6 +34,7 @@
 (global-set-key (kbd "s-i nf") 'new-frame-config)
 (global-set-key (kbd "s-i C-s") 'swiper-isearch)
 (global-set-key (kbd "s-i gf") 'find-file-at-point)
+(global-set-key (kbd "s-i pj") 'ace-pinyin-jump-char)
 (global-set-key (kbd "s-i *") 'isearch-forward-symbol-at-point)
 (global-set-key (kbd "s-i ttl") 'toggle-truncate-lines)
 (global-set-key "\C-xf" 'crux-recentf-find-file)
@@ -309,9 +321,6 @@
 
 
 
-(add-to-list 'load-path (concat user-emacs-directory "/icollect/highlight-global/" ))
-
-(load "highlight-global")
 (setq-default smartparens-strict-mode nil)
 ;; PYTHON
 ;; 关于anaconda，先安装conda，使用conda-activate可以切换conda环境
@@ -422,13 +431,6 @@
 (setq split-width-threshold nil)
 (setq split-height-threshold 0)
 
-;; (add-to-list 'load-path "~/Github/PrivateHub/linux_confs/emacs-jedi-direx/")
-;; (add-hook 'python-mode-hook 'jedi:setup)
-;; (setq jedi:complete-on-dot t)
-;(load "jedi-direx")
-;(eval-after-load "python"
-;  '(define-key python-mode-map "\C-cx" 'jedi-direx:pop-to-buffer))
-;(add-hook 'jedi-mode-hook 'jedi-direx:setup)
 
 ;; ESHELL
 (use-package eshell-bookmark
@@ -735,22 +737,6 @@ be using git-grep)."
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
-(add-to-list 'load-path (concat user-emacs-directory "/icollect/hideshowvis/" ))
-(require 'hideshowvis)
-
-(autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
-
-(autoload 'hideshowvis-minor-mode
-  "hideshowvis"
-  "Will indicate regions foldable with hideshow in the fringe."
-  'interactive)
-
-
-(dolist (hook (list 'emacs-lisp-mode-hook
-                    'python-mode-hook
-                    'c++-mode-hook))
-  (add-hook hook 'hideshowvis-enable))
-(hideshowvis-symbols)
 ;; (require 'origami)
 
 
@@ -794,6 +780,33 @@ be using git-grep)."
   '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
 
 (require 'swiper-helm)
+
+(require 'helm-swoop)
+;;helm-swoop
+(global-set-key (kbd "M-i") 'helm-swoop)
+(global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+(global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
+(global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+
+;; When doing isearch, hand the word over to helm-swoop
+(define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+;; From helm-swoop to helm-multi-swoop-all
+(define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+;; When doing evil-search, hand the word over to helm-swoop
+;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
+
+;; Instead of helm-multi-swoop-all, you can also use helm-multi-swoop-current-mode
+(define-key helm-swoop-map (kbd "M-m") 'helm-multi-swoop-current-mode-from-helm-swoop)
+
+;; Move up and down like isearch
+(define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+(define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
+(define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
+(define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
+
+
+
+
 
 
 ;; MY-MODE
@@ -876,3 +889,55 @@ be using git-grep)."
                 ("S-<f2>" . bm-previous)
                 ("C-<f2>" . bm-toggle))
          )
+;; (require 'rbenv)
+;; (global-rbenv-mode)
+
+;; (unless (require 'exec-path-from-shell nil 'noerror)
+(exec-path-from-shell-initialize)
+(add-hook 'sh-mode-hook 'flycheck-mode)
+
+(require 'ace-pinyin)
+(setq ace-pinyin-use-avy nil)
+(ace-pinyin-global-mode +1)
+
+
+(require 'helm-config)
+(require 'helm-themes)
+
+
+ (when (require 'openwith nil 'noerror)
+      (setq openwith-associations
+            (list
+             (list (openwith-make-extension-regexp
+                    '("doc" "docx" "xls" "ppt" "pptx" "docx" "pdf"))
+                   "open"
+                   '(file))
+             (list (openwith-make-extension-regexp
+                    '("pdf" "ps" "ps.gz" "dvi"))
+                   "open"
+                   '(file))
+             ))
+      (openwith-mode 1))
+
+;; (require 'openwith)
+;; (setq openwith-associations '(("\\.pdf\\'" "open" (file))
+;;                               ("\\.pptx\\'" "open" (file))
+;;                               ("\\.docx\\'" "open" (file))
+;;                               ))
+;; (openwith-mode t)
+
+;; (add-hook 'dired-mode-hook 'dired-git-mode)
+
+
+;; (use-package bookmark+
+;;   :quelpa (bookmark+ :fetcher wiki
+;;                      :files
+;;                      ("bookmark+.el"
+;;                       "bookmark+-mac.el"
+;;                       "bookmark+-bmu.el"
+;;                       "bookmark+-1.el"
+;;                       "bookmark+-key.el"
+;;                       "bookmark+-lit.el"
+;;                       "bookmark+-doc.el"
+;;                       "bookmark+-chg.el"))
+;;   :defer 2)

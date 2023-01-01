@@ -33,11 +33,10 @@
 
 (global-set-key (kbd "s-i nf") 'new-frame-config)
 (global-set-key (kbd "s-i C-s") 'swiper-isearch)
-(global-set-key (kbd "s-i gf") 'find-file-at-point)
 (global-set-key (kbd "s-i pj") 'ace-pinyin-jump-char)
 (global-set-key (kbd "s-i *") 'isearch-forward-symbol-at-point)
 (global-set-key (kbd "s-i ttl") 'toggle-truncate-lines)
-(global-set-key "\C-xf" 'crux-recentf-find-file)
+(global-set-key "\C-xf" 'helm-recentf)
 (global-set-key "\C-xg" 'magit-status)
 
 (global-set-key "\C-z" 'set-mark-command)
@@ -481,38 +480,6 @@
 ;; Turn flycheck on everywhere
 (global-flycheck-mode)
 
-;; c++
-;; (use-package flycheck-clang-tidy
-;;   :after flycheck
-;;   :hook
-;;   (flycheck-mode . flycheck-clang-tidy-setup)
-;;   )
-
-
-;; (add-hook 'c++-mode-hook
-;;           (lambda () (setq flycheck-clang-include-path '("./iheader/" "./iheader2/" "./iheader3/"))
-;;             )
-;;           )
-;; (add-hook 'c++-mode-hook
-;;           (lambda () (setq flycheck-clang-include-path
-;;                            (list (expand-file-name "~/Gitlab/Private/itools/c++/iheader/")
-;;                                  (expand-file-name "~/Gitlab/Private/itools/c++/iheader/")
-;;                                  )
-;;                            )
-;;             )
-;;           )
-
-;; cedet and ecb
-;; 自己下载的包
-;; (load-file "~/.emacs.d/icollect/cedet-1.1/common/cedet.el")
-;; (global-ede-mode 1)                      ; Enable the Project management system
-;; (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
-;; (global-srecode-minor-mode 1)     ;; (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
-
-;; cedet
-;; 使用系统自带的cedet built-in
-;; (load-file "~/Soft/cedet/cedet-devel-load.el")
-;; (load-file "~/Soft/cedet/contrib/cedet-contrib-load.el")
 (require 'cc-mode)
 (require 'semantic)
 (require 'semantic/sb)
@@ -531,44 +498,6 @@
             (global-semantic-mru-bookmark-mode 1)
             )
           )
-
-;; (semanticdb-enable-gnu-global-databases 'c-mode)
-;; (semanticdb-enable-gnu-global-databases 'c++-mode)
-;; (set-default 'semantic-case-fold t)
-
-
-
-
-;; (require 'semantic-ia)
-;; (require 'semantic-gcc)
-
-
-;; ;; Enable template insertion menu
-;; (global-srecode-minor-mode 1)
-
-;; (setq-mode-local c-mode semanticdb-find-default-throttle
-;;                  '(project unloaded system recursive))
-
-;; (defun my-semantic-hook ()
-;;   (imenu-add-to-menubar "TAGS"))
-
-;; (add-hook 'semantic-init-hooks 'my-semantic-hook)
-
-;; (require 'semanticdb)
-
-;; (global-semanticdb-minor-mode 1)
-
-;; (defun my-cedet-hook ()
-;;   (local-set-key [(control return)] 'semantic-ia-complete-symbol)
-;;   (local-set-key "/C-c?" 'semantic-ia-complete-symbol-menu)
-;;   (local-set-key "/C-c>" 'semantic-complete-analyze-inline)
-;;   (local-set-key "/C-cp" 'semantic-analyze-proto-impl-toggle))
-;; (add-hook 'c-mode-common-hook 'my-cedet-hook)
-
-;; (defun my-c-mode-cedet-hook ()
-;;   (local-set-key "." 'semantic-complete-self-insert)
-;;   (local-set-key ">" 'semantic-complete-self-insert))
-;; (add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
 
 
 ;; from https://github.com/abo-abo/swiper/issues/1068
@@ -804,11 +733,6 @@ be using git-grep)."
 (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
 (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
 
-
-
-
-
-
 ;; MY-MODE
 (defvar my-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
@@ -941,3 +865,101 @@ be using git-grep)."
 ;;                       "bookmark+-doc.el"
 ;;                       "bookmark+-chg.el"))
 ;;   :defer 2)
+
+(quelpa '(dired+ :fetcher wiki
+                 :files
+                 ("dired+.el")))
+(require 'dired+)
+
+(quelpa '(hl-line+ :fetcher wiki
+                     :files
+                     ("hl-line+.el")))
+(require 'hl-line+)
+
+(quelpa '(col-highlight :fetcher wiki
+                   :files
+                   ("col-highlight.el")))
+(require 'col-highlight)
+
+(quelpa '(crosshairs :fetcher wiki
+                 :files
+                 ("crosshairs.el")))
+(require 'crosshairs)
+
+
+
+
+(quelpa '(bookmark+ :fetcher wiki
+                    :files
+                    ("bookmark+.el"
+                     "bookmark+-mac.el"
+                     "bookmark+-bmu.el"
+                     "bookmark+-1.el"
+                     "bookmark+-key.el"
+                     "bookmark+-lit.el"
+                     "bookmark+-doc.el"
+                     "bookmark+-chg.el")))
+(require 'bookmark+)
+
+(use-package bm
+         :ensure t
+         :demand t
+
+         :init
+         ;; restore on load (even before you require bm)
+         (setq bm-restore-repository-on-load t)
+
+
+         :config
+         ;; Allow cross-buffer 'next'
+         (setq bm-cycle-all-buffers t)
+
+         ;; where to store persistant files
+         (setq bm-repository-file "~/.emacs.d/bm-repository")
+
+         ;; save bookmarks
+         (setq-default bm-buffer-persistence t)
+
+         ;; Loading the repository from file when on start up.
+         (add-hook 'after-init-hook 'bm-repository-load)
+
+         ;; Saving bookmarks
+         (add-hook 'kill-buffer-hook #'bm-buffer-save)
+
+         ;; Saving the repository to file when on exit.
+         ;; kill-buffer-hook is not called when Emacs is killed, so we
+         ;; must save all bookmarks first.
+         (add-hook 'kill-emacs-hook #'(lambda nil
+                                          (bm-buffer-save-all)
+                                          (bm-repository-save)))
+
+         ;; The `after-save-hook' is not necessary to use to achieve persistence,
+         ;; but it makes the bookmark data in repository more in sync with the file
+         ;; state.
+         (add-hook 'after-save-hook #'bm-buffer-save)
+
+         ;; Restoring bookmarks
+         (add-hook 'find-file-hooks   #'bm-buffer-restore)
+         (add-hook 'after-revert-hook #'bm-buffer-restore)
+
+         ;; The `after-revert-hook' is not necessary to use to achieve persistence,
+         ;; but it makes the bookmark data in repository more in sync with the file
+         ;; state. This hook might cause trouble when using packages
+         ;; that automatically reverts the buffer (like vc after a check-in).
+         ;; This can easily be avoided if the package provides a hook that is
+         ;; called before the buffer is reverted (like `vc-before-checkin-hook').
+         ;; Then new bookmarks can be saved before the buffer is reverted.
+         ;; Make sure bookmarks is saved before check-in (and revert-buffer)
+         (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
+
+         (setq bm-marker 'bm-marker-right)
+         (global-set-key (kbd "<left-fringe> <M-mouse-1>") 'bm-toggle-mouse)
+         (global-set-key (kbd "s-i bn") 'bm-next)
+         (global-set-key (kbd "s-i bp") 'bm-previous)
+         (global-set-key (kbd "s-i bt") 'bm-toggle)
+         (global-set-key (kbd "s-i bs") 'bm-show-all)
+         :bind (("<f2>" . bm-next)
+                ("S-<f2>" . bm-previous)
+                ("C-<f2>" . bm-toggle)
+                )
+         )

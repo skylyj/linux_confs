@@ -189,11 +189,6 @@
         (message "%s" msg)
         (setq ns-working-overlay nil))))))
 
-;; org basic
-
-(setq org-image-actual-width nil)
-(setq org-html-htmlize-output-type nil)
-
 ;; wgrep
 (require 'wgrep)
 (require 'counsel-projectile)
@@ -442,7 +437,12 @@
 
 (setq eshell-last-dir-ring-size 500)
 
-;; ORG org 插入图片
+;; ORG basic
+(setq org-image-actual-width nil)
+(setq org-html-htmlize-output-type nil)
+(add-hook 'org-mode-hook #'valign-mode)
+(setq valign-fancy-bar 1)
+;; ORG 插入图片
 (use-package org-download
   :bind ("C-S-y" . org-download-clipboard)
   :config
@@ -469,8 +469,6 @@
 
 (require 'helm-xref)
 (setq xref-show-xrefs-function 'helm-xref-show-xrefs)
-
-
 ;; flycheck
 (require 'flycheck)
 ;; Force flycheck to always use c++11 support. We use
@@ -489,12 +487,12 @@
           (lambda ()
             (semantic-mode 1)
             (global-semanticdb-minor-mode 1)
-            (global-semantic-idle-scheduler-mode 1)
-            (global-semantic-idle-completions-mode 1)
+            ;; (global-semantic-idle-scheduler-mode 1)
+            ;; (global-semantic-idle-completions-mode 1)
             (global-semantic-decoration-mode 1)
             (global-semantic-highlight-func-mode 1)
             (global-semantic-stickyfunc-mode -1)
-            (global-semantic-idle-summary-mode 1)
+            ;; (global-semantic-idle-summary-mode 1)
             (global-semantic-mru-bookmark-mode 1)
             )
           )
@@ -685,6 +683,10 @@ be using git-grep)."
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+(set-face-attribute 'helm-selection nil
+                    :background "lime green"
+                    :foreground "black")
 
 (setq
  helm-split-window-in-side-p           t
@@ -963,3 +965,5 @@ be using git-grep)."
                 ("C-<f2>" . bm-toggle)
                 )
          )
+
+(add-hook 'dired-mode-hook 'dired-omit-mode)

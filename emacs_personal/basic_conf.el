@@ -967,3 +967,6 @@ be using git-grep)."
          )
 
 (add-hook 'dired-mode-hook 'dired-omit-mode)
+
+(setq helm-locate-fuzzy-match nil)
+(setq helm-locate-command "mdfind -name %s %s")

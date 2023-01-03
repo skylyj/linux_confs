@@ -157,10 +157,13 @@
     (position . 333))
 #1=(#("saas_dsp" 0 8
       (bmkp-full-record #1#))
+    (end-position . 153)
+    (time 25523 48828 679718 0)
+    (visits . 0)
     (filename . "~/Gitlab/online/saas_dsp/")
     (front-context-string . ".dir-locals.el\n ")
     (rear-context-string . " Dec 10 17:21   ")
-    (position . 274))
+    (position . 153))
 #1=(#("demand_context.proto" 0 20
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/online/protocols/proto/core_model/demand_context.proto")

@@ -38,3 +38,24 @@
     (helm-do-ag-project-root)))
 
 (global-set-key (kbd "M-I") 'my-helm-ag-thing-at-point)
+
+(defun my-tbl-export (name)
+  "Search for table named `NAME` and export."
+  (interactive "s")
+  (outline-show-all)
+  (let ((case-fold-search t))
+    (if (search-forward-regexp (concat "#\\+NAME: +" name) nil t)
+        (progn
+          (next-line)
+          (org-table-export (format "%s.csv" name) "orgtbl-to-csv")))))
+
+
+;; PYTHON CONFIG END
+;; 可以让imenu 平铺起来flat
+(defun python-imenu-use-flat-index
+    ()
+  (setq imenu-create-index-function
+        #'python-imenu-create-flat-index))
+
+(add-hook 'python-mode-hook
+          #'python-imenu-use-flat-index)

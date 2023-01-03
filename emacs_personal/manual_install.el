@@ -36,3 +36,37 @@
 
 ;; (add-to-list 'load-path (concat user-emacs-directory "/icollect/dired_plus/" ))
 ;; (load "dired+")
+
+
+;; quelpa
+(quelpa '(dired+ :fetcher wiki
+                 :files
+                 ("dired+.el")))
+(require 'dired+)
+
+(quelpa '(hl-line+ :fetcher wiki
+                   :files
+                   ("hl-line+.el")))
+(require 'hl-line+)
+
+(quelpa '(col-highlight :fetcher wiki
+                        :files
+                        ("col-highlight.el")))
+(require 'col-highlight)
+
+(quelpa '(crosshairs :fetcher wiki
+                     :files
+                     ("crosshairs.el")))
+(require 'crosshairs)
+
+(quelpa '(bookmark+ :fetcher wiki
+                    :files
+                    ("bookmark+.el"
+                     "bookmark+-mac.el"
+                     "bookmark+-bmu.el"
+                     "bookmark+-1.el"
+                     "bookmark+-key.el"
+                     "bookmark+-lit.el"
+                     "bookmark+-doc.el"
+                     "bookmark+-chg.el")))
+(require 'bookmark+)

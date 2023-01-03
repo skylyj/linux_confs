@@ -1,3 +1,92 @@
+;; (set-face-attribute 'mode-line nil :box nil :height 195)
+;; (set-face-attribute 'default (selected-frame) :font "Menlo-20" :height 210 :weight 'medium)
+
+;(set-foreground-color "Wheat")
+;(set-background-color "DarkSlateGray")
+;(set-cursor-color "Orchid")
+;(set-mouse-color "Orchid")
+
+;(setq mouse-yank-at-point t) ;;鼠标中键黏贴的时候使用光标定位
+;(setq inhibit-startup-message t) ;; 不显示 Emacs 的开始画面。
+;(setq default-major-mode 'text-mode) ;; 任意的打开一个新文件时，缺省使用 text-mode。
+;(setq next-line-add-newlines nil) ;; Emacs 21 中已经是缺省设置。按 C-n 或向下键时不添加新行。
+;(setq require-final-newline t) ;; 存盘的时候，要求最后一个字符时换行符。
+;(setq suggest-key-bindings 1) ;; 当使用 M-x COMMAND 后，过 1 秒钟显示该 COMMAND 绑定的键。
+;(setq line-number-display-limit 1000000) ;; 当行数超过一定数值，不再显示行号。
+;(setq kill-ring-max 200) ;; kill-ring 最多的记录个数。
+;(setq ring-bell-function 'ignore) ;; 彻底的消除 ring-bell 的效果。
+;(setq track-eol t) ;; 当光标在行尾上下移动的时候，始终保持在行尾。
+;(setq bookmark-save-flag 1) ;; 每当设置书签的时候都保存书签文件，否则只在你退出 Emacs 时保存。
+;(setq mark-even-if-inactive t)
+;(setq make-backup-files nil) ; stop creating those backup~ files
+;(setq auto-save-default nil) ; stop creating those #auto-save# files
+;(setq max-mini-window-height 0.0001)
+
+;;; for balin terminal
+;;; color theme setting, customize-themes
+;;(if (equal window-system nil)
+;;    (progn (load-theme 'wombat t)
+;;           (menu-bar-mode -1))
+;;  nil)
+;(add-hook 'term-setup-hook
+;  '(lambda ()
+;     (define-key function-key-map "\e[1;9A" [M-up])
+;     (define-key function-key-map "\e[1;9B" [M-down])
+;     (define-key function-key-map "\e[1;9C" [M-right])
+;     (define-key function-key-map "\e[1;9D" [M-left])))
+;;;for ruby script
+;(setenv "LANG" "en_US.UTF-8")
+;(setenv "LC_ALL" "en_US.UTF-8")
+;(setq hippie-expand-try-functions-list
+;      '(try-complete-file-name
+;        try-complete-file-name-partially
+;        try-expand-dabbrev
+;        try-expand-dabbrev-visible
+;        try-expand-dabbrev-all-buffers
+;        try-expand-dabbrev-from-kill
+;        try-expand-all-abbrevs
+;        try-expand-list
+;        try-expand-line
+;        try-complete-lisp-symbol-partially
+;        try-complete-lisp-symbol))
+
+
+;(cond
+; ((string-equal system-type "windows-nt") ; Microsoft Windows
+;  (progn
+;    (message "Microsoft Windows") )
+;  )
+; ((string-equal system-type "darwin")   ; Mac OS X
+;  (progn
+;    (message "Mac OS X")
+;    (setq url-using-proxy t)
+;    ;; (setq url-proxy-services '(("http" . "theironislands.f.getqujing.net:42765")))
+;    )
+;  )
+; ((string-equal system-type "gnu/linux") ; linux
+;  (progn
+;    (message "Linux") )
+;  )
+; )
+;;; history
+;(savehist-mode 1)
+;(setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
+;(setq savehist-file "~/.emacs.d/savehist")
+
+;;;server
+;(require 'server)
+;(unless (server-running-p) (server-start))
+
+
+;;;AUCTeX
+;;(setenv "PATH" (concat "/usr/texbin:/usr/local/bin:" (getenv "PATH")))
+;;(setq exec-path (append '("/usr/texbin" "/usr/local/bin") exec-path))
+;;(load "auctex.el" nil t t)
+;;(load "preview-latex.el" nil t t)
+;(setq redisplay-dont-pause nil)
+;(setq-default ispell-program-name "aspell")
+
+
 ;; (require 'rtags)
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; Setup cmake-ide
@@ -402,3 +491,221 @@
 ;;   :hook
 ;;   (lsp-mode . dap-mode)
 ;;   (lsp-mode . dap-ui-mode))
+
+(use-package treemacs
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'winum
+    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+  :config
+  (progn
+    (setq treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
+          treemacs-deferred-git-apply-delay        0.5
+          treemacs-directory-name-transformer      #'identity
+          treemacs-display-in-side-window          t
+          treemacs-eldoc-display                   'simple
+          treemacs-file-event-delay                2000
+          treemacs-file-extension-regex            treemacs-last-period-regex-value
+          treemacs-file-follow-delay               0.2
+          treemacs-file-name-transformer           #'identity
+          treemacs-follow-after-init               t
+          treemacs-expand-after-init               t
+          treemacs-find-workspace-method           'find-for-file-or-pick-first
+          treemacs-git-command-pipe                ""
+          treemacs-goto-tag-strategy               'refetch-index
+          treemacs-header-scroll-indicators        '(nil . "^^^^^^")
+          treemacs-hide-dot-git-directory          t
+          treemacs-indentation                     2
+          treemacs-indentation-string              " "
+          treemacs-is-never-other-window           nil
+          treemacs-max-git-entries                 5000
+          treemacs-missing-project-action          'ask
+          treemacs-move-forward-on-expand          nil
+          treemacs-no-png-images                   nil
+          treemacs-no-delete-other-windows         t
+          treemacs-project-follow-cleanup          nil
+          treemacs-persist-file                    (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+          treemacs-position                        'left
+          treemacs-read-string-input               'from-child-frame
+          treemacs-recenter-distance               0.1
+          treemacs-recenter-after-file-follow      nil
+          treemacs-recenter-after-tag-follow       nil
+          treemacs-recenter-after-project-jump     'always
+          treemacs-recenter-after-project-expand   'on-distance
+          treemacs-litter-directories              '("/node_modules" "/.venv" "/.cask")
+          treemacs-show-cursor                     nil
+          treemacs-show-hidden-files               t
+          treemacs-silent-filewatch                nil
+          treemacs-silent-refresh                  nil
+          treemacs-sorting                         'alphabetic-asc
+          treemacs-select-when-already-in-treemacs 'move-back
+          treemacs-space-between-root-nodes        t
+          treemacs-tag-follow-cleanup              t
+          treemacs-tag-follow-delay                1.5
+          treemacs-text-scale                      nil
+          treemacs-user-mode-line-format           nil
+          treemacs-user-header-line-format         nil
+          treemacs-wide-toggle-width               70
+          treemacs-width                           35
+          treemacs-width-increment                 1
+          treemacs-width-is-initially-locked       t
+          treemacs-workspace-switch-cleanup        nil)
+
+    ;; The default width and height of the icons is 22 pixels. If you are
+    ;; using a Hi-DPI display, uncomment this to double the icon size.
+    ;;(treemacs-resize-icons 44)
+
+    (treemacs-follow-mode t)
+    (treemacs-filewatch-mode t)
+    (treemacs-fringe-indicator-mode 'always)
+    (when treemacs-python-executable
+      (treemacs-git-commit-diff-mode t))
+
+    (pcase (cons (not (null (executable-find "git")))
+                 (not (null treemacs-python-executable)))
+      (`(t . t)
+       (treemacs-git-mode 'deferred))
+      (`(t . _)
+       (treemacs-git-mode 'simple)))
+
+    (treemacs-hide-gitignored-files-mode nil))
+  :bind
+  (:map global-map
+        ("M-0"       . treemacs-select-window)
+        ("C-x t 1"   . treemacs-delete-other-windows)
+        ("C-x t t"   . treemacs)
+        ("C-x t d"   . treemacs-select-directory)
+        ("C-x t B"   . treemacs-bookmark)
+        ("C-x t C-t" . treemacs-find-file)
+        ("C-x t M-t" . treemacs-find-tag)))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :hook (dired-mode . treemacs-icons-dired-enable-once)
+  :ensure t)
+
+(use-package treemacs-magit
+  :after (treemacs magit)
+  :ensure t)
+
+(use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
+  :after (treemacs persp-mode) ;;or perspective vs. persp-mode
+  :ensure t
+  :config (treemacs-set-scope-type 'Perspectives))
+
+(use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
+  :after (treemacs)
+  :ensure t
+  :config (treemacs-set-scope-type 'Tabs))
+
+
+;; 打开输入法晃屏幕的问题
+;;https://emacs-china.org/t/topic/186/25
+                                        ;(setq redisplay-dont-pause nil)
+                                        ; config for new frames
+
+;; proxy
+;; (setq url-proxy-services '(("no_proxy" . "work\\.com")
+;;                            ("http" . "127.0.0.1:7890")
+;;                            ("https" . "127.0.0.1:7890")
+;;                            )
+;;       )
+
+;; (require 'socks)
+;; (setq erc-server-connect-function 'socks-open-network-stream)
+;; (setq socks-server '("My Proxy" "127.0.0.1" 7890 5))
+
+(defun new-frame-config ()
+  (interactive)
+  (set-frame-font "Menlo-18")
+  (toggle-frame-maximized)
+  )
+
+(add-hook 'after-make-frame-functions 'new-frame-config)
+(global-set-key (kbd "s-i nf") 'new-frame-config)
+
+;; new
+(defun ns-unput-working-text ()
+  (interactive)
+  (cond
+   ((and (overlayp ns-working-overlay)
+         ;; Still alive?
+         (overlay-buffer ns-working-overlay))
+    (with-current-buffer (overlay-buffer ns-working-overlay)
+      (let ((text (buffer-substring-no-properties
+                   (overlay-start ns-working-overlay)
+                   (overlay-end ns-working-overlay))))
+        (when (equal text ns-working-text)
+          (delete-region (overlay-start ns-working-overlay)
+                         (overlay-end ns-working-overlay))
+          (delete-overlay ns-working-overlay)
+          (setq ns-working-overlay nil)))))
+   ((integerp ns-working-overlay)
+    (let* ((msg (current-message))
+           (text (substring msg (- (length msg) ns-working-overlay)))
+           message-log-max)
+      (when (equal text ns-working-text)
+        (setq msg (substring msg 0 (- (length msg) ns-working-overlay)))
+        (message "%s" msg)
+        (setq ns-working-overlay nil))))))
+
+;; (global-set-key (kbd "C-*")
+;;                 (lambda ()
+;;                   (interactive)
+;;                   (re-search-forward (format "\\b%s\\b" (thing-at-point 'word)))))
+
+;; 使用register
+;; (require 'register-channel)
+;; (register-channel-mode 1)
+
+
+;; counsel 相关，估计后面不用了
+;; ;; from https://github.com/abo-abo/swiper/issues/1068
+;; (defun my-ivy-with-thing-at-point (cmd &optional dir)
+;;   "Wrap a call to CMD with setting "
+;;   (let ((ivy-initial-inputs-alist
+;;          (list
+;;           (cons cmd (thing-at-point 'symbol)))))
+;;     (funcall cmd nil dir)))
+
+;; (use-package counsel
+;;   :config (setq counsel-ag-base-command "ag --vimgrep -a %s"))
+
+;; (defun my-counsel-ag-from-here (&optional dir)
+;;   "Start ag but from the directory the file is in (otherwise I would
+;; be using git-grep)."
+;;   (interactive "D")
+;;   (my-ivy-with-thing-at-point
+;;    'counsel-ag
+;;    (or dir (file-name-directory (buffer-file-name)))))
+
+;; (defun my-counsel-git-grep ()
+;;   (interactive)
+;;   (my-ivy-with-thing-at-point
+;;    'counsel-git-grep))
+
+;; (add-hook 'c-mode-common-hook
+;;           (lambda ()
+;;             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+;;               (ggtags-mode 1))))
+
+;; (require 'ggtags)
+;; (add-hook 'c-mode-common-hook
+;;           (lambda ()
+;;             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+;;               (ggtags-mode 1))))
+
+;; (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+
+;; ESHELL
+;; (use-package eshell-bookmark
+;;   :after eshell
+;;   :config
+;;   (add-hook 'eshell-mode-hook #'eshell-bookmark-setup))
+
+;; (eval-after-load 'eshell
+;;   '(require 'eshell-autojump nil t))

@@ -89,24 +89,49 @@
 
 ;; (require 'htmlize)
 ;; (setq org-src-fontify-natively t)
+
+;; lianyijiang focus
 ;; 代码高亮
-(require 'ox-html)
-(setq org-html-htmlize-output-type 'css)
-;;Org Tempo expands snippets to structures defined in org-structure-template-alist and org-tempo-keywords-alist. For example, < s TAB creates a code block.
-(require 'org-tempo)
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((python . t)
-   (C . t)
-   (go . t)
-   (emacs-lisp . t)
-   (shell . t)))
+;; (use-package ox-html
+;;   :ensure t
+;;   :config
+;;   (setq org-html-htmlize-output-type 'css)
+;;   )
+;; ;;Org Tempo expands snippets to structures defined in org-structure-template-alist and org-tempo-keywords-alist. For example, < s TAB creates a code block.
+;; (require 'org-tempo)
+;; (org-babel-do-load-languages
+;;  'org-babel-load-languages
+;;  '((python . t)
+;;    (C . t)
+;;    (go . t)
+;;    (emacs-lisp . t)
+;;    (shell . t)))
 
 
-(require 'package) (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+;; (require 'package) (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
 ;; (require 'org-bullets)
-(require 'org-superstar)
-(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
-
+(use-package org-superstar
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+  )
 (setq org-image-actual-width (list 550))
+
+
+;; ORG basic
+(setq org-image-actual-width nil)
+(setq org-html-htmlize-output-type nil)
+(add-hook 'org-mode-hook #'valign-mode)
+(setq valign-fancy-bar 1)
+;; ORG 插入图片
+(use-package org-download
+  :bind ("C-S-y" . org-download-clipboard)
+  :config
+  (add-hook 'dired-mode-hook 'org-download-enable)
+  (setq-default org-download-heading-lvl nil)
+  (setq-default org-download-image-dir "./images"))
+
+;; (require 'org-tree-slide)
+
+(setq org-hierarchical-todo-statistics nil)

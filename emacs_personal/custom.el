@@ -3,7 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "/Users/mobvista/.emacs.d/personal/bookmarks")
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.d/personal/bookmarks")
  '(company-quickhelp-color-background "#4F4F4F")
  '(company-quickhelp-color-foreground "#DCDCCC")
  '(custom-safe-themes
@@ -15,7 +15,7 @@
  '(nrepl-message-colors
    '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
  '(package-selected-packages
-   '(crosshairs col-highlight hl-line+ vline dired+ bookmark+ org-ql org-super-agenda org-sidebar quelpa-use-package quelpa dired-git openwith cython-mode addressbook-bookmark helm-themes ace-pinyin exec-path-from-shell rbenv w3m paredit helm-chrome lsp-metals sbt-mode lsp-ui lsp-mode yasnippet lsp-treemacs helm-lsp projectile hydra flycheck company avy which-key helm-xref dap-mode))
+   '(register-channel register-list helm-bm valign crosshairs col-highlight hl-line+ vline dired+ bookmark+ org-ql org-super-agenda org-sidebar quelpa-use-package quelpa dired-git openwith cython-mode addressbook-bookmark helm-themes ace-pinyin exec-path-from-shell rbenv w3m paredit helm-chrome lsp-metals sbt-mode lsp-ui lsp-mode yasnippet lsp-treemacs helm-lsp projectile hydra flycheck company avy which-key helm-xref dap-mode))
  '(safe-local-variable-values
    '((eval setq flycheck-clang-include-path
            (list

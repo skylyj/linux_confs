@@ -486,14 +486,17 @@
 (add-hook 'c++-mode-hook
           (lambda ()
             (semantic-mode 1)
-            (global-semanticdb-minor-mode 1)
+            ;; (global-semanticdb-minor-mode 1)
             ;; (global-semantic-idle-scheduler-mode 1)
             ;; (global-semantic-idle-completions-mode 1)
-            (global-semantic-decoration-mode 1)
-            (global-semantic-highlight-func-mode 1)
-            (global-semantic-stickyfunc-mode -1)
+            (semantic-decoration-mode 1)
+            (semantic-highlight-func-mode 1)
+            (semantic-stickyfunc-mode -1)
+            ;; (global-semantic-decoration-mode 1)
+            ;; (global-semantic-highlight-func-mode 1)
+            ;; (global-semantic-stickyfunc-mode -1)
             ;; (global-semantic-idle-summary-mode 1)
-            (global-semantic-mru-bookmark-mode 1)
+            ;; (global-semantic-mru-bookmark-mode 1)
             )
           )
 
@@ -965,8 +968,14 @@ be using git-grep)."
                 ("C-<f2>" . bm-toggle)
                 )
          )
-
+(require 'helm-bm)
 (add-hook 'dired-mode-hook 'dired-omit-mode)
 
 (setq helm-locate-fuzzy-match nil)
 (setq helm-locate-command "mdfind -name %s %s")
+;; 使用locate
+(setq locate-command "mdfind")
+
+;; 使用register
+(require 'register-channel)
+(register-channel-mode 1)

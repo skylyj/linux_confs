@@ -3,18 +3,11 @@
 (defun create-tags (dir-name)
   "Create tags file."
   (interactive "DDirectory: ")
-  (shell-command
-   (format "/opt/homebrew/opt/ctags/bin/ctags -f %s/TAGS -e -R %s" (directory-file-name dir-name) (directory-file-name dir-name))
-   )
-  )
-
-(defun create-tags2 (dir-name)
-  "Create tags file."
-  (interactive "DDirectory: ")
   (let ((icmd (format "/opt/homebrew/opt/ctags/bin/ctags -f %s/TAGS -e -R %s" (directory-file-name dir-name) (directory-file-name dir-name))))
-  (message icmd)
-  (shell-command icmd)
-  ))
+    (message (format "I am creating tags for %s" dir-name))
+    (message icmd)
+    (shell-command icmd)
+    ))
 
 ;; (format "%s -f TAGS -e -R %s" path-to-ctags (directory-file-name dir-name)))
 
@@ -43,3 +36,5 @@
   (interactive)
   (let ((helm-ag-insert-at-point 'symbol))
     (helm-do-ag-project-root)))
+
+(global-set-key (kbd "M-I") 'my-helm-ag-thing-at-point)

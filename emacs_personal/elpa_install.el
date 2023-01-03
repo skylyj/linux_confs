@@ -132,12 +132,6 @@
   (global-set-key (kbd "C-c C--") 'evil-numbers/dec-at-pt-incremental)
   )
 
-(use-package helm-xref
-  :ensure t
-  :config
-  (setq xref-show-xrefs-function 'helm-xref-show-xrefs)
-  )
-
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode)
@@ -194,6 +188,7 @@
   (global-set-key (kbd "C-x b") 'helm-mini)
   (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
   (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
   (set-face-attribute 'helm-selection nil
                       :background "lime green"
                       :foreground "black")
@@ -215,17 +210,27 @@
   ;; Have helm automaticaly resize the window
   (helm-autoresize-mode 1)
   (setq rtags-use-helm t)
-
-  (setq projectile-completion-system 'helm)
-  (helm-projectile-on)
   )
+
+;; (use-package helm-config
+;;   :ensure t
+;;   )
+
+(use-package helm-projectile
+  :ensure t
+  :config
+  (helm-projectile-on)
+  (setq projectile-completion-system 'helm)
+)
 
 (use-package helm-ls-git
   :ensure t
   )
 
-(use-package helm-config
+(use-package helm-xref
   :ensure t
+  :config
+  (setq xref-show-xrefs-function 'helm-xref-show-xrefs)
   )
 
 (use-package helm-ctest
@@ -323,10 +328,6 @@
                 ("S-<f2>" . bm-previous)
                 ("C-<f2>" . bm-toggle))
          )
-
-;; (use-package helm-config
-;;   :ensure t
-;;   )
 
 (use-package helm-themes
   :ensure t

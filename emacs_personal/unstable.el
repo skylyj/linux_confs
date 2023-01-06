@@ -621,7 +621,7 @@
 
 (defun new-frame-config ()
   (interactive)
-  (set-frame-font "Menlo-18")
+  (set-frame-font "Menlo-16")
   (toggle-frame-maximized)
   )
 

@@ -31,13 +31,6 @@
     (switch-to-buffer (other-buffer buf))
     (switch-to-buffer-other-window buf)))
 
-(defun my-helm-ag-thing-at-point ()
-  "Search the symbol at point with `helm-ag'."
-  (interactive)
-  (let ((helm-ag-insert-at-point 'symbol))
-    (helm-do-ag-project-root)))
-
-(global-set-key (kbd "M-I") 'my-helm-ag-thing-at-point)
 
 (defun my-tbl-export (name)
   "Search for table named `NAME` and export."

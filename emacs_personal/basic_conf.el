@@ -1,3 +1,6 @@
+;;; Code:
+;;; Commentary:
+;;; package --- Summary
 ;; 这样mac open file的时候不会重复打开frame了，始终在一个frame里面
 (setq ns-pop-up-frames nil)
 ;; (global-set-key [remap goto-line] 'goto-line-preview)
@@ -18,7 +21,6 @@
 (setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
 ;; 自定义的key
 (global-set-key (kbd "s-i C-s") 'swiper-isearch)
-(global-set-key (kbd "s-i pj") 'ace-pinyin-jump-char)
 (global-set-key (kbd "s-i *") 'isearch-forward-symbol-at-point)
 (global-set-key (kbd "s-i ttl") 'toggle-truncate-lines)
 (global-set-key "\C-xf" 'helm-recentf)
@@ -32,7 +34,7 @@
 (auto-compression-mode 1)               ; 打开压缩文件时自动解压缩。
 (column-number-mode 1)                  ; 显示列号。
 (blink-cursor-mode -1)                  ; 光标不要闪烁。
-(display-time-mode 1)                   ; 显示时间。
+;; (display-time-mode 1)                   ; 显示时间。
 (show-paren-mode 1)                     ; 高亮显示匹配的括号。
 (icomplete-mode 1)            ; 给出用 M-x foo-bar-COMMAND 输入命令的提示。
 (setq x-select-enable-clipboard t)  ;用来和系统共享剪贴板
@@ -56,8 +58,27 @@
        (set-default-font "Monospace-19"))
       ((equal system-type 'darwin)
        (tool-bar-mode -1)
-       (set-frame-font "Menlo-18")
+       (set-frame-font "Menlo-16")
        (set-fontset-font
         (frame-parameter nil 'font)
         'han
         (font-spec :family "Hiragino Sans GB" ))))
+;; for forge
+(setq auth-sources '("~/.authinfo"))
+
+(with-eval-after-load 'magit
+  (require 'forge))
+
+(with-eval-after-load 'forge
+  (add-to-list 'forge-alist
+               '("gitlab.mobvista.com"
+                 "gitlab.mobvista.com/api/v4"
+                 "gitlab.mobvista.com"
+                 forge-gitlab-repository)))
+(setenv "JAVA_HOME" "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home")
+
+(projectile-register-project-type 'java '("pom.xml")
+				  :compile "mvn compile"
+				  :test "mvn test"
+				  :run "mvn package"
+				  :test-suffix "Test")

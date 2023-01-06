@@ -1,3 +1,7 @@
+;;; Code:
+;;; Commentary:
+;;; package --- Summary
+
 (use-package wgrep
   :ensure t)
 
@@ -28,6 +32,7 @@
 
 ;; for multiple cursor
 (use-package multiple-cursors
+  :ensure t
   :bind (("C->"           . mc/mark-next-like-this)
          ("C-<"           . mc/mark-previous-like-this)
          ("C-M->"         . mc/skip-to-next-like-this)
@@ -115,6 +120,7 @@
   :config
   (setq ace-pinyin-use-avy nil)
   (ace-pinyin-global-mode +1)
+  (global-set-key (kbd "s-i pj") 'ace-pinyin-jump-char)
   )
 
 (use-package highlight-indent-guides
@@ -174,6 +180,8 @@
   :config
   (projectile-global-mode)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (setq projectile-switch-project-action 'projectile-dired)
+  (setq projectile-project-search-path '("~/Gitlab/offline/" "~/Gitlab/online/" ("~/github" . 1)))
   )
 
 (use-package helm
@@ -418,11 +426,40 @@
   :ensure t
   )
 
+(use-package helm-ag
+  :ensure t)
+
+(defun my-helm-ag-thing-at-point ()
+  "Search the symbol at point with `helm-ag'."
+  (interactive)
+  (let ((helm-ag-insert-at-point 'symbol))
+    (helm-do-ag-project-root)))
+(global-set-key (kbd "M-I") 'my-helm-ag-thing-at-point)
+
+
+(use-package transpose-frame
+  :ensure t
+  )
+
 (use-package neotree
   :ensure t
   )
 
-;; MY-MODE
+(use-package easy-kill
+  :ensure t
+  :config
+  (global-set-key [remap kill-ring-save] 'easy-kill)
+)
+;; (use-package forge
+;;   :ensure t
+;;   :after magit
+;;   :config
+;;   (add-to-list 'forge-alist
+;;                '("hub.fastgit.org" "api.github.com" "hub.fastgit.org" forge-github-repository)
+;;                )
+;;   )
+
+;; My-Mode
 (defvar my-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
     ;; (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)

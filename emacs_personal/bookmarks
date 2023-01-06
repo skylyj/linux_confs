@@ -2,8 +2,36 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(#1=(#("ltv_model.org" 0 13
+(("basic_conf.el"
+ (filename . "~/.emacs.d/personal/basic_conf.el")
+ (front-context-string . "r forge\n(setq au")
+ (rear-context-string . "s GB\" ))))\n;; fo")
+ (position . 2368))
+("Trans"
+ (filename . "~/Trans/")
+ (front-context-string . ".DS_Store\n  drwx")
+ (rear-context-string . " Nov 14 13:02   ")
+ (position . 134))
+("commands.org"
+ (filename . "~/Github/PrivateHub/org/Org/Linux/commands.org")
+ (front-context-string . "* fd\n** 参考 https")
+ (rear-context-string)
+ (position . 1))
+#1=(#("roasSampleGenerateSDK.sh" 0 24
       (bmkp-full-record #1#))
+    (filename . "~/Gitlab/offline/sample-factory/azkaban/saas_sample_generate/roas/roasSampleGenerateSDK.sh")
+    (front-context-string . "candi_offers_dir")
+    (rear-context-string . "v3/roas_event/\"\n")
+    (position . 337))
+#1=(#("Emacs.org" 0 9
+      (bmkp-full-record #1#))
+    (filename . "~/Github/PrivateHub/org/Org/Linux/Emacs.org")
+    (front-context-string . "含义              ")
+    (rear-context-string . "\n   | key     | ")
+    (position . 3451))
+#1=(#("ltv_model.org" 0 13
+      (bmkp-full-record #1#))
+    (end-position . 103)
     (annotation)
     (tags)
     (filename . "~/Gitlab/offline/ltv_model/ltv_model.org")
@@ -12,17 +40,10 @@
     (rear-context-string . "验ID，方便去看模型AB的效果\n")
     (front-context-region-string)
     (rear-context-region-string)
-    (visits . 9)
-    (time 25521 19491 246659 0)
+    (visits . 11)
+    (time 25524 59896 284035 0)
     (created 25520 13585 576897 0)
-    (position . 86))
-#1=(#("youtube" 0 7
-      (bmkp-full-record #1#))
-    (time 25520 18212 786105 0)
-    (visits . 0)
-    (filename . "   - no file -")
-    (location . "https://www.youtube.com")
-    (handler . bmkp-jump-url-browse))
+    (position . 103))
 #1=(#("offline" 0 7
       (bmkp-full-record #1#))
     (end-position . 1)
@@ -55,11 +76,6 @@
     (front-context-string . "AN EFFICIENT FRA")
     (rear-context-string . " Oct 22  2018   ")
     (position . 149))
-#1=(#("baidu" 0 5
-      (bmkp-full-record #1#))
-    (filename . "   - no file -")
-    (location . "https://www.baidu.com")
-    (handler . bmkp-jump-url-browse))
 #1=(#("Retrieval" 0 9
       (bmkp-full-record #1#))
     (filename . "~/OneDrive/Papers/Retrieval/")
@@ -76,15 +92,6 @@
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/meta-sample/meta-sample.proto")
     (front-context-string . "syntax = \"proto2")
-    (rear-context-string)
-    (position . 1))
-#1=(#("ctags_init" 0 10
-      (bmkp-full-record #1#))
-    (time 25520 18024 555832 0)
-    (visits . 0)
-    (tags "初始化" "init")
-    (filename . "~/.ctags")
-    (front-context-string . "--langdef=scala\n")
     (rear-context-string)
     (position . 1))
 #1=(#("ltv_model" 0 9
@@ -134,12 +141,6 @@
     (front-context-string . "from tabulate im")
     (rear-context-string . " import metrics\n")
     (position . 113))
-#1=(#("roasSampleGenerate" 0 18
-      (bmkp-full-record #1#))
-    (filename . "~/Gitlab/sample-factory/src/main/scala/com/mobvista/di/sampleFactory/roasSampleGenerate/")
-    (front-context-string . "FeatureUtils.sca")
-    (rear-context-string . "93 Nov 21 20:51 ")
-    (position . 395))
 #1=(#("LTV_Prediction" 0 14
       (bmkp-full-record #1#))
     (filename . "~/OneDrive/Papers/CTR/LTV_Prediction/")
@@ -170,15 +171,6 @@
     (front-context-string . "syntax = \"proto3")
     (rear-context-string)
     (position . 1))
-#1=(#("roas" 0 4
-      (bmkp-full-record #1#))
-    (end-position . 1313)
-    (time 25521 19540 186844 0)
-    (visits . 0)
-    (filename . "~/Gitlab/sample-factory/azkaban/saas_sample_generate/roas/")
-    (front-context-string . "roasSample.yml\n ")
-    (rear-context-string . "84 Oct 21 17:16 ")
-    (position . 1313))
 #1=(#("casedebug" 0 9
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/offline/casedebug/")
@@ -199,7 +191,7 @@
     (position . 8290))
 #1=(#("sample-factory" 0 14
       (bmkp-full-record #1#))
-    (filename . "~/Gitlab/sample-factory/")
+    (filename . "~/Gitlab/offline/sample-factory/")
     (front-context-string . "run.sh\n  drwxr-x")
     (rear-context-string . " Nov 14 14:43   ")
     (position . 867))
@@ -341,13 +333,4 @@
     (front-context-string . "basic_conf.el\n  ")
     (rear-context-string . "08 Apr 11 22:01 ")
     (position . 573))
-#1=(#("ctags_init<2>" 0 10
-      (bmkp-full-record #1#)
-      10 13
-      (bmkp-full-record #1#))
-    (tags "初始化" "init")
-    (filename . "~/.ctags")
-    (front-context-string . "--langdef=scala\n")
-    (rear-context-string)
-    (position . 1))
 )

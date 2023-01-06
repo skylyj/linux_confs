@@ -73,6 +73,8 @@
   (setq-default mode-line-format (cons mode-line-format '(:exec conda-env-current-name)))
   (conda-env-activate "tf26")
   )
+
+;; anaconda-mode定义了很多跳转功能，比如 anaconda-mode-find-definitions M.,M=
 (use-package anaconda-mode
   :ensure t
   :bind (("C-c C-x" . next-error))

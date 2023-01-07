@@ -450,14 +450,18 @@
   :config
   (global-set-key [remap kill-ring-save] 'easy-kill)
 )
-;; (use-package forge
-;;   :ensure t
-;;   :after magit
-;;   :config
-;;   (add-to-list 'forge-alist
-;;                '("hub.fastgit.org" "api.github.com" "hub.fastgit.org" forge-github-repository)
-;;                )
-;;   )
+
+(use-package bookmark-in-project
+  :commands (bookmark-in-project-jump
+             bookmark-in-project-jump-next
+             bookmark-in-project-jump-previous
+             bookmark-in-project-delete-all)
+
+  ;; Example key bindings.
+  :bind (("s-i pbl" . bookmark-in-project-jump)
+         ("s-i pbn" . bookmark-in-project-jump-next)
+         ("s-i pbp" . bookmark-in-project-jump-previous)
+         ))
 
 ;; My-Mode
 (defvar my-keys-minor-mode-map

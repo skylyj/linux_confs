@@ -181,7 +181,7 @@
   (projectile-global-mode)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (setq projectile-switch-project-action 'projectile-dired)
-  (setq projectile-project-search-path '("~/Gitlab/offline/" "~/Gitlab/online/" ("~/github" . 1)))
+  (setq projectile-project-search-path '("~/Gitlab/offline/" "~/Gitlab/online/" "~/Github/" ( )))
   )
 
 (use-package helm
@@ -449,7 +449,10 @@
   :ensure t
   :config
   (global-set-key [remap kill-ring-save] 'easy-kill)
-)
+  (global-set-key [remap mark-sexp] 'easy-mark)
+  )
+
+
 
 (use-package bookmark-in-project
   :commands (bookmark-in-project-jump
@@ -461,6 +464,7 @@
   :bind (("s-i pbl" . bookmark-in-project-jump)
          ("s-i pbn" . bookmark-in-project-jump-next)
          ("s-i pbp" . bookmark-in-project-jump-previous)
+         ("s-i pbd" . bookmark-in-project-delete-all)
          ))
 
 ;; My-Mode

@@ -39,7 +39,11 @@
 (icomplete-mode 1)            ; 给出用 M-x foo-bar-COMMAND 输入命令的提示。
 (setq x-select-enable-clipboard t)  ;用来和系统共享剪贴板
 (setq confirm-kill-emacs 'yes-or-no-p)
+
 (transient-mark-mode t)
+(set-face-attribute 'region nil :background "#666" :foreground "#ffffff")
+;; 可以让选择的区域高亮
+
 (line-number-mode t)
 (setq-default kill-whole-line t) ;; 在行首 C-k 时，同时删除该行。
 (fset 'yes-or-no-p 'y-or-n-p) ;;改变 Emacs 固执的要你回答 yes 的行为。按y或空格键表示yes,n表示no。

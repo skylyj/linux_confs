@@ -467,6 +467,17 @@
          ("s-i pbd" . bookmark-in-project-delete-all)
          ))
 
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
+
+(use-package change-inner
+             :ensure t
+             :config
+             :bind (("s-i ci" . change-inner)
+                    ("s-i co" . change-outer)
+                    )
+             )
+
 ;; My-Mode
 (defvar my-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))

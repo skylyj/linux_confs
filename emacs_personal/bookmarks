@@ -2,7 +2,27 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("basic_conf.el"
+(("elpa_install.el"
+ (filename . "~/Github/PrivateHub/linux_confs/emacs_personal/elpa_install.el")
+ (front-context-string . "(\"s-i pbd\" . boo")
+ (rear-context-string . "vious)\n         ")
+ (position . 13813))
+("RoasSdkMain.scala"
+ (filename . "~/Gitlab/offline/sample-factory/src/main/scala/com/mobvista/di/sampleFactory/roasSampleGenerate/RoasSdkMain.scala")
+ (front-context-string . "enerator(config)")
+ (rear-context-string . " new RoasSampleG")
+ (position . 701))
+("MNormalRoasProbLayer.cpp"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalRoasProbLayer.cpp")
+ (front-context-string . "lRoasProbLayer::")
+ (rear-context-string . "r::Future MNorma")
+ (position . 217))
+("RankLayerExperiment.cpp"
+ (filename . "~/Gitlab/online/saas_dsp/src/RankLayerExperiment.cpp")
+ (front-context-string . "_roas_cpm(Campai")
+ (rear-context-string . "iment::calculate")
+ (position . 37494))
+("basic_conf.el"
  (filename . "~/.emacs.d/personal/basic_conf.el")
  (front-context-string . "r forge\n(setq au")
  (rear-context-string . "s GB\" ))))\n;; fo")
@@ -156,15 +176,6 @@
     (front-context-string . "1601.02376.pdf\n ")
     (rear-context-string . "17 Sep 24  2017 ")
     (position . 333))
-#1=(#("saas_dsp" 0 8
-      (bmkp-full-record #1#))
-    (end-position . 153)
-    (time 25523 48828 679718 0)
-    (visits . 0)
-    (filename . "~/Gitlab/online/saas_dsp/")
-    (front-context-string . ".dir-locals.el\n ")
-    (rear-context-string . " Dec 10 17:21   ")
-    (position . 153))
 #1=(#("demand_context.proto" 0 20
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/online/protocols/proto/core_model/demand_context.proto")

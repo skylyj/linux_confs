@@ -86,3 +86,4 @@
 				  :test "mvn test"
 				  :run "mvn package"
 				  :test-suffix "Test")
+(setq auto-save-default nil)

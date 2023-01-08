@@ -135,3 +135,20 @@
 ;; (require 'org-tree-slide)
 
 (setq org-hierarchical-todo-statistics nil)
+
+
+
+;; 关于org的加密
+(require 'org-crypt)
+;;当被加密的部份要存入硬碟时，自动加密回去
+(org-crypt-use-before-save-magic)
+;;设定要加密的tag 标签为secret
+(setq org-crypt-tag-matcher "secret")
+;;避免secret 这个tag 被子项目继承造成重复加密
+;; (但是子项目还是会被加密喔)
+(setq org-tags-exclude-from-inheritance (quote  ("secret")))
+;;用于加密的GPG 金钥
+;;可以设定任何ID 或是设成nil 来使用对称式加密(symmetric encryption)
+(setq org-crypt-key nil)
+(require 'epa-file)
+(epa-file-enable)

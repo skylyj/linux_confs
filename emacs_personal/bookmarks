@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("elpa_install.el"
+(("doubleweek_report.org"
+ (filename . "~/Github/PrivateHub/org/Org/Work/Mobvista/doubleweek_report.org")
+ (front-context-string . "   1. 模型方面：通过在单天")
+ (rear-context-string . "08\n** roas 重要结果\n")
+ (position . 52))
+("roas"
+ (filename . "~/Gitlab/offline/sample-factory/azkaban/saas_sample_generate/roas/")
+ (front-context-string . "2batch_run.sh\n  ")
+ (rear-context-string . " Jan  5 22:08   ")
+ (position . 262))
+("elpa_install.el"
  (filename . "~/Github/PrivateHub/linux_confs/emacs_personal/elpa_install.el")
  (front-context-string . "(\"s-i pbd\" . boo")
  (rear-context-string . "vious)\n         ")
@@ -51,19 +61,10 @@
     (position . 3451))
 #1=(#("ltv_model.org" 0 13
       (bmkp-full-record #1#))
-    (end-position . 103)
-    (annotation)
-    (tags)
     (filename . "~/Gitlab/offline/ltv_model/ltv_model.org")
-    (buffer-name . "ltv_model.org")
-    (front-context-string . "** adx的cover\n** ")
-    (rear-context-string . "验ID，方便去看模型AB的效果\n")
-    (front-context-region-string)
-    (rear-context-region-string)
-    (visits . 11)
-    (time 25524 59896 284035 0)
-    (created 25520 13585 576897 0)
-    (position . 103))
+    (front-context-string . " | 313896781 |\n ")
+    (rear-context-string . "子 |\n | 378587655")
+    (position . 1180))
 #1=(#("offline" 0 7
       (bmkp-full-record #1#))
     (end-position . 1)
@@ -116,13 +117,10 @@
     (position . 1))
 #1=(#("ltv_model" 0 9
       (bmkp-full-record #1#))
-    (end-position . 874)
-    (time 25522 18211 820964 0)
-    (visits . 1)
     (filename . "~/Gitlab/offline/ltv_model/")
-    (front-context-string . "roas\n  drwxr-xr-")
-    (rear-context-string . " Dec 12 15:03   ")
-    (position . 874))
+    (front-context-string . "bookmarks\n  -rw-")
+    (rear-context-string . " Jan  5 23:25   ")
+    (position . 593))
 #1=(#("featuremonitor" 0 14
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/offline/featuremonitor/")

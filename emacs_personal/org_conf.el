@@ -178,3 +178,5 @@
 (defun my/org-sort-entries ()
   (interactive)
   (org-sort-entries nil ?f #'my/org-sort-key))
+
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.5))

@@ -455,17 +455,27 @@
 
 
 (use-package bookmark-in-project
+  :ensure t
   :commands (bookmark-in-project-jump
              bookmark-in-project-jump-next
              bookmark-in-project-jump-previous
              bookmark-in-project-delete-all)
 
   ;; Example key bindings.
-  :bind (("s-i pbl" . bookmark-in-project-jump)
+  :bind (
+         ;; ("s-i pbl" . bookmark-in-project-jump)
          ("s-i pbn" . bookmark-in-project-jump-next)
          ("s-i pbp" . bookmark-in-project-jump-previous)
          ("s-i pbd" . bookmark-in-project-delete-all)
          ))
+(load-library "bookmark-in-project")
+(defun my/bookmark-in-project-jump ()
+  "Jump to a bookmark in the current project."
+  (interactive)
+  (bookmark-maybe-load-default-file)
+  (bookmark-in-project--jump-impl #'bookmark-jump))
+
+(global-set-key (kbd "s-i pbl") 'my/bookmark-in-project-jump)
 
 (use-package expand-region
   :bind ("C-=" . er/expand-region))

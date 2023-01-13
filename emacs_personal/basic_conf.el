@@ -93,3 +93,11 @@
 				  :run "mvn package"
 				  :test-suffix "Test")
 (setq auto-save-default nil)
+;; (defalias 'search-other-window (read-kbd-macro "M-b C-s C-w C-x o C-s C-s"))
+;; (global-set-key (kbd "s-i so") 'search-other-window)
+
+;; (define-key c++-mode-map (kbd "M-{") (sp-restrict-to-pairs-interactive "{" 'sp-down-sexp))
+
+;; (defun sp-pair-curly-down-sexp (&optional arg)
+;;   (interactive "P")
+;;   (sp-restrict-to-pairs "{" 'sp-down-sexp))

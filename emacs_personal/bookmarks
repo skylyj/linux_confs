@@ -2,7 +2,82 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("doubleweek_report.org"
+(("tech_todo.org"
+ (filename . "~/Github/PrivateHub/org/Org/todo/tech_todo.org")
+ (front-context-string . "如何来过滤掉不需要的文件类型，比")
+ (rear-context-string . "lm C-c pss 搜索的时候")
+ (position . 713))
+("ranker_output"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalAlphaModelRanker.cpp")
+ (front-context-string . "post(std::shared")
+ (rear-context-string . "delRanker::rank_")
+ (position . 12793))
+("saas_dsp"
+ (filename . "~/Gitlab/online/saas_dsp/")
+ (front-context-string . "  /Users/mobvist")
+ (rear-context-string)
+ (position . 1))
+("super_paras"
+ (filename . "~/Gitlab/online/saas_dsp/include/RankStruct.h")
+ (front-context-string . "    struct mvAdA")
+ (rear-context-string . " // super paras\n")
+ (position . 64230))
+("mapping.dat"
+ (filename . "~/Gitlab/online/saas_dsp/conf/exps/mapping.dat")
+ (front-context-string)
+ (rear-context-string . "erExperimentTTX\n")
+ (position . 2410))
+("实验配置"
+ (filename . "~/Gitlab/online/saas_dsp/src/ExperimentFactory.cpp")
+ (front-context-string . "        Experime")
+ (rear-context-string . "_adx_rank_v2\");\n")
+ (position . 3103))
+("粗排实验"
+ (filename . "~/Gitlab/online/saas_dsp/src/IRoughRankCampaignLayerExperiment.cpp")
+ (front-context-string . "RankCampaignLaye")
+ (rear-context-string . "\n    void IRough")
+ (position . 4071))
+("roas实验层abtest"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalProtocolSDK.cpp")
+ (front-context-string . "()\n    {\n       ")
+ (rear-context-string . "_roas_exp_config")
+ (position . 19493))
+("MNormalProtocolSDK.cpp"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalProtocolSDK.cpp")
+ (front-context-string . "()\n    {\n       ")
+ (rear-context-string . "_roas_exp_config")
+ (position . 19008))
+("trace_system"
+ (filename . "~/Gitlab/online/trace_system/")
+ (front-context-string . "mock_pb.py\n  -rw")
+ (rear-context-string . " Jan 11 22:32   ")
+ (position . 348))
+("random_on_line"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalPostProcess.cpp")
+ (front-context-string . "int MNormalPostP")
+ (rear-context-string . "n 0;\n    }\n\n    ")
+ (position . 1858))
+("ext_algo"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalPostProcess.cpp")
+ (front-context-string . "int MNormalPostP")
+ (rear-context-string . "新字段。\n    */\n    ")
+ (position . 5658))
+("roas独占"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalProtocol.cpp")
+ (front-context-string . "offers() {\n     ")
+ (rear-context-string . "delete_roas_cpi_")
+ (position . 50290))
+("eamcs.org"
+ (filename . "~/Github/PrivateHub/org/Org/Work/Mobvista/log/")
+ (front-context-string . "mtg_dwh.dwd_adn_")
+ (rear-context-string . " Jan 10 09:41   ")
+ (position . 336))
+("log"
+ (filename . "~/Github/PrivateHub/org/Org/Work/Mobvista/log/")
+ (front-context-string . "log.org\n  -rw-r-")
+ (rear-context-string . " Jan  8 14:20   ")
+ (position . 273))
+("doubleweek_report.org"
  (filename . "~/Github/PrivateHub/org/Org/Work/Mobvista/doubleweek_report.org")
  (front-context-string . "   1. 模型方面：通过在单天")
  (rear-context-string . "08\n** roas 重要结果\n")
@@ -190,8 +265,8 @@
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/online/protocols/")
     (front-context-string . "proto\n  -rw-r--r")
-    (rear-context-string . "08 Oct 20 11:23 ")
-    (position . 830))
+    (rear-context-string . " Jan 10 17:34   ")
+    (position . 742))
 #1=(#("stdrank.proto" 0 13
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/online/protocols/proto/standard_rs/stdrank.proto")

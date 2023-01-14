@@ -50,9 +50,9 @@
   :ensure t
   :config
   (google-this-mode 1)
+  (global-set-key (kbd "C-c g") 'google-this-mode-submap)
   )
 
-;; (setq projectile-project-search-path '("~/Public" ("~/Github" . 1) ("~/Gitlab" . 1)))
 
 (use-package good-scroll
   :ensure t
@@ -192,7 +192,7 @@
   (projectile-global-mode)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (setq projectile-switch-project-action 'projectile-dired)
-  (setq projectile-project-search-path '("~/Gitlab/offline/" "~/Gitlab/online/" "~/Github/" ( )))
+  (setq projectile-project-search-path '("~/Gitlab/offline/" "~/Gitlab/online/" "~/Github/PrivateHub"))
   )
 
 (use-package helm
@@ -427,11 +427,7 @@
          (global-set-key (kbd "s-i bn") 'bm-next)
          (global-set-key (kbd "s-i bp") 'bm-previous)
          (global-set-key (kbd "s-i bt") 'bm-toggle)
-         (global-set-key (kbd "s-i bs") 'bm-show-all)
-         :bind (("<f2>" . bm-next)
-                ("S-<f2>" . bm-previous)
-                ("C-<f2>" . bm-toggle)
-                )
+         (global-set-key (kbd "s-i bl") 'bm-show-all)
          )
 (use-package helm-bm
   :ensure t
@@ -473,8 +469,6 @@
              bookmark-in-project-jump-next
              bookmark-in-project-jump-previous
              bookmark-in-project-delete-all)
-
-  ;; Example key bindings.
   :bind (
          ;; ("s-i pbl" . bookmark-in-project-jump)
          ("s-i pbn" . bookmark-in-project-jump-next)
@@ -587,7 +581,6 @@ respectively."
 (define-key c++-mode-map (kbd "s-i {") (sp-restrict-to-pairs-interactive "{" 'sp-down-sexp))
 (define-key c++-mode-map (kbd "s-i }") (sp-restrict-to-pairs-interactive "}" 'sp-up-sexp))
 
-
 ;; My-Mode
 (defvar my-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
@@ -596,6 +589,7 @@ respectively."
     (define-key map  (kbd "C-s") 'isearch-forward)
     (define-key map (kbd "C-c SPC") 'ace-jump-mode)
     (define-key map (kbd "C-x SPC") 'rectangle-mark-mode)
+    (global-set-key (kbd "C-c g") 'google-this-mode-submap)
     (move-text-default-bindings)
     map)
   "my-keys-minor-mode keymap.")

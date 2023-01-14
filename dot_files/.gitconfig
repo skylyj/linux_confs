@@ -1,0 +1,22 @@
+[user]
+    email = yijiang.lian@mintegral.com
+    name = lianyijiang
+[color]
+    diff = auto
+    status = true
+    branch = auto
+    interactive = auto
+    ui = auto
+    log = true
+[alias]
+    br = branch
+    co = checkout
+    ci = commit
+    st = status
+    pl = pull
+    ps = push
+    l = log --stat
+[gitlab "gitlab.mobvista.com/api/v4"]
+	user = yijiang.lian
+[core]
+	autocrlf = true

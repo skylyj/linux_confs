@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("tech_todo.org"
+(("linux_confs"
+ (filename . "~/Github/PrivateHub/linux_confs/")
+ (front-context-string)
+ (rear-context-string . " Jan 14 11:57   ")
+ (position . 478))
+("calculate_roas_cpm"
+ (filename . "~/Gitlab/online/saas_dsp/src/RankLayerExperiment.cpp")
+ (front-context-string . "_roas_cpm(Campai")
+ (rear-context-string . "iment::calculate")
+ (position . 37494))
+("tech_todo.org"
  (filename . "~/Github/PrivateHub/org/Org/todo/tech_todo.org")
  (front-context-string . "如何来过滤掉不需要的文件类型，比")
  (rear-context-string . "lm C-c pss 搜索的时候")
@@ -62,7 +72,7 @@
  (front-context-string . "int MNormalPostP")
  (rear-context-string . "新字段。\n    */\n    ")
  (position . 5658))
-("roas独占"
+("delete_roas_cpi_offers"
  (filename . "~/Gitlab/online/saas_dsp/src/MNormalProtocol.cpp")
  (front-context-string . "offers() {\n     ")
  (rear-context-string . "delete_roas_cpi_")

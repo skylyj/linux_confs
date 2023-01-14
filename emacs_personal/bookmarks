@@ -89,9 +89,9 @@
  (position . 262))
 ("elpa_install.el"
  (filename . "~/Github/PrivateHub/linux_confs/emacs_personal/elpa_install.el")
- (front-context-string . "(\"s-i pbd\" . boo")
- (rear-context-string . "vious)\n         ")
- (position . 13813))
+ (front-context-string . ")\n\n(use-package ")
+ (rear-context-string . "s\n  :ensure t\n  ")
+ (position . 2253))
 ("RoasSdkMain.scala"
  (filename . "~/Gitlab/offline/sample-factory/src/main/scala/com/mobvista/di/sampleFactory/roasSampleGenerate/RoasSdkMain.scala")
  (front-context-string . "enerator(config)")

@@ -525,8 +525,8 @@ respectively."
 
 (bind-keys
  :map smartparens-mode-map
- ("C-M-a" . sp-beginning-of-sexp)
- ("C-M-e" . sp-end-of-sexp)
+ ;; ("C-M-a" . sp-beginning-of-sexp)
+ ;; ("C-M-e" . sp-end-of-sexp)
 
  ("C-<down>" . sp-down-sexp)
  ("C-<up>"   . sp-up-sexp)
@@ -602,3 +602,10 @@ respectively."
   )
 
 (my-mode 1)
+
+;; dired-narrow
+;; narrow dired to match filter
+(use-package dired-narrow
+  :ensure t
+  :bind (:map dired-mode-map
+              ("/" . dired-narrow)))

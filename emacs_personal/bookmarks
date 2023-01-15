@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("linux_confs"
+(("Emacsorg"
+ (filename . "~/Gitlab/offline/ltv_model/roas/reg_cls.py")
+ (front-context-string . "th = os.path.joi")
+ (rear-context-string . "        ihour_pa")
+ (position . 22566))
+("linux_confs"
  (filename . "~/Github/PrivateHub/linux_confs/")
  (front-context-string)
  (rear-context-string . " Jan 14 11:57   ")

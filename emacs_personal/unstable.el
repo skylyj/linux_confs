@@ -853,10 +853,3 @@
 ;;   :pin melpa-stable
 ;;   ;; (optional) Automatically start metals for Scala files.
 ;;   :hook (scala-mode . eglot-ensure))
-
-;; dired-narrow
-;;narrow dired to match filter
-;; (use-package dired-narrow
-;;   :ensure t
-;;   :bind (:map dired-mode-map
-;;               ("/" . dired-narrow)))

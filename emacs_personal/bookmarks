@@ -2,7 +2,37 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("Emacsorg"
+(("service.go"
+ (filename . "~/Gitlab/online/saas_dsp_lib/core/service.go")
+ (front-context-string . "func (s *Service")
+ (rear-context-string . "/ Register Func\n")
+ (position . 5002))
+("saas_dsp_lib"
+ (filename . "~/Gitlab/online/saas_dsp_lib/")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . " Jan 16 11:54   ")
+ (position . 150))
+("online"
+ (filename . "~/Gitlab/online/")
+ (front-context-string . "pre_rank\n  drwxr")
+ (rear-context-string . " Jan 16 10:44   ")
+ (position . 644))
+("MNormalPostProcess"
+ (filename . "~/Gitlab/online/saas_dsp/include/MNormalPostProcess.h")
+ (front-context-string . "MNormalPostProce")
+ (rear-context-string . "ranker\n{\n\nclass ")
+ (position . 239))
+("MNormalNGPredictor::initialize_module"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalNGPredictor.cpp")
+ (front-context-string . "MNormalNGPredict")
+ (rear-context-string . "   }\n\n\n    void ")
+ (position . 7380))
+("CRModule"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalCRModule.cpp")
+ (front-context-string . "\n    {\n        b")
+ (rear-context-string . "le::main_entry()")
+ (position . 166))
+("Emacsorg"
  (filename . "~/Gitlab/offline/ltv_model/roas/reg_cls.py")
  (front-context-string . "th = os.path.joi")
  (rear-context-string . "        ihour_pa")

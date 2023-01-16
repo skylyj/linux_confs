@@ -24,11 +24,11 @@
   (setq dashboard-set-file-icons t)
   (dashboard-setup-startup-hook))
 
-(use-package marginalia
-  :ensure t
-  :init (marginalia-mode)
-  :bind (:map minibuffer-local-map
-	      ("M-A" . marginalia-cycle)))
+;; (use-package marginalia
+;;   :ensure t
+;;   :init (marginalia-mode)
+;;   :bind (:map minibuffer-local-map
+;; 	      ("M-A" . marginalia-cycle)))
 
 ;; for multiple cursor
 (use-package multiple-cursors
@@ -80,6 +80,7 @@
   :config
   (add-hook 'prog-mode-hook 'smartscan-mode)
   (add-hook 'org-mode-hook 'smartscan-mode)
+  (add-hook 'dired-mode-hook 'smartscan-mode)
   )
 
 ;; HIGHLIGHT 自动高亮
@@ -578,9 +579,9 @@ respectively."
   (interactive "P")
   (sp-restrict-to-pairs "}" 'sp-up-sexp))
 
-(define-key c++-mode-map (kbd "s-i {") (sp-restrict-to-pairs-interactive "{" 'sp-down-sexp))
-(define-key c++-mode-map (kbd "s-i }") (sp-restrict-to-pairs-interactive "}" 'sp-up-sexp))
-
+(define-key c++-mode-map (kbd "s-i }") (sp-restrict-to-pairs-interactive "{" 'sp-down-sexp))
+(define-key c++-mode-map (kbd "s-i {}") (sp-restrict-to-pairs-interactive "}" 'sp-up-sexp))
+(define-key c++-mode-map (kbd "s-i u") (sp-restrict-to-pairs-interactive "{" 'sp-backward-up-sexp))
 ;; My-Mode
 (defvar my-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))

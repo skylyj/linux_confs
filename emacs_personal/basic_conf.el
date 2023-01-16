@@ -1,3 +1,4 @@
+;;; package --- Summary
 ;;; Code:
 ;;; Commentary:
 ;;; package --- Summary
@@ -101,3 +102,8 @@
 ;; (defun sp-pair-curly-down-sexp (&optional arg)
 ;;   (interactive "P")
 ;;   (sp-restrict-to-pairs "{" 'sp-down-sexp))
+
+(setq whitespace-style '(tabs trailing lines tab-mark))
+(provide 'basic_conf)
+;;; basic_conf.el ends here
+(set-cursor-color "yellow")

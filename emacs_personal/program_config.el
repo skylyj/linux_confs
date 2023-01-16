@@ -83,8 +83,30 @@
   (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
   )
 
+(use-package company
+  :ensure t
+  :config
+  (add-to-list 'company-backends '(company-capf company-dabbrev))
+  )
+
 (use-package company-anaconda
   :ensure t
   :config
   (eval-after-load "company"
     '(add-to-list 'company-backends '(company-anaconda))))
+
+(use-package company-shell
+  :ensure t
+  :config
+  (eval-after-load "company"
+    '(add-to-list 'company-backends '(company-shell company-shell-env))))
+
+
+
+(use-package company-irony
+  :ensure t
+  :config
+  (eval-after-load "company"
+    '(add-to-list 'company-backends '(company-irony))))
+
+

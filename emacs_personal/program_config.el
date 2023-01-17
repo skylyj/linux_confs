@@ -110,3 +110,17 @@
     '(add-to-list 'company-backends '(company-irony))))
 
 
+(setq company-backends '(company-capf
+                         company-dabbrev
+                         company-keywords
+                         company-semantic
+                         company-files
+                         company-etags
+                         company-elisp
+                         company-clang
+                         company-irony-c-headers
+                         company-irony
+                         company-jedi
+                         company-cmake
+                         company-ispell
+                         company-yasnippet))

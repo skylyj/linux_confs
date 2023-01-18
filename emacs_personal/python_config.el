@@ -22,10 +22,10 @@
             )
           )
 
-(use-package elpy
-  :ensure t
-  :init
-  (elpy-enable))
+;; (use-package elpy
+;;   :ensure t
+;;   :init
+;;   (elpy-enable))
 
 ;; 关于anaconda，先安装conda，使用conda-activate可以切换conda环境
 (use-package conda
@@ -38,52 +38,26 @@
   )
 
 ;; anaconda-mode定义了很多跳转功能，比如 anaconda-mode-find-definitions M.,M=
-(use-package anaconda-mode
-  :ensure t
-  :bind (("C-c C-x" . next-error))
-  :config
-  (add-hook 'python-mode-hook 'anaconda-mode)
-  (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-  )
+;; (use-package anaconda-mode
+;;   :ensure t
+;;   :bind (("C-c C-x" . next-error))
+;;   :config
+;;   (add-hook 'python-mode-hook 'anaconda-mode)
+;;   (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+;;   )
 
 
-(use-package company
-  :ensure t
-  :config
-  ;(setq company-backends '(company-capf
-  ;                         company-dabbrev
-  ;                         company-keywords
-  ;                         company-semantic
-  ;                         company-files
-  ;                         company-etags
-  ;                         company-elisp
-  ;                         company-clang
-  ;                         company-irony-c-headers
-  ;                         company-irony
-  ;                         company-jedi
-  ;                         company-anaconda
-  ;                         company-cmake
-  ;                         company-ispell
-  ;                         company-yasnippet))
-  (setq company-backends '(company-capf 
-                                    company-dabbrev
-                                   company-keywords
-                                   company-files
-                                   company-etags
-                                    ))
-  )
+;; (use-package company-anaconda
+;;   :ensure t
+;;   :config
+;;   (eval-after-load "company"
+;;     '(add-to-list 'company-backends '(company-anaconda))))
 
-(use-package company-anaconda
-  :ensure t
-  :config
-  (eval-after-load "company"
-    '(add-to-list 'company-backends '(company-anaconda))))
-
-(use-package company-shell
-  :ensure t
-  :config
-  (eval-after-load "company"
-    '(add-to-list 'company-backends '(company-shell company-shell-env))))
+;; (use-package company-shell
+;;   :ensure t
+;;   :config
+;;   (eval-after-load "company"
+;;     '(add-to-list 'company-backends '(company-shell company-shell-env))))
 
 ;(use-package company-jedi
 ;  :ensure t

@@ -266,11 +266,11 @@
   :ensure t
   )
 
-(use-package helm-xref
-  :ensure t
-  :config
-  (setq xref-show-xrefs-function 'helm-xref-show-xrefs)
-  )
+;; (use-package helm-xref
+;;   :ensure t
+;;   :config
+;;   (setq xref-show-xrefs-function 'helm-xref-show-xrefs)
+;;   )
 
 (use-package helm-ctest
   :ensure t
@@ -613,3 +613,9 @@
   (autoload 'go-mode "go-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
   )
+
+;; optional if you want which-key integration
+(use-package which-key
+    :config
+    (which-key-mode))
+

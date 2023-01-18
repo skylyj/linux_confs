@@ -853,3 +853,48 @@
 ;;   :pin melpa-stable
 ;;   ;; (optional) Automatically start metals for Scala files.
 ;;   :hook (scala-mode . eglot-ensure))
+
+
+
+;; (use-package company-box
+;;   :hook (company-mode . company-box-mode))
+;; (use-package lsp-mode
+;;   :commands (lsp lsp-deferred)
+;;   :hook (
+;; 	 ;; (c++-mode . lsp)
+;; 	 (python-mode . lsp)
+;; 	 (sh-mode . lsp)
+;; 	 )
+;;   :config
+;;   (setq lsp-enable-snippet nil)
+;;   (setq gc-cons-threshold 100000000)
+;;   (setq read-process-output-max (* 1024 1024)) ;; 1mb
+;;   :commands lsp)
+
+
+;; ;; optionally
+;; (use-package lsp-ui :commands lsp-ui-mode)
+;; ;; if you are helm user
+;; (use-package helm-lsp :commands helm-lsp-workspace-symbol)
+;; ;; if you are ivy user
+;; (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+;; (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+;; ;; optionally if you want to use debugger
+;; (use-package dap-mode)
+;; ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+
+;; (use-package company
+;;   :hook (
+;; 	 ;; (c++-mode . company-mode)
+;; 	 (python-mode . company-mode)
+;; 	 (sh-mode . company-mode)
+;; 	 )
+;;   :config
+;;   (setq company-backends '(company-capf company-files company-keywords)	)
+;;   (setq company-minimum-prefix-length 1
+;;       company-idle-delay 0.0)
+;;   :commands company-mode)
+
+

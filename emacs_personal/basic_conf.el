@@ -47,12 +47,6 @@
 (transient-mark-mode t)
 (set-face-attribute 'region nil :background "#666" :foreground "#ffffff")
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip ((t (:background "blue" :foreground "#fff")))))
 ;; 可以让选择的区域高亮
 (line-number-mode t)
 (setq-default kill-whole-line t) ;; 在行首 C-k 时，同时删除该行。

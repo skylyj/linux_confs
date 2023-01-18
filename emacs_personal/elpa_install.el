@@ -86,14 +86,14 @@
   (beacon-mode -1)
   )
 
-(use-package highlight-symbol
-  :ensure t
-  :config
-  (global-set-key [(control f3)] 'highlight-symbol)
-  (global-set-key [f3] 'highlight-symbol-next)
-  (global-set-key [(shift f3)] 'highlight-symbol-prev)
-  (global-set-key [(meta f3)] 'highlight-symbol-query-replace)
-  )
+;; (use-package highlight-symbol
+;;   :ensure t
+;;   :config
+;;   (global-set-key [(control f3)] 'highlight-symbol)
+;;   (global-set-key [f3] 'highlight-symbol-next)
+;;   (global-set-key [(shift f3)] 'highlight-symbol-prev)
+;;   (global-set-key [(meta f3)] 'highlight-symbol-query-replace)
+;;   )
 
 (use-package smartscan
   :ensure t
@@ -600,4 +600,16 @@
 (use-package nlinum
   :config
   (global-nlinum-mode t)
+  )
+
+(use-package protobuf-mode
+  :ensure t
+  )
+
+
+(use-package go-mode
+  :ensure t
+  :config
+  (autoload 'go-mode "go-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
   )

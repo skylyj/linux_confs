@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("prelude_emacs"
+(("roas.org"
+ (filename . "~/Github/PrivateHub/org/Org/Work/Mobvista/Projects/roas.org")
+ (front-context-string . "* 重要的路径\n  | 训练数据")
+ (rear-context-string)
+ (position . 1))
+("roas_evaluate"
+ (filename . "~/Gitlab/offline/roas_evaluate/")
+ (front-context-string . ".flake8\n  drwxr-")
+ (rear-context-string . "28 Jan 17 00:04 ")
+ (position . 256))
+("prelude_emacs"
  (filename . "~/prelude_emacs/")
  (front-context-string . ".cache\n  -rw-r--")
  (rear-context-string . "96 Jan 17 22:58 ")

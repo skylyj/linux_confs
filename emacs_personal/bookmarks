@@ -2,7 +2,42 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("roas.org"
+(("rank_agent_mock.go"
+ (filename . "~/Gitlab/online/saas_dsp_lib/process_unit/rank/saasrank_agent/rank_agent_mock.go")
+ (front-context-string . "nCampaign(slotIn")
+ (rear-context-string . "\n\n}\n\nfunc findWi")
+ (position . 9594))
+("juno.proto"
+ (filename . "~/Gitlab/online/protocols/proto/juno/juno.proto")
+ (front-context-string . " = 12; // demand")
+ (rear-context-string . "xt DemandContext")
+ (position . 11842))
+("core_model"
+ (filename . "~/Gitlab/online/protocols/proto/core_model/")
+ (front-context-string . "demand_context.p")
+ (rear-context-string . "37 Jan 10 17:48 ")
+ (position . 342))
+("conv_saasrank_to_saasdsp_response.go"
+ (filename . "~/Gitlab/online/saas_dsp_lib/process_unit/rank/stdrank_conv/conv_saasrank_to_saasdsp_response.go")
+ (front-context-string . "OfferInfo(slotTy")
+ (rear-context-string . "gnInfo\nfunc Fill")
+ (position . 8454))
+("base_finish_handler.go"
+ (filename . "~/Gitlab/online/saas_dsp_lib/process_unit/fillResp/base_finish_handler.go")
+ (front-context-string . "s(baseCtx *dsp_c")
+ (rear-context-string . "eHandler) Proces")
+ (position . 911))
+("roas proto merger-ranker "
+ (filename . "~/Gitlab/online/protocols/proto/saas_dsp/saas_dsp.proto")
+ (front-context-string . "import \"juno/jun")
+ (rear-context-string . "polaris.proto\";\n")
+ (position . 53))
+("roas proto"
+ (filename . "~/Gitlab/online/protocols/proto/standard_rs/stdrank.proto")
+ (front-context-string . "lling_price = 8;")
+ (rear-context-string . "ouble receive_bi")
+ (position . 9941))
+("roas.org"
  (filename . "~/Github/PrivateHub/org/Org/Work/Mobvista/Projects/roas.org")
  (front-context-string . "* 重要的路径\n  | 训练数据")
  (rear-context-string)

@@ -21,23 +21,12 @@
             (setq flycheck-flake8rc "~/.config/flake8")
             )
           )
-;; (defun python-reinstate-current-directory ()
-;;   "When running Python, add the current directory ('') to the head of sys.path.
-;; For reasons unexplained, run-python passes arguments to the
-;; interpreter that explicitly remove '' from sys.path. This means
-;; that, for example, using `python-send-buffer' in a buffer
-;; visiting a module's code will fail to find other modules in the
-;; same directory.
 
-;; Adding this function to `inferior-python-mode-hook' reinstates
-;; the current directory in Python's search path."
-;;   (python-send-string "sys.path[0:0] = ['']"))
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable))
 
-;; (add-hook 'inferior-python-mode-hook 'python-reinstate-current-directory)
-;; (eval-after-load "company"
-;;   '(add-to-list 'company-backends 'company-anaconda))
-
-;; PYTHON
 ;; 关于anaconda，先安装conda，使用conda-activate可以切换conda环境
 (use-package conda
   :ensure t

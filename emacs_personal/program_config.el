@@ -59,3 +59,12 @@
   :pin melpa-stable
   ;; (optional) Automatically start metals for Scala files.
   :hook (scala-mode . eglot-ensure))
+
+;;需要安装metals-emacs
+;; sudo coursier bootstrap \
+;;   --java-opt -XX:+UseG1GC \
+;;   --java-opt -XX:+UseStringDeduplication  \
+;;   --java-opt -Xss4m \
+;;   --java-opt -Xms100m \
+;;   org.scalameta:metals_2.13:0.11.10 \
+;;   -o /usr/local/bin/metals-emacs -f

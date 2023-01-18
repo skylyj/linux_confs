@@ -1,3 +1,7 @@
+;;; package --- Summary
+;;; Code:
+;;; Commentary:
+
 ;; (require 'org)
 ;; (prelude-require-packages '(org-ac))
 ;; (org-ac/config-default)

@@ -1,6 +1,26 @@
+;;; package --- Summary
 ;;; Code:
 ;;; Commentary:
-;;; package --- Summary
+(use-package magit
+  :ensure t
+  )
+;; for forge
+(setq auth-sources '("~/.authinfo"))
+
+(use-package forge
+  :ensure t
+  )
+
+(with-eval-after-load 'magit
+  (require 'forge))
+
+(with-eval-after-load 'forge
+  (add-to-list 'forge-alist
+               '("gitlab.mobvista.com"
+                 "gitlab.mobvista.com/api/v4"
+                 "gitlab.mobvista.com"
+                 forge-gitlab-repository)))
+(setenv "JAVA_HOME" "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home")
 
 (use-package wgrep
   :ensure t)
@@ -90,13 +110,6 @@
   (global-auto-highlight-symbol-mode t)
   )
 
-(use-package smartparens
-  :ensure t
-  )
-(use-package smartparens-config
-  :ensure smartparens
-  :config (progn (show-smartparens-global-mode t)))
-
 (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
 (add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
 
@@ -172,11 +185,11 @@
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
   )
 
-;(quelpa
-; '(quelpa-use-package
-;   :fetcher git
-;   :url "https://github.com/quelpa/quelpa-use-package.git"))
-;(require 'quelpa-use-package)
+					;(quelpa
+					; '(quelpa-use-package
+					;   :fetcher git
+					;   :url "https://github.com/quelpa/quelpa-use-package.git"))
+					;(require 'quelpa-use-package)
 
 ;; (use-package org-sidebar
 ;;   :quelpa (org-sidebar :fetcher github :repo "alphapapa/org-sidebar"))
@@ -194,6 +207,11 @@
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (setq projectile-switch-project-action 'projectile-dired)
   (setq projectile-project-search-path '("~/Gitlab/offline/" "~/Gitlab/online/" "~/Github/PrivateHub"))
+  (projectile-register-project-type 'java '("pom.xml")
+                                    :compile "mvn compile"
+                                    :test "mvn test"
+                                    :run "mvn package"
+                                    :test-suffix "Test")
   )
 
 (use-package helm
@@ -202,6 +220,7 @@
   (setq helm-locate-fuzzy-match nil)
   (setq helm-locate-command "mdfind -name %s %s")
   (setq locate-command "mdfind")
+  ;; (setq helm-follow-mode-persistent t)
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
   (global-unset-key (kbd "C-x c"))
   (global-set-key (kbd "M-x") 'helm-M-x)
@@ -241,7 +260,7 @@
   :config
   (helm-projectile-on)
   (setq projectile-completion-system 'helm)
-)
+  )
 
 (use-package helm-ls-git
   :ensure t
@@ -293,61 +312,61 @@
 
 ;; BM
 (use-package bm
-         :ensure t
-         :demand t
+  :ensure t
+  :demand t
 
-         :init
-         ;; restore on load (even before you require bm)
-         (setq bm-restore-repository-on-load t)
-
-
-         :config
-         ;; Allow cross-buffer 'next'
-         (setq bm-cycle-all-buffers t)
-
-         ;; where to store persistant files
-         (setq bm-repository-file "~/.emacs.d/bm-repository")
-
-         ;; save bookmarks
-         (setq-default bm-buffer-persistence t)
-
-         ;; Loading the repository from file when on start up.
-         (add-hook 'after-init-hook 'bm-repository-load)
-
-         ;; Saving bookmarks
-         (add-hook 'kill-buffer-hook #'bm-buffer-save)
-
-         ;; Saving the repository to file when on exit.
-         ;; kill-buffer-hook is not called when Emacs is killed, so we
-         ;; must save all bookmarks first.
-         (add-hook 'kill-emacs-hook #'(lambda nil
-                                          (bm-buffer-save-all)
-                                          (bm-repository-save)))
-
-         ;; The `after-save-hook' is not necessary to use to achieve persistence,
-         ;; but it makes the bookmark data in repository more in sync with the file
-         ;; state.
-         (add-hook 'after-save-hook #'bm-buffer-save)
-
-         ;; Restoring bookmarks
-         (add-hook 'find-file-hooks   #'bm-buffer-restore)
-         (add-hook 'after-revert-hook #'bm-buffer-restore)
-
-         ;; The `after-revert-hook' is not necessary to use to achieve persistence,
-         ;; but it makes the bookmark data in repository more in sync with the file
-         ;; state. This hook might cause trouble when using packages
-         ;; that automatically reverts the buffer (like vc after a check-in).
-         ;; This can easily be avoided if the package provides a hook that is
-         ;; called before the buffer is reverted (like `vc-before-checkin-hook').
-         ;; Then new bookmarks can be saved before the buffer is reverted.
-         ;; Make sure bookmarks is saved before check-in (and revert-buffer)
-         (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
+  :init
+  ;; restore on load (even before you require bm)
+  (setq bm-restore-repository-on-load t)
 
 
-         :bind (("<f2>" . bm-next)
-                ("S-<f2>" . bm-previous)
-                ("C-<f2>" . bm-toggle))
-         )
+  :config
+  ;; Allow cross-buffer 'next'
+  (setq bm-cycle-all-buffers t)
+
+  ;; where to store persistant files
+  (setq bm-repository-file "~/.emacs.d/bm-repository")
+
+  ;; save bookmarks
+  (setq-default bm-buffer-persistence t)
+
+  ;; Loading the repository from file when on start up.
+  (add-hook 'after-init-hook 'bm-repository-load)
+
+  ;; Saving bookmarks
+  (add-hook 'kill-buffer-hook #'bm-buffer-save)
+
+  ;; Saving the repository to file when on exit.
+  ;; kill-buffer-hook is not called when Emacs is killed, so we
+  ;; must save all bookmarks first.
+  (add-hook 'kill-emacs-hook #'(lambda nil
+                                 (bm-buffer-save-all)
+                                 (bm-repository-save)))
+
+  ;; The `after-save-hook' is not necessary to use to achieve persistence,
+  ;; but it makes the bookmark data in repository more in sync with the file
+  ;; state.
+  (add-hook 'after-save-hook #'bm-buffer-save)
+
+  ;; Restoring bookmarks
+  (add-hook 'find-file-hooks   #'bm-buffer-restore)
+  (add-hook 'after-revert-hook #'bm-buffer-restore)
+
+  ;; The `after-revert-hook' is not necessary to use to achieve persistence,
+  ;; but it makes the bookmark data in repository more in sync with the file
+  ;; state. This hook might cause trouble when using packages
+  ;; that automatically reverts the buffer (like vc after a check-in).
+  ;; This can easily be avoided if the package provides a hook that is
+  ;; called before the buffer is reverted (like `vc-before-checkin-hook').
+  ;; Then new bookmarks can be saved before the buffer is reverted.
+  ;; Make sure bookmarks is saved before check-in (and revert-buffer)
+  (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
+
+
+  :bind (("<f2>" . bm-next)
+         ("S-<f2>" . bm-previous)
+         ("C-<f2>" . bm-toggle))
+  )
 
 (use-package helm-themes
   :ensure t
@@ -373,63 +392,63 @@
 
 
 (use-package bm
-         :ensure t
-         :demand t
+  :ensure t
+  :demand t
 
-         :init
-         ;; restore on load (even before you require bm)
-         (setq bm-restore-repository-on-load t)
+  :init
+  ;; restore on load (even before you require bm)
+  (setq bm-restore-repository-on-load t)
 
 
-         :config
-         ;; Allow cross-buffer 'next'
-         (setq bm-cycle-all-buffers t)
+  :config
+  ;; Allow cross-buffer 'next'
+  (setq bm-cycle-all-buffers t)
 
-         ;; where to store persistant files
-         (setq bm-repository-file "~/.emacs.d/bm-repository")
+  ;; where to store persistant files
+  (setq bm-repository-file "~/.emacs.d/bm-repository")
 
-         ;; save bookmarks
-         (setq-default bm-buffer-persistence t)
+  ;; save bookmarks
+  (setq-default bm-buffer-persistence t)
 
-         ;; Loading the repository from file when on start up.
-         (add-hook 'after-init-hook 'bm-repository-load)
+  ;; Loading the repository from file when on start up.
+  (add-hook 'after-init-hook 'bm-repository-load)
 
-         ;; Saving bookmarks
-         (add-hook 'kill-buffer-hook #'bm-buffer-save)
+  ;; Saving bookmarks
+  (add-hook 'kill-buffer-hook #'bm-buffer-save)
 
-         ;; Saving the repository to file when on exit.
-         ;; kill-buffer-hook is not called when Emacs is killed, so we
-         ;; must save all bookmarks first.
-         (add-hook 'kill-emacs-hook #'(lambda nil
-                                          (bm-buffer-save-all)
-                                          (bm-repository-save)))
+  ;; Saving the repository to file when on exit.
+  ;; kill-buffer-hook is not called when Emacs is killed, so we
+  ;; must save all bookmarks first.
+  (add-hook 'kill-emacs-hook #'(lambda nil
+                                 (bm-buffer-save-all)
+                                 (bm-repository-save)))
 
-         ;; The `after-save-hook' is not necessary to use to achieve persistence,
-         ;; but it makes the bookmark data in repository more in sync with the file
-         ;; state.
-         (add-hook 'after-save-hook #'bm-buffer-save)
+  ;; The `after-save-hook' is not necessary to use to achieve persistence,
+  ;; but it makes the bookmark data in repository more in sync with the file
+  ;; state.
+  (add-hook 'after-save-hook #'bm-buffer-save)
 
-         ;; Restoring bookmarks
-         (add-hook 'find-file-hooks   #'bm-buffer-restore)
-         (add-hook 'after-revert-hook #'bm-buffer-restore)
+  ;; Restoring bookmarks
+  (add-hook 'find-file-hooks   #'bm-buffer-restore)
+  (add-hook 'after-revert-hook #'bm-buffer-restore)
 
-         ;; The `after-revert-hook' is not necessary to use to achieve persistence,
-         ;; but it makes the bookmark data in repository more in sync with the file
-         ;; state. This hook might cause trouble when using packages
-         ;; that automatically reverts the buffer (like vc after a check-in).
-         ;; This can easily be avoided if the package provides a hook that is
-         ;; called before the buffer is reverted (like `vc-before-checkin-hook').
-         ;; Then new bookmarks can be saved before the buffer is reverted.
-         ;; Make sure bookmarks is saved before check-in (and revert-buffer)
-         (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
+  ;; The `after-revert-hook' is not necessary to use to achieve persistence,
+  ;; but it makes the bookmark data in repository more in sync with the file
+  ;; state. This hook might cause trouble when using packages
+  ;; that automatically reverts the buffer (like vc after a check-in).
+  ;; This can easily be avoided if the package provides a hook that is
+  ;; called before the buffer is reverted (like `vc-before-checkin-hook').
+  ;; Then new bookmarks can be saved before the buffer is reverted.
+  ;; Make sure bookmarks is saved before check-in (and revert-buffer)
+  (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
 
-         (setq bm-marker 'bm-marker-right)
-         (global-set-key (kbd "<left-fringe> <M-mouse-1>") 'bm-toggle-mouse)
-         (global-set-key (kbd "s-i bn") 'bm-next)
-         (global-set-key (kbd "s-i bp") 'bm-previous)
-         (global-set-key (kbd "s-i bt") 'bm-toggle)
-         (global-set-key (kbd "s-i bl") 'bm-show-all)
-         )
+  (setq bm-marker 'bm-marker-right)
+  (global-set-key (kbd "<left-fringe> <M-mouse-1>") 'bm-toggle-mouse)
+  (global-set-key (kbd "s-i bn") 'bm-next)
+  (global-set-key (kbd "s-i bp") 'bm-previous)
+  (global-set-key (kbd "s-i bt") 'bm-toggle)
+  (global-set-key (kbd "s-i bl") 'bm-show-all)
+  )
 (use-package helm-bm
   :ensure t
   )
@@ -489,99 +508,30 @@
   :bind ("C-=" . er/expand-region))
 
 (use-package change-inner
-             :ensure t
-             :config
-             :bind (("s-i ci" . change-inner)
-                    ("s-i co" . change-outer)
-                    )
-             )
+  :ensure t
+  :config
+  :bind (("s-i ci" . change-inner)
+         ("s-i co" . change-outer)
+         )
+  )
 
-(defmacro def-pairs (pairs)
-  "Define functions for pairing. PAIRS is an alist of (NAME . STRING)
-conses, where NAME is the function name that will be created and
-STRING is a single-character string that marks the opening character.
 
-  (def-pairs ((paren . \"(\")
-              (bracket . \"[\"))
+;; dired-narrow
+;; narrow dired to match filter
+(use-package dired-narrow
+  :ensure t
+  :bind (:map dired-mode-map
+              ("/" . dired-narrow)))
 
-defines the functions WRAP-WITH-PAREN and WRAP-WITH-BRACKET,
-respectively."
-  `(progn
-     ,@(loop for (key . val) in pairs
-             collect
-             `(defun ,(read (concat
-                             "wrap-with-"
-                             (prin1-to-string key)
-                             "s"))
-                  (&optional arg)
-                (interactive "p")
-                (sp-wrap-with-pair ,val)))))
 
-(def-pairs ((paren . "(")
-            (bracket . "[")
-            (brace . "{")
-            (single-quote . "'")
-            (double-quote . "\"")
-            (back-quote . "`")))
+(use-package key-chord
+  :ensure t
+  :config
+  (key-chord-mode 1)
+  (key-chord-define-global "hj"     'undo)
+  )
 
-(bind-keys
- :map smartparens-mode-map
- ;; ("C-M-a" . sp-beginning-of-sexp)
- ;; ("C-M-e" . sp-end-of-sexp)
 
- ("C-<down>" . sp-down-sexp)
- ("C-<up>"   . sp-up-sexp)
- ("M-<down>" . sp-backward-down-sexp)
- ("M-<up>"   . sp-backward-up-sexp)
-
- ("C-M-f" . sp-forward-sexp)
- ("C-M-b" . sp-backward-sexp)
-
- ("C-M-n" . sp-next-sexp)
- ("C-M-p" . sp-previous-sexp)
-
- ("C-S-f" . sp-forward-symbol)
- ("C-S-b" . sp-backward-symbol)
-
- ("C-<right>" . sp-forward-slurp-sexp)
- ("M-<right>" . sp-forward-barf-sexp)
- ("C-<left>"  . sp-backward-slurp-sexp)
- ("M-<left>"  . sp-backward-barf-sexp)
-
- ("C-M-t" . sp-transpose-sexp)
- ("C-M-k" . sp-kill-sexp)
- ("C-k"   . sp-kill-hybrid-sexp)
- ("M-k"   . sp-backward-kill-sexp)
- ("C-M-w" . sp-copy-sexp)
- ("C-M-d" . delete-sexp)
-
- ("M-<backspace>" . backward-kill-word)
- ("C-<backspace>" . sp-backward-kill-word)
- ([remap sp-backward-kill-word] . backward-kill-word)
-
- ("M-[" . sp-backward-unwrap-sexp)
- ("M-]" . sp-unwrap-sexp)
-
- ("C-x C-t" . sp-transpose-hybrid-sexp)
-
- ("C-c ("  . wrap-with-parens)
- ("C-c ["  . wrap-with-brackets)
- ("C-c {"  . wrap-with-braces)
- ("C-c '"  . wrap-with-single-quotes)
- ("C-c \"" . wrap-with-double-quotes)
- ("C-c _"  . wrap-with-underscores)
- ("C-c `"  . wrap-with-back-quotes))
-
-(defun sp-pair-curly-down-sexp (&optional arg)
-  (interactive "P")
-  (sp-restrict-to-pairs "{" 'sp-down-sexp))
-(defun sp-pair-curly-up-sexp (&optional arg)
-  (interactive "P")
-  (sp-restrict-to-pairs "}" 'sp-up-sexp))
-
-(define-key c++-mode-map (kbd "s-i }") (sp-restrict-to-pairs-interactive "{" 'sp-down-sexp))
-(define-key c++-mode-map (kbd "s-i {}") (sp-restrict-to-pairs-interactive "}" 'sp-up-sexp))
-(define-key c++-mode-map (kbd "s-i u") (sp-restrict-to-pairs-interactive "{" 'sp-backward-up-sexp))
 ;; My-Mode
 (defvar my-keys-minor-mode-map
   (let ((map (make-sparse-keymap)))
@@ -591,7 +541,7 @@ respectively."
     (define-key map (kbd "C-c SPC") 'ace-jump-mode)
     (define-key map (kbd "C-x SPC") 'rectangle-mark-mode)
     (global-set-key (kbd "C-c g") 'google-this-mode-submap)
-    (move-text-default-bindings)
+    ;; (move-text-default-bindings)
     map)
   "my-keys-minor-mode keymap.")
 
@@ -604,9 +554,50 @@ respectively."
 
 (my-mode 1)
 
-;; dired-narrow
-;; narrow dired to match filter
-(use-package dired-narrow
+(use-package which-key
   :ensure t
-  :bind (:map dired-mode-map
-              ("/" . dired-narrow)))
+  :config
+  (which-key-mode)
+  )
+
+(use-package zop-to-char
+  :ensure t
+  :config
+  (global-set-key (kbd "M-z") 'zop-up-to-char)
+  (global-set-key (kbd "M-Z") 'zop-to-char)
+  )
+
+(setq package-check-signature nil)
+(use-package undo-tree
+  :ensure t
+  :config
+  (undo-tree-mode)
+  (setq undo-tree-history-directory-alist
+	`((".*" . ,temporary-file-directory)))
+  (setq undo-tree-auto-save-history t)
+  (global-undo-tree-mode)
+
+  )
+
+
+(use-package crux
+  :ensure t)
+
+(use-package anzu
+  :ensure t
+  :config
+  (global-anzu-mode)
+  (global-set-key (kbd "M-%") 'anzu-query-replace)
+  (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+  )
+
+(use-package zenburn-theme
+  :ensure t
+  ;; :config
+  ;; (load-theme 'zenburn t)
+  )
+
+(use-package nlinum
+  :config
+  (global-nlinum-mode t)
+  )

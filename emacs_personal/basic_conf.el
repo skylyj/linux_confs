@@ -1,17 +1,19 @@
 ;;; package --- Summary
 ;;; Code:
 ;;; Commentary:
-;;; package --- Summary
+
 ;; 这样mac open file的时候不会重复打开frame了，始终在一个frame里面
+;; (load-theme 'wombat)
+(load-theme 'misterioso)
+(set-cursor-color "yellow")
+(setq make-backup-files nil)
 (setq ns-pop-up-frames nil)
 ;; (global-set-key [remap goto-line] 'goto-line-preview)
-(setq eshell-last-dir-ring-size 500)
-(exec-path-from-shell-initialize)
+;; (setq eshell-last-dir-ring-size 500)
 (add-hook 'sh-mode-hook 'flycheck-mode)
 
 (scroll-bar-mode -1)
-(setq-default smartparens-strict-mode nil)
-(add-hook 'dired-mode-hook 'dired-omit-mode)
+;(add-hook 'dired-mode-hook 'dired-omit-mode)
 ;; 这样可以使得compile window 优先是split-window-vertically
 (setq split-width-threshold nil)
 (setq split-height-threshold 0)
@@ -26,6 +28,7 @@
 (global-set-key (kbd "s-i ttl") 'toggle-truncate-lines)
 (global-set-key "\C-xf" 'helm-recentf)
 (global-set-key "\C-xg" 'magit-status)
+(global-set-key (kbd "C-x C-j") 'dired-jump)
 
 (global-set-key "\C-z" 'set-mark-command)
 (setq abbrev-file-name "~/.emacs.d/personal/.abbrev_defs") ;; 缺省的定义缩写的文件。
@@ -38,7 +41,7 @@
 ;; (display-time-mode 1)                   ; 显示时间。
 (show-paren-mode 1)                     ; 高亮显示匹配的括号。
 (icomplete-mode 1)            ; 给出用 M-x foo-bar-COMMAND 输入命令的提示。
-(setq x-select-enable-clipboard t)  ;用来和系统共享剪贴板
+(setq select-enable-clipboard t)  ;用来和系统共享剪贴板
 (setq confirm-kill-emacs 'yes-or-no-p)
 
 (transient-mark-mode t)
@@ -74,36 +77,31 @@
         (frame-parameter nil 'font)
         'han
         (font-spec :family "Hiragino Sans GB" ))))
-;; for forge
-(setq auth-sources '("~/.authinfo"))
 
-(with-eval-after-load 'magit
-  (require 'forge))
-
-(with-eval-after-load 'forge
-  (add-to-list 'forge-alist
-               '("gitlab.mobvista.com"
-                 "gitlab.mobvista.com/api/v4"
-                 "gitlab.mobvista.com"
-                 forge-gitlab-repository)))
-(setenv "JAVA_HOME" "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home")
-
-(projectile-register-project-type 'java '("pom.xml")
-				  :compile "mvn compile"
-				  :test "mvn test"
-				  :run "mvn package"
-				  :test-suffix "Test")
 (setq auto-save-default nil)
-;; (defalias 'search-other-window (read-kbd-macro "M-b C-s C-w C-x o C-s C-s"))
-;; (global-set-key (kbd "s-i so") 'search-other-window)
-
-;; (define-key c++-mode-map (kbd "M-{") (sp-restrict-to-pairs-interactive "{" 'sp-down-sexp))
-
-;; (defun sp-pair-curly-down-sexp (&optional arg)
-;;   (interactive "P")
-;;   (sp-restrict-to-pairs "{" 'sp-down-sexp))
 
 (setq whitespace-style '(tabs trailing lines tab-mark))
+
+(require 'package)
+(add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-and-compile
+  (setq use-package-always-ensure t
+        use-package-expand-minimally t))
+
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize))
+  )
+
 (provide 'basic_conf)
+
 ;;; basic_conf.el ends here
-(set-cursor-color "yellow")

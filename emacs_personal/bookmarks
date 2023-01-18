@@ -2,7 +2,22 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("service.go"
+(("prelude_emacs"
+ (filename . "~/prelude_emacs/")
+ (front-context-string . ".cache\n  -rw-r--")
+ (rear-context-string . "96 Jan 17 22:58 ")
+ (position . 258))
+("init.el"
+ (filename . "~/.emacs.d/init.el")
+ (front-context-string . "(load \"~/Github/")
+ (rear-context-string)
+ (position . 1))
+("各层实验类"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalCRModuleSDK.cpp")
+ (front-context-string . "free_test_v2_fp1")
+ (rear-context-string . "ampaign_layer, \"")
+ (position . 267))
+("service.go"
  (filename . "~/Gitlab/online/saas_dsp_lib/core/service.go")
  (front-context-string . "func (s *Service")
  (rear-context-string . "/ Register Func\n")
@@ -321,9 +336,9 @@
 #1=(#("sample-factory" 0 14
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/offline/sample-factory/")
-    (front-context-string . "run.sh\n  drwxr-x")
-    (rear-context-string . " Nov 14 14:43   ")
-    (position . 867))
+    (front-context-string . ".gitignore\n  drw")
+    (rear-context-string . "01 Jan  6 22:24 ")
+    (position . 452))
 #1=(#("Gitlab" 0 6
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/")

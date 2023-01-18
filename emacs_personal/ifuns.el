@@ -1,3 +1,7 @@
+;;; package --- Summary
+;;; Code:
+;;; Commentary:
+
 ;; ctags 使用的方法
 (setq path-to-ctags "/opt/homebrew/opt/ctags/bin/ctags")
 (defun create-tags (dir-name)
@@ -43,12 +47,3 @@
           (org-table-export (format "%s.csv" name) "orgtbl-to-csv")))))
 
 
-;; PYTHON CONFIG END
-;; 可以让imenu 平铺起来flat
-(defun python-imenu-use-flat-index
-    ()
-  (setq imenu-create-index-function
-        #'python-imenu-create-flat-index))
-
-(add-hook 'python-mode-hook
-          #'python-imenu-use-flat-index)

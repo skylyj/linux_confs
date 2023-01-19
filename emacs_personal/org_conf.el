@@ -267,21 +267,33 @@
 
   ;; Increase the size of various headings
   (require 'org-faces)
-  (set-face-attribute 'org-document-title nil :font "Menlo-16" :weight 'bold :height 1.3)
+  (set-face-attribute 'org-document-title nil :font "Menlo-15" :weight 'bold :height 1.6)
 (dolist (face '((org-level-1 . 1.2)
-                (org-level-2 . 1.1)
-                (org-level-3 . 1.05)
-                (org-level-4 . 1.0)
-                (org-level-5 . 1.1)
-                (org-level-6 . 1.1)
-                (org-level-7 . 1.1)
-                (org-level-8 . 1.1)))
-  (set-face-attribute (car face) nil :font "Menlo-16" :weight 'medium :height (cdr face)))
+                (org-level-2 . 1.05)
+                (org-level-3 . 1.0)
+                (org-level-4 . 0.9)
+                (org-level-5 . 0.9)
+                (org-level-6 . 0.9)
+                (org-level-7 . 0.9)
+                (org-level-8 . 0.9)))
+  (set-face-attribute (car face) nil :font "Menlo-15" :weight 'medium :height (cdr face)))
 
 ;; Make sure org-indent face is available
 (require 'org-indent)
 
 ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+(set-face-attribute 'fixed-pitch nil
+                    :font "Menlo-15"
+                    :weight 'light
+                    :height 1.0)
+
+;; Set the variable pitch face
+(set-face-attribute 'variable-pitch nil
+                    ;; :font "Cantarell"
+                    :font "Menlo-15"
+                    :height 1.0
+                    :weight 'light)
+
 (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
 (set-face-attribute 'org-table nil  :inherit 'fixed-pitch)
 (set-face-attribute 'org-formula nil  :inherit 'fixed-pitch)
@@ -305,3 +317,14 @@
 ;; '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
 ;; '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
   
+(require 'org-tempo)
+
+(add-to-list 'org-structure-template-alist '("sh" . "src sh"))
+(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("li" . "src lisp"))
+(add-to-list 'org-structure-template-alist '("sc" . "src scheme"))
+(add-to-list 'org-structure-template-alist '("ts" . "src typescript"))
+(add-to-list 'org-structure-template-alist '("py" . "src python"))
+(add-to-list 'org-structure-template-alist '("go" . "src go"))
+(add-to-list 'org-structure-template-alist '("yaml" . "src yaml"))
+(add-to-list 'org-structure-template-alist '("json" . "src json"))

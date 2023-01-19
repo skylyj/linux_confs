@@ -1,4 +1,5 @@
 ;; 自己手动安装的一些包
+;; (set-face-attribute 'fringe nil :background "grey")
 (add-to-list 'load-path (concat user-emacs-directory "/icollect/hideshowvis/" ))
 (require 'hideshowvis)
 
@@ -16,8 +17,8 @@
   (add-hook hook 'hideshowvis-enable))
 (hideshowvis-symbols)
 
-(add-to-list 'load-path (concat user-emacs-directory "/icollect/highlight-global/" ))
-(load "highlight-global")
+;; (add-to-list 'load-path (concat user-emacs-directory "/icollect/highlight-global/" ))
+;; (load "highlight-global")
 
 ;; (add-to-list 'load-path "~/Github/PrivateHub/linux_confs/emacs-jedi-direx/")
 ;; (add-hook 'python-mode-hook 'jedi:setup)

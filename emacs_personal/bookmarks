@@ -1,4 +1,4 @@
-;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
@@ -304,9 +304,10 @@
 #1=(#("featuremonitor" 0 14
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/offline/featuremonitor/")
-    (front-context-string . ".git\n  -rw-r--r-")
-    (rear-context-string . " Dec 12 14:40   ")
-    (position . 274))
+    (front-context-string . "package.sh\n  -rw")
+    (rear-context-string . "52 Dec 12 14:39 ")
+    (position . 608)
+    (last-modified 25545 1082 932024 0))
 #1=(#("meta-sample" 0 11
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/meta-sample/")

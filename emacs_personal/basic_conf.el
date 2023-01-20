@@ -176,3 +176,7 @@
   :bind (:map dired-mode-map
               ("," . dired-narrow))
   )
+
+(use-package dired-ranger
+  :ensure t)
+(server-start)

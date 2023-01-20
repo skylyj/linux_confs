@@ -13,7 +13,10 @@
 (add-hook 'sh-mode-hook 'flycheck-mode)
 
 (scroll-bar-mode -1)
-;(add-hook 'dired-mode-hook 'dired-omit-mode)
+(require 'dired-x)
+(setq dired-omit-files
+      (concat dired-omit-files "\\|^\\..+$"))
+(add-hook 'dired-mode-hook 'dired-omit-mode)
 ;; 这样可以使得compile window 优先是split-window-vertically
 (setq split-width-threshold nil)
 (setq split-height-threshold 0)

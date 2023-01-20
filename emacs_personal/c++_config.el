@@ -1,26 +1,28 @@
 (require 'cc-mode)
-(require 'semantic)
-(require 'semantic/sb)
-(require 'srecode)
-
-(add-hook 'c++-mode-hook
-          (lambda ()
-            (semantic-mode 1)
-            ;; (global-semanticdb-minor-mode 1)
-            ;; (global-semantic-idle-scheduler-mode 1)
-            ;; (global-semantic-idle-completions-mode 1)
-            (semantic-decoration-mode 1)
-            (semantic-highlight-func-mode 1)
-            (semantic-stickyfunc-mode -1)
-            ;; (global-semantic-decoration-mode 1)
-            ;; (global-semantic-highlight-func-mode 1)
-            ;; (global-semantic-stickyfunc-mode -1)
-            ;; (global-semantic-idle-summary-mode 1)
-            ;; (global-semantic-mru-bookmark-mode 1)
-            )
-          )
 (add-hook 'c++-mode-hook
           (lambda () (setq flycheck-clang-language-standard "c++11")))
+
+;; 关于semantic
+;; (require 'semantic)
+;; (require 'semantic/sb)
+;; (require 'srecode)
+
+;; (add-hook 'c++-mode-hook
+;;           (lambda ()
+;;             (semantic-mode 1)
+;;             ;; (global-semanticdb-minor-mode 1)
+;;             ;; (global-semantic-idle-scheduler-mode 1)
+;;             ;; (global-semantic-idle-completions-mode 1)
+;;             (semantic-decoration-mode 1)
+;;             (semantic-highlight-func-mode 1)
+;;             (semantic-stickyfunc-mode -1)
+;;             ;; (global-semantic-decoration-mode 1)
+;;             ;; (global-semantic-highlight-func-mode 1)
+;;             ;; (global-semantic-stickyfunc-mode -1)
+;;             ;; (global-semantic-idle-summary-mode 1)
+;;             ;; (global-semantic-mru-bookmark-mode 1)
+;;             )
+;;           )
 
 
 
@@ -109,13 +111,13 @@ respectively."
  ("C-c _"  . wrap-with-underscores)
  ("C-c `"  . wrap-with-back-quotes))
 
-;; (defun sp-pair-curly-down-sexp (&optional arg)
-;;   (interactive "P")
-;;   (sp-restrict-to-pairs "{" 'sp-down-sexp))
-;; (defun sp-pair-curly-up-sexp (&optional arg)
-;;   (interactive "P")
-;;   (sp-restrict-to-pairs "}" 'sp-up-sexp))
+(defun sp-pair-curly-down-sexp (&optional arg)
+  (interactive "P")
+  (sp-restrict-to-pairs "{" 'sp-down-sexp))
+(defun sp-pair-curly-up-sexp (&optional arg)
+  (interactive "P")
+  (sp-restrict-to-pairs "}" 'sp-up-sexp))
 
-;; (define-key c++-mode-map (kbd "s-i }") (sp-restrict-to-pairs-interactive "{" 'sp-down-sexp))
-;; (define-key c++-mode-map (kbd "s-i {}") (sp-restrict-to-pairs-interactive "}" 'sp-up-sexp))
-;; (define-key c++-mode-map (kbd "s-i u") (sp-restrict-to-pairs-interactive "{" 'sp-backward-up-sexp))
+(define-key c++-mode-map (kbd "s-i }") (sp-restrict-to-pairs-interactive "{" 'sp-down-sexp))
+(define-key c++-mode-map (kbd "s-i {}") (sp-restrict-to-pairs-interactive "}" 'sp-up-sexp))
+(define-key c++-mode-map (kbd "s-i u") (sp-restrict-to-pairs-interactive "{" 'sp-backward-up-sexp))

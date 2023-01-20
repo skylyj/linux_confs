@@ -2,7 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("rank_agent_mock.go"
+(("emacs_personal"
+ (filename . "~/Github/PrivateHub/linux_confs/emacs_personal/")
+ (front-context-string . "bookmarks\n  -rw-")
+ (rear-context-string . "34 Jan 19 17:20 ")
+ (position . 429)
+ (last-modified 25546 26367 837119 0))
+("rank_agent_mock.go"
  (filename . "~/Gitlab/online/saas_dsp_lib/process_unit/rank/saasrank_agent/rank_agent_mock.go")
  (front-context-string . "nCampaign(slotIn")
  (rear-context-string . "\n\n}\n\nfunc findWi")

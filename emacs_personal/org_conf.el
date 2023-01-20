@@ -229,11 +229,11 @@
         org-capture-bookmark nil)
 
   (setq org-modules
-    '(org-crypt
-        org-habit
-        org-bookmark
-        org-eshell
-        org-irc))
+	'(org-crypt
+          org-habit
+          org-bookmark
+          org-eshell
+          org-irc))
 
   (setq org-refile-targets '((nil :maxlevel . 1)
                              (org-agenda-files :maxlevel . 1)))
@@ -248,33 +248,28 @@
   (evil-define-key '(normal insert visual) org-mode-map (kbd "M-k") 'org-metaup)
 
   (org-babel-do-load-languages
-    'org-babel-load-languages
-    '((emacs-lisp . t)
-      ;; (ledger . t)
-      ))
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     ;; (ledger . t)
+     ))
 
   (push '("conf-unix" . conf-unix) org-src-lang-modes)
-)
-  ;; NOTE: Subsequent sections are still part of this use-package block!
+  )
+;; NOTE: Subsequent sections are still part of this use-package block!
 
 
 
-  (use-package org-superstar
-    :ensure t
+(use-package org-superstar
+  :ensure t
   :after org
   :hook (org-mode . org-superstar-mode)
   :custom
   (org-superstar-remove-leading-stars t)
   (org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●")))
 
-;; Replace list hyphen with dot
-;; (font-lock-add-keywords 'org-mode
-;;                         '(("^ *\\([-]\\) "
-;;                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-
-  ;; Increase the size of various headings
-  (require 'org-faces)
-  (set-face-attribute 'org-document-title nil :font "Menlo-15" :weight 'bold :height 1.6)
+;; Increase the size of various headings
+(require 'org-faces)
+(set-face-attribute 'org-document-title nil :font "Menlo-15" :weight 'bold :height 1.6)
 (dolist (face '((org-level-1 . 1.2)
                 (org-level-2 . 1.1)
                 (org-level-3 . 1.05)
@@ -284,6 +279,16 @@
                 (org-level-7 . 1.0)
                 (org-level-8 . 1.0)))
   (set-face-attribute (car face) nil :font "Menlo-15" :weight 'medium :height (cdr face)))
+
+;; (set-face-attribute 'org-level-1 nil
+;;                         :height 1.3
+;;                         :foreground "green")
+;; (set-face-attribute 'org-level-2 nil
+;;                         :height 1.2
+;;                         :foreground "green")
+;; (set-face-attribute 'org-level-3 nil
+;;                         :height 1.1
+;;                         :foreground "green")
 
 ;; Make sure org-indent face is available
 (require 'org-indent)
@@ -323,7 +328,7 @@
 ;; '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
 ;; '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
 ;; '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
-  
+
 (require 'org-tempo)
 
 (add-to-list 'org-structure-template-alist '("sh" . "src sh"))

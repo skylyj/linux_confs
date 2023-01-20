@@ -179,4 +179,6 @@
 
 (use-package dired-ranger
   :ensure t)
+
+;; emacs server, client 可以在终端使用 /Applications/Emacs\ 2.app/Contents/MacOS/bin/emacsclient ifuns.el &来启动
 (server-start)

@@ -2,7 +2,17 @@
 ;;; Code:
 ;;; Commentary:
 
-;; (require 'org)
+(require 'org)
+(defun my-tbl-export (name)
+  "Search for table named `NAME` and export."
+  (interactive "s")
+  (outline-show-all)
+  (let ((case-fold-search t))
+    (if (search-forward-regexp (concat "#\\+NAME: +" name) nil t)
+        (progn
+          (next-line)
+          (org-table-export (format "%s.csv" name) "orgtbl-to-csv")))))
+
 ;; (prelude-require-packages '(org-ac))
 ;; (org-ac/config-default)
 
@@ -167,7 +177,7 @@
 
 
 
-(require 'dash)
+;; (require 'dash)
 (defun todo-to-int (todo)
   (cl-first (-non-nil
              (mapcar (lambda (keywords)

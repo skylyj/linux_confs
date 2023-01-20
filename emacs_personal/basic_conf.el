@@ -32,7 +32,15 @@
 
 (global-set-key "\C-z" 'set-mark-command)
 (setq abbrev-file-name "~/.emacs.d/personal/.abbrev_defs") ;; 缺省的定义缩写的文件。
-(setq bookmark-default-file "~/.emacs.d/personal/bookmarks") ;; 缺省书签文件的路径及文件名。
+(setq my/savefile-dir "~/.emacs.d/personal/")
+(setq bookmark-default-file (expand-file-name "bookmarks" my/savefile-dir)) ;; 缺省书签文件的路径及文件名。
+
+;; save recent files
+(require 'recentf)
+(setq recentf-save-file (expand-file-name "recentf" my/savefile-dir)
+      recentf-max-saved-items 500
+      recentf-max-menu-items 15
+      recentf-auto-cleanup 'never)
 
 (global-font-lock-mode 1)               ; 开启语法高亮。
 (auto-compression-mode 1)               ; 打开压缩文件时自动解压缩。

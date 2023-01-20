@@ -18,10 +18,14 @@
 ;; (add-hook 'remember-mode-hook 'org-remember-apply-template)
 ;; (define-key global-map "\C-cr" 'org-remember)
 ;; ;(define-key global-map "\C-cl" 'org-store-link)
-;; ;(define-key global-map "\C-ca" 'org-agenda)
-
-;; ;; (setq org-agenda-files (list "~/idropbox/Documents/Org/Work/Baidu/baidu.org"
-;; ;;                              "~/idropbox/Documents/Org/Life/jia_config.org"))
+(setq org-agenda-files (list
+			"~/Github/PrivateHub/org/Org/todo/tech_todo.org"
+			"~/Github/PrivateHub/org/Org/Work/Mobvista/Projects/roas.org"
+			"~/Github/PrivateHub/org/Org/todo/home_todo.org"
+			"~/Github/PrivateHub/org/Org/todo/program_todo.org"
+			))
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
 
 ;; (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 ;; (setq org-hide-leading-stars t)
@@ -90,9 +94,9 @@
 
 
 
-
-;; (require 'htmlize)
-;; (setq org-src-fontify-natively t)
+(use-package htmlize
+  :ensure t)
+(setq org-src-fontify-natively t)
 
 ;; lianyijiang focus
 ;; 代码高亮
@@ -101,6 +105,9 @@
 ;;   :config
 ;;   (setq org-html-htmlize-output-type 'css)
 ;;   )
+(require 'ox-html)
+(setq org-html-htmlize-output-type 'css)
+
 ;; ;;Org Tempo expands snippets to structures defined in org-structure-template-alist and org-tempo-keywords-alist. For example, < s TAB creates a code block.
 ;; (require 'org-tempo)
 ;; (org-babel-do-load-languages
@@ -269,13 +276,13 @@
   (require 'org-faces)
   (set-face-attribute 'org-document-title nil :font "Menlo-15" :weight 'bold :height 1.6)
 (dolist (face '((org-level-1 . 1.2)
-                (org-level-2 . 1.05)
-                (org-level-3 . 1.0)
-                (org-level-4 . 0.9)
-                (org-level-5 . 0.9)
-                (org-level-6 . 0.9)
-                (org-level-7 . 0.9)
-                (org-level-8 . 0.9)))
+                (org-level-2 . 1.1)
+                (org-level-3 . 1.05)
+                (org-level-4 . 1.0)
+                (org-level-5 . 1.0)
+                (org-level-6 . 1.0)
+                (org-level-7 . 1.0)
+                (org-level-8 . 1.0)))
   (set-face-attribute (car face) nil :font "Menlo-15" :weight 'medium :height (cdr face)))
 
 ;; Make sure org-indent face is available
@@ -328,3 +335,24 @@
 (add-to-list 'org-structure-template-alist '("go" . "src go"))
 (add-to-list 'org-structure-template-alist '("yaml" . "src yaml"))
 (add-to-list 'org-structure-template-alist '("json" . "src json"))
+
+(require 'color)
+(set-face-attribute 'org-block nil :background
+                    (color-lighten-name
+                     (face-attribute 'default :background) 50))
+(set-face-attribute 'org-block-begin-line  nil :background
+                    (color-lighten-name
+                     (face-attribute 'default :background) 50))
+
+(set-face-attribute 'org-block-end-line  nil :background
+                    (color-lighten-name
+                     (face-attribute 'default :background) 50))
+
+;; (custom-set-faces
+;;  '(org-block-begin-line
+;;    ((t (:underline "#A7A6AA" :foreground "#008ED1" :background "lightgreen" :extend t))))
+;;  ;; '(org-block
+;;  ;;   ((t (:background "#EFF0F1" :extend t))))
+;;  '(org-block-end-line
+;;    ((t (:overline "#A7A6AA" :foreground "#008ED1" :background "green" :extend t))))
+;;  )

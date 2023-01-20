@@ -163,11 +163,28 @@
   (global-set-key (kbd "C-c C--") 'evil-numbers/dec-at-pt-incremental)
   )
 
+(use-package doom-themes
+  :ensure t)
+
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode)
   :config
   (setq doom-theme 'doom-city-lights)
+  :custom-face
+  (mode-line ((t (:height 1.0))))
+  (mode-line-inactive ((t (:height 1.0))))
+  :custom
+  (doom-modeline-height 18)
+  (doom-modeline-bar-width 10)
+  (doom-modeline-lsp t)
+  (doom-modeline-github t)
+  (doom-modeline-mu4e nil)
+  (doom-modeline-irc t)
+  ;; (doom-modeline-minor-modes t)
+  ;; (doom-modeline-persp-name nil)
+  (doom-modeline-buffer-file-name-style 'truncate-except-project)
+  (doom-modeline-major-mode-icon t)  
   )
 
 (use-package all-the-icons
@@ -224,6 +241,8 @@
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
   (global-unset-key (kbd "C-x c"))
   (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "s-y") 'helm-show-kill-ring)
+
   (global-set-key (kbd "C-x b") 'helm-mini)
   (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
   (global-set-key (kbd "C-x C-f") 'helm-find-files)
@@ -619,3 +638,24 @@
     :config
     (which-key-mode))
 
+(use-package embrace
+  :ensure t
+  :config
+  (global-set-key (kbd "C-,") #'embrace-commander)
+  )
+
+(use-package browse-kill-ring
+  :disabled
+  :ensure t
+  :config
+  (browse-kill-ring-default-keybindings)
+  (global-set-key (kbd "s-y") 'browse-kill-ring)
+  ;; 有了helm-show-kill-ring 就够用了
+  )
+
+(use-package gnuplot
+  :ensure t)
+(use-package gnuplot-mode
+  :ensure t)
+(use-package diminish
+  :ensure t)

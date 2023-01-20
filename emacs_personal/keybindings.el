@@ -26,6 +26,8 @@
 
 (global-set-key (kbd "s-i fs") 'my/find-ssh-custom-file)
 (global-set-key (kbd "s-i fz") 'my/find-zshell-custom-file)
+(global-set-key (kbd "s-i tf") 'transpose-frame)
+(global-set-key (kbd "s-i rf") 'rotate-frame)
 
 
 (use-package crux

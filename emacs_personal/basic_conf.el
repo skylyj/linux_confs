@@ -182,3 +182,25 @@
 
 ;; emacs server, client 可以在终端使用 /Applications/Emacs\ 2.app/Contents/MacOS/bin/emacsclient ifuns.el &来启动
 (server-start)
+
+;; tramp
+;; (setq recentf-exclude `(,tramp-file-name-regexp
+;;                         "COMMIT_EDITMSG")
+;;       tramp-auto-save-directory temporary-file-directory
+;;       backup-directory-alist (list (cons tramp-file-name-regexp nil)))
+;; (defun my/project-remember-advice (fn pr &optional no-write)
+;;   (let* ((remote? (file-remote-p (project-root pr)))
+;;          (no-write (if remote? t no-write)))
+;;     (funcall fn pr no-write)))
+
+;; (advice-add 'project-remember-project :around
+;;             'my/project-remember-advice)
+;; ;; (setq tramp-verbose 10); 默认是 3
+;; (setq tramp-default-method "ssh")
+
+;; (setq remote-file-name-inhibit-cache nil)
+;; (setq vc-ignore-dir-regexp
+;;       (format "%s\\|%s"
+;;                     vc-ignore-dir-regexp
+;;                     tramp-file-name-regexp))
+;; (setq tramp-verbose 1)

@@ -23,11 +23,24 @@
     )
   )
 
+(defun my/find-python-custom-file ()
+  "Edit the `ssh/custom-file', in another window."
+  (interactive)
+  (let ((zshell-custom-file "~/.ipython/profile_default/startup/ipython_init.py"))
+    (find-file-other-window zshell-custom-file)
+    (message (format "opening %s" zshell-custom-file))
+    )
+  )
+
+
 
 (global-set-key (kbd "s-i fs") 'my/find-ssh-custom-file)
 (global-set-key (kbd "s-i fz") 'my/find-zshell-custom-file)
+(global-set-key (kbd "s-i fp") 'my/find-python-custom-file)
 (global-set-key (kbd "s-i tf") 'transpose-frame)
 (global-set-key (kbd "s-i rf") 'rotate-frame)
+(global-set-key (kbd "s-i ba") 'python-nav-beginning-of-block)
+(global-set-key (kbd "s-i be") 'python-nav-end-of-block)
 
 
 (use-package crux

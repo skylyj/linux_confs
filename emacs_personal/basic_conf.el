@@ -197,10 +197,30 @@
 ;;             'my/project-remember-advice)
 ;; ;; (setq tramp-verbose 10); 默认是 3
 ;; (setq tramp-default-method "ssh")
-
 ;; (setq remote-file-name-inhibit-cache nil)
 ;; (setq vc-ignore-dir-regexp
 ;;       (format "%s\\|%s"
 ;;                     vc-ignore-dir-regexp
 ;;                     tramp-file-name-regexp))
 ;; (setq tramp-verbose 1)
+;; (use-package helm-dired-history
+;;   :ensure t
+;;   :config
+;;   (require 'savehist)
+;;   (add-to-list 'savehist-additional-variables 'helm-dired-history-variable)
+;;   (savehist-mode 1)
+
+;;   (with-eval-after-load 'dired
+;;     (require 'helm-dired-history) 
+;;     ;; if you are using ido,you'd better disable ido for dired
+;;     ;; (define-key (cdr ido-minor-mode-map-entry) [remap dired] nil) ;in ido-setup-hook
+;;     (define-key dired-mode-map "," 'dired))  
+;;   )
+
+;; (use-package devdocs
+;;   :ensure t
+;;   :config
+;;   (global-set-key (kbd "C-h D") 'devdocs-lookup)
+;;   )
+(use-package devdocs-browser
+  :ensure t)

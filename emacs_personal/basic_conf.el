@@ -224,3 +224,12 @@
 ;;   )
 (use-package devdocs-browser
   :ensure t)
+
+(use-package docker
+  :ensure t
+  :bind ("C-c d" . docker))
+
+(use-package vterm
+    :ensure t)
+
+(use-package multi-vterm :ensure t)

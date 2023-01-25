@@ -50,6 +50,7 @@
 (global-set-key (kbd "s-i ba") 'python-nav-beginning-of-block)
 (global-set-key (kbd "s-i be") 'python-nav-end-of-block)
 (global-set-key (kbd "s-i dt") 'my/dired-tmp-dir)
+(global-set-key (kbd "s-i er") 'eglot-rename)
 
 
 (use-package crux

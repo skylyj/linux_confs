@@ -28,6 +28,8 @@
 
 (use-package smartparens
   :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'smartparens-mode)
   )
 (use-package smartparens-config
   :ensure smartparens

@@ -15,7 +15,7 @@
 (scroll-bar-mode -1)
 (require 'dired-x)
 (setq dired-omit-files
-      (concat dired-omit-files "\\|^\\..+$"))
+      (concat dired-omit-files "\\|^\\..+$" "^_.+$"))
 (add-hook 'dired-mode-hook 'dired-omit-mode)
 ;; 这样可以使得compile window 优先是split-window-vertically
 (setq split-width-threshold nil)

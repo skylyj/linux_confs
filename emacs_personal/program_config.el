@@ -18,8 +18,9 @@
   (define-key company-active-map (kbd "M-<") 'company-select-first)
   (define-key company-active-map (kbd "M->") 'company-select-last)
   :custom
-  (company-minimum-prefix-length 1)
+  (company-minimum-prefix-length 3)
   (company-idle-delay 0.0))
+
 ;; (custom-set-faces
 ;;  ;; custom-set-faces was added by Custom.
 ;;  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -68,3 +69,5 @@
 ;;   --java-opt -Xms100m \
 ;;   org.scalameta:metals_2.13:0.11.10 \
 ;;   -o /usr/local/bin/metals-emacs -f
+
+;; yasnippet使用

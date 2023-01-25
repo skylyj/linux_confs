@@ -110,8 +110,6 @@
   (global-auto-highlight-symbol-mode t)
   )
 
-(add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
-(add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
 
 (use-package projectile-rails
   :ensure t
@@ -124,6 +122,9 @@
   :ensure t
   :config
   (yas-global-mode 1)
+  )
+(use-package yasnippet-snippets
+  :ensure t
   )
 
 ;; enable a more powerful jump back function from ace jump mode
@@ -239,10 +240,8 @@
   (setq locate-command "mdfind")
   ;; (setq helm-follow-mode-persistent t)
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
-  (global-unset-key (kbd "C-x c"))
   (global-set-key (kbd "M-x") 'helm-M-x)
-  (global-set-key (kbd "s-y") 'helm-show-kill-ring)
-
+  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
   (global-set-key (kbd "C-x b") 'helm-mini)
   (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
   (global-set-key (kbd "C-x C-f") 'helm-find-files)

@@ -32,6 +32,14 @@
     )
   )
 
+(defun my/dired-tmp-dir ()
+  "Edit the `ssh/custom-file', in another window."
+  (interactive)
+  (let ((tmp-dir "~/tmp/"))
+    (dired tmp-dir)
+    (message (format "opening %s" tmp-dir))
+    )
+  )
 
 
 (global-set-key (kbd "s-i fs") 'my/find-ssh-custom-file)
@@ -41,6 +49,7 @@
 (global-set-key (kbd "s-i rf") 'rotate-frame)
 (global-set-key (kbd "s-i ba") 'python-nav-beginning-of-block)
 (global-set-key (kbd "s-i be") 'python-nav-end-of-block)
+(global-set-key (kbd "s-i dt") 'my/dired-tmp-dir)
 
 
 (use-package crux
@@ -50,10 +59,8 @@
   (global-set-key (kbd "M-o") 'crux-smart-open-line)
   (global-set-key [(control shift return)] 'crux-smart-open-line-above)
   (global-set-key (kbd "C-c n") 'crux-cleanup-buffer-or-region)
-  (global-set-key (kbd "C-c f")  'crux-recentf-find-file)
   (global-set-key (kbd "C-M-z") 'crux-indent-defun)
   (global-set-key (kbd "C-c u") 'crux-view-url)
-  (global-set-key (kbd "C-c e") 'crux-eval-and-replace)
   (global-set-key (kbd "C-c s") 'crux-swap-windows)
   (global-set-key (kbd "C-c D") 'crux-delete-file-and-buffer)
   (global-set-key (kbd "C-c d") 'crux-duplicate-current-line-or-region)

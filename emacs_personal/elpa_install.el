@@ -39,7 +39,10 @@
   (setq dashboard-startup-banner 'official) ;; 也可以自定义图片
   (setq dashboard-items '((recents  . 15)   ;; 显示多少个最近文件
 			  (bookmarks . 5)  ;; 显示多少个最近书签
-			  (projects . 10))) ;; 显示多少个最近项目
+			  (projects . 5)
+			  (agenda . 5)
+                          (registers . 5)
+			  )) ;; 显示多少个最近项目
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
   (dashboard-setup-startup-hook))
@@ -172,6 +175,16 @@
   :hook (after-init . doom-modeline-mode)
   :config
   (setq doom-theme 'doom-city-lights)
+  (setq doom-modeline-env-version t)
+  (setq doom-modeline-env-enable-python t)
+  (setq doom-modeline-env-enable-ruby t)
+  (setq doom-modeline-env-enable-perl t)
+  (setq doom-modeline-env-enable-go t)
+  (setq doom-modeline-env-enable-elixir t)
+  (setq doom-modeline-env-enable-rust t)
+  (setq doom-modeline-buffer-encoding t)
+  (setq doom-modeline-workspace-name t)
+
   :custom-face
   (mode-line ((t (:height 1.0))))
   (mode-line-inactive ((t (:height 1.0))))
@@ -183,6 +196,8 @@
   (doom-modeline-mu4e nil)
   (doom-modeline-irc t)
   (doom-modeline-buffer-encoding t)
+  (doom-modeline-battery t)
+  
   ;; (doom-modeline-minor-modes t)
   ;; (doom-modeline-persp-name nil)
   (doom-modeline-buffer-file-name-style 'truncate-except-project)

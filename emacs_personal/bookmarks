@@ -409,9 +409,10 @@
 #1=(#("itools" 0 6
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/Private/itools/")
-    (front-context-string . "README.md\n  drwx")
-    (rear-context-string . "16 Sep  6 19:57 ")
-    (position . 426))
+    (front-context-string . ".DS_Store\n  drwx")
+    (rear-context-string . "96 Nov  3 08:37 ")
+    (position . 94)
+    (last-modified 25554 40178 494763 0))
 #1=(#("jacobi" 0 6
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/offline/jacobi/")

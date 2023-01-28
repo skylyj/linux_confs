@@ -2,7 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("emacs_personal"
+(("dot_files"
+ (filename . "~/Github/PrivateHub/linux_confs/dot_files/")
+ (front-context-string . ".ctags\n  -rw-r--")
+ (rear-context-string . "622  1 18 19:30 ")
+ (position . 110)
+ (last-modified 25555 13979 996516 0))
+("emacs_personal"
  (filename . "~/Github/PrivateHub/linux_confs/emacs_personal/")
  (front-context-string . "bookmarks\n  -rw-")
  (rear-context-string . "34 Jan 19 17:20 ")

@@ -668,3 +668,5 @@
   :ensure t)
 (use-package diminish
   :ensure t)
+(use-package helm-chrome
+  :ensure t)

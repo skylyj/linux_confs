@@ -32,6 +32,7 @@
 			"~/Github/PrivateHub/org/Org/todo/tech_todo.org"
 			"~/Github/PrivateHub/org/Org/Work/Mobvista/Projects/roas.org"
 			"~/Github/PrivateHub/org/Org/todo/home_todo.org"
+			"/Users/mobvista/Github/PrivateHub/org/Org/Work/Mobvista/mob_todo.org"
 			"~/Github/PrivateHub/org/Org/todo/program_todo.org"
 			))
 (define-key global-map "\C-ca" 'org-agenda)

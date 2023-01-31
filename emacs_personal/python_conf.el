@@ -108,3 +108,5 @@
 (when (executable-find "ipython")
   (setq python-shell-interpreter "ipython"))
 
+(use-package ein
+  :ensure t)

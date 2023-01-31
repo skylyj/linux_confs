@@ -2,7 +2,67 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("dot_files"
+(("render 负责来做渲染"
+ (filename . "~/Gitlab/online/pioneer/internal/app/sdk_render/controller/sdk_render_controller.go")
+ (front-context-string . "package controll")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25558 14337 826880 0))
+("bid controller 负责和下游merger的交互"
+ (filename . "~/Gitlab/online/pioneer/internal/app/bid/controller/bid_controller.go")
+ (front-context-string)
+ (rear-context-string . "ion).Inc()\n	}\n}\n")
+ (position . 13657)
+ (last-modified 25558 14291 761535 0))
+("pioneer"
+ (filename . "~/Gitlab/online/pioneer/")
+ (front-context-string . ".DS_Store\n  drwx")
+ (rear-context-string . "40 Jan 29 16:48 ")
+ (position . 95)
+ (last-modified 25558 13017 421863 0))
+("dsp"
+ (filename . "~/Gitlab/online/dsp/")
+ (front-context-string . ".gitmodules\n  -r")
+ (rear-context-string . " 0 Jan 29 16:22 ")
+ (position . 210)
+ (last-modified 25558 12374 505448 0))
+("No_2"
+ (filename . "~/Gitlab/online/saas_dsp_lib/process_unit/rank/saasrank_agent/saasrank_agent.go")
+ (front-context-string . "func (h *SaasRan")
+ (rear-context-string . "--------------\n\n")
+ (position . 11364)
+ (last-modified 25558 12084 694376 0))
+("NO_1"
+ (filename . "~/Gitlab/online/saas_dsp_lib/process_unit/fillResp/base_finish_handler.go")
+ (front-context-string . "FillSaasDspRespo")
+ (rear-context-string . " 状态\n		if err := ")
+ (position . 1358)
+ (last-modified 25558 12045 640723 0))
+("entry point"
+ (filename . "~/Gitlab/online/saas_dsp_lib/process_unit/fillResp/base_finish_handler.go")
+ (front-context-string . "seHandler) Proce")
+ (rear-context-string . " *BaseFillRespon")
+ (position . 894)
+ (last-modified 25558 12009 178860 0))
+("MNormalCRModuleSDK.cpp"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalCRModuleSDK.cpp")
+ (front-context-string . "rmalCRModuleSDK:")
+ (rear-context-string . "r\n{\n    void MNo")
+ (position . 123)
+ (last-modified 25558 9045 789810 0))
+("tech_todoorg"
+ (filename . "~/Github/PrivateHub/org/Org/Program/pandas.org")
+ (front-context-string)
+ (rear-context-string . ");\n\n\nhb Request\n")
+ (position . 14413)
+ (last-modified 25557 60533 584551 0))
+("zsh_plugins"
+ (filename . "~/.oh-my-zsh/plugins/")
+ (front-context-string . "  /Users/mobvist")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25555 15490 196137 0))
+("dot_files"
  (filename . "~/Github/PrivateHub/linux_confs/dot_files/")
  (front-context-string . ".ctags\n  -rw-r--")
  (rear-context-string . "622  1 18 19:30 ")
@@ -31,9 +91,10 @@
  (position . 342))
 ("conv_saasrank_to_saasdsp_response.go"
  (filename . "~/Gitlab/online/saas_dsp_lib/process_unit/rank/stdrank_conv/conv_saasrank_to_saasdsp_response.go")
- (front-context-string . "OfferInfo(slotTy")
- (rear-context-string . "gnInfo\nfunc Fill")
- (position . 8454))
+ (front-context-string . "nse(saasDspRespo")
+ (rear-context-string . "ponseToSaasRespo")
+ (position . 3558)
+ (last-modified 25558 11552 867950 0))
 ("base_finish_handler.go"
  (filename . "~/Gitlab/online/saas_dsp_lib/process_unit/fillResp/base_finish_handler.go")
  (front-context-string . "s(baseCtx *dsp_c")
@@ -200,10 +261,11 @@
  (rear-context-string . "08\n** roas 重要结果\n")
  (position . 52))
 ("roas"
- (filename . "~/Gitlab/offline/sample-factory/azkaban/saas_sample_generate/roas/")
- (front-context-string . "2batch_run.sh\n  ")
- (rear-context-string . " Jan  5 22:08   ")
- (position . 262))
+ (filename . "~/Gitlab/offline/ltv_model/roas/")
+ (front-context-string . "config\n  -rw-r--")
+ (rear-context-string . "88 Jan 30 10:49 ")
+ (position . 557)
+ (last-modified 25559 15025 145602 0))
 ("elpa_install.el"
  (filename . "~/Github/PrivateHub/linux_confs/emacs_personal/elpa_install.el")
  (front-context-string . ")\n\n(use-package ")
@@ -418,7 +480,7 @@
     (front-context-string . ".DS_Store\n  drwx")
     (rear-context-string . "96 Nov  3 08:37 ")
     (position . 94)
-    (last-modified 25554 40178 494763 0))
+    (last-modified 25555 17674 521986 0))
 #1=(#("jacobi" 0 6
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/offline/jacobi/")

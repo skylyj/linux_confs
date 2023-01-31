@@ -59,7 +59,10 @@
 (use-package eglot
   :pin melpa-stable
   ;; (optional) Automatically start metals for Scala files.
-  :hook (scala-mode . eglot-ensure))
+  :hook (scala-mode . eglot-ensure)
+  :config
+  (setq eldoc-echo-area-use-multiline-p nil)
+  )
 
 ;;需要安装metals-emacs
 ;; sudo coursier bootstrap \

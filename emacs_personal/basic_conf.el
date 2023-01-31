@@ -241,3 +241,5 @@
   :ensure t)
 (use-package docker-tramp
   :ensure t)
+
+(add-hook 'dired-after-readin-hook 'hl-line-mode)

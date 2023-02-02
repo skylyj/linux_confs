@@ -2,7 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("render 负责来做渲染"
+(("多队列"
+ (filename . "~/Gitlab/online/saas_dsp/src/biz/multiple_queue_recall.cpp")
+ (front-context-string . "on(const RecallG")
+ (rear-context-string . "formOfferSelecti")
+ (position . 3053)
+ (last-modified 25561 787 666172 0))
+("render 负责来做渲染"
  (filename . "~/Gitlab/online/pioneer/internal/app/sdk_render/controller/sdk_render_controller.go")
  (front-context-string . "package controll")
  (rear-context-string)
@@ -313,12 +319,6 @@
     (front-context-string . "含义              ")
     (rear-context-string . "\n   | key     | ")
     (position . 3451))
-#1=(#("ltv_model.org" 0 13
-      (bmkp-full-record #1#))
-    (filename . "~/Gitlab/offline/ltv_model/ltv_model.org")
-    (front-context-string . " | 313896781 |\n ")
-    (rear-context-string . "子 |\n | 378587655")
-    (position . 1180))
 #1=(#("offline" 0 7
       (bmkp-full-record #1#))
     (end-position . 1)

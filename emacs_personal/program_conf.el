@@ -62,6 +62,7 @@
   :hook (scala-mode . eglot-ensure)
   :config
   (setq eldoc-echo-area-use-multiline-p nil)
+  (add-hook 'eglot--managed-mode-hook (lambda () (flymake-mode -1)))
   )
 
 ;;需要安装metals-emacs

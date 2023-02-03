@@ -94,7 +94,7 @@ respectively."
  ("C-k"   . sp-kill-hybrid-sexp)
  ("M-k"   . sp-backward-kill-sexp)
  ("C-M-w" . sp-copy-sexp)
- ("C-M-d" . delete-sexp)
+ ("C-M-d" . sp-delete-sexp)
 
  ("M-<backspace>" . backward-kill-word)
  ("C-<backspace>" . sp-backward-kill-word)
@@ -121,7 +121,7 @@ respectively."
   (sp-restrict-to-pairs "}" 'sp-up-sexp))
 
 (define-key c++-mode-map (kbd "s-i }") (sp-restrict-to-pairs-interactive "{" 'sp-down-sexp))
-(define-key c++-mode-map (kbd "s-i {}") (sp-restrict-to-pairs-interactive "}" 'sp-up-sexp))
+(define-key c++-mode-map (kbd "s-i {") (sp-restrict-to-pairs-interactive "}" 'sp-up-sexp))
 (define-key c++-mode-map (kbd "s-i u") (sp-restrict-to-pairs-interactive "{" 'sp-backward-up-sexp))
 
 ;; for cmakelist.txt

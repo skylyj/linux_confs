@@ -184,7 +184,7 @@
   (setq doom-modeline-env-enable-rust t)
   (setq doom-modeline-buffer-encoding t)
   (setq doom-modeline-workspace-name t)
-
+  (setq doom-modeline-buffer-file-name-style 'buffer-name)
   :custom-face
   (mode-line ((t (:height 1.0))))
   (mode-line-inactive ((t (:height 1.0))))
@@ -200,7 +200,6 @@
   
   ;; (doom-modeline-minor-modes t)
   ;; (doom-modeline-persp-name nil)
-  (doom-modeline-buffer-file-name-style 'truncate-except-project)
   (doom-modeline-major-mode-icon t)  
   )
 

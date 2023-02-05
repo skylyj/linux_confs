@@ -2,7 +2,19 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("多队列"
+(("submit_spark_k8s.sh"
+ (filename . "~/Gitlab/offline/ml-docs/mindalpha/example/criteo/submit_spark_k8s.sh")
+ (front-context-string . "#!/bin/env bash\n")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25566 27237 667895 0))
+("ml-docs"
+ (filename . "~/Gitlab/offline/ml-docs/")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . "84 Feb  4 22:22 ")
+ (position . 94)
+ (last-modified 25566 27203 24383 0))
+("多队列"
  (filename . "~/Gitlab/online/saas_dsp/src/biz/multiple_queue_recall.cpp")
  (front-context-string . "on(const RecallG")
  (rear-context-string . "formOfferSelecti")

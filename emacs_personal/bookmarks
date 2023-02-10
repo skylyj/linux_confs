@@ -2,7 +2,49 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("submit_spark_k8s.sh"
+(("quota config"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalProtocolSDK.cpp")
+ (front-context-string . "est_quota_config")
+ (rear-context-string . "olSDK::parse_abt")
+ (position . 30774)
+ (last-modified 25572 25529 391146 0))
+("NormalLayer::create_experiment_instance"
+ (filename . "~/Gitlab/online/saas_dsp/src/NormalLayer.cpp")
+ (front-context-string . "experiment_insta")
+ (rear-context-string . "alLayer::create_")
+ (position . 3662)
+ (last-modified 25571 49019 389677 0))
+("RoasModelLayer"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalProtocolSDK.cpp")
+ (front-context-string . "Layer\", experime")
+ (rear-context-string . "Domain/RoasModel")
+ (position . 23149)
+ (last-modified 25571 48726 98241 0))
+("abtest"
+ (filename . "~/Gitlab/online/saas_dsp/src/MNormalProtocolSDK.cpp")
+ (front-context-string . "RoasEvaluationLa")
+ (rear-context-string . "Layer/ExpDomain/")
+ (position . 8747)
+ (last-modified 25571 48636 141660 0))
+("roas_bid_ratio"
+ (filename . "~/Gitlab/offline/offline_routine_job/SDK/bidding/roas/roas_bid_ratio/")
+ (front-context-string . "job/v1\n  -rwxr-x")
+ (rear-context-string . "88 Feb  8 16:46 ")
+ (position . 258)
+ (last-modified 25571 25001 337908 0))
+("mob_todo.org"
+ (filename . "~/Gitlab/online/protocols/proto/core_model/trace_info.proto")
+ (front-context-string . "    ranker.meta_")
+ (rear-context-string . "fferTraceInfo {\n")
+ (position . 656)
+ (last-modified 25571 95 240076 0))
+("detailed_features"
+ (filename . "~/Gitlab/online/saas_dsp/src/CampaignLayerForFeatureDump.cpp")
+ (front-context-string . "detailed_feature")
+ (rear-context-string . "(\"[feature_dump ")
+ (position . 658)
+ (last-modified 25569 56314 191632 0))
+("submit_spark_k8s.sh"
  (filename . "~/Gitlab/offline/ml-docs/mindalpha/example/criteo/submit_spark_k8s.sh")
  (front-context-string . "#!/bin/env bash\n")
  (rear-context-string)

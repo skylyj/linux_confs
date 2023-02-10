@@ -282,6 +282,7 @@
   ;; Have helm automaticaly resize the window
   (helm-autoresize-mode 1)
   (setq rtags-use-helm t)
+  (setq helm-buffer-max-length nil)
   )
 
 ;; (use-package helm-config
@@ -669,3 +670,16 @@
   :ensure t)
 (use-package helm-chrome
   :ensure t)
+(use-package yaml-mode
+  :ensure t
+  :config
+ (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))  
+  )
+
+
+(use-package visual-regexp
+  :ensure t)
+(use-package visual-regexp-steroids
+  :ensure t
+  (define-key global-map (kbd "C-c q") 'vr/query-replace)
+  )

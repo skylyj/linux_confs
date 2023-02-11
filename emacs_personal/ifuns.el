@@ -35,4 +35,28 @@
     (switch-to-buffer (other-buffer buf))
     (switch-to-buffer-other-window buf)))
 
+;; https://gitlab.mobvista.com/ad_algo/ltv_model/-/blob/main/setup.py    
+;; git@gitlab.mobvista.com:ad_algo/ltv_model.git
+
+
+(defun clipboard/set (astring)
+  "Copy a string to clipboard"
+   (with-temp-buffer
+    (insert astring)
+    (clipboard-kill-region (point-min) (point-max))))
+
+(defun my/share-git ()
+  "share a git url for current buffer."
+  (interactive)
+  (progn
+    (setq relative-file-name (file-relative-name buffer-file-name (projectile-project-root)))
+    (setq icmd (format "python ~/bin/share_git.py %s" relative-file-name))
+    (setq fin-path (substring 
+		    (shell-command-to-string icmd) 
+		    0 -1))
+    (clipboard/set fin-path)
+    (message (format "sharing-path is %s" fin-path))
+    (browse-url fin-path)
+    )
+  )
 

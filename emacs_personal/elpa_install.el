@@ -681,5 +681,6 @@
   :ensure t)
 (use-package visual-regexp-steroids
   :ensure t
+  :config
   (define-key global-map (kbd "C-c q") 'vr/query-replace)
   )

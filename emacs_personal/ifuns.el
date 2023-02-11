@@ -41,11 +41,11 @@
 
 (defun clipboard/set (astring)
   "Copy a string to clipboard"
-   (with-temp-buffer
+  (with-temp-buffer
     (insert astring)
     (clipboard-kill-region (point-min) (point-max))))
 
-(defun my/share-git ()
+(defun my/git-share ()
   "share a git url for current buffer."
   (interactive)
   (progn
@@ -59,4 +59,36 @@
     (browse-url fin-path)
     )
   )
+
+(defun my/git-merge ()
+  "share a git url for current buffer."
+  (interactive)
+  (progn
+    (setq icmd (format "python ~/bin/git_merge_url.py"))
+    (setq myurl (substring 
+		    (shell-command-to-string icmd) 
+		    0 -1))
+    (clipboard/set myurl)
+    (message myurl)
+    (browse-url merge-url)
+    )
+  )
+
+
+
+(defun my/git-merge2 ()
+  "share a git url for current buffer."
+  (interactive)
+  (let*
+      ((icmd (format "python ~/bin/git_merge_url.py"))
+       (merge-url (substring 
+			(shell-command-to-string icmd) 
+			0 -1)))
+    (clipboard/set merge-url)
+
+    ;; (message (format "merge url is %s" merge-url))
+    (browse-url merge-url)
+    )
+  )
+;;; ifuns.el ends here
 

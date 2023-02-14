@@ -249,3 +249,8 @@
 (setq uniquify-separator "/")
 (setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+
+(use-package csv-mode
+  :ensure t
+  :config
+  (add-hook 'csv-mode-hook 'csv-align-mode))

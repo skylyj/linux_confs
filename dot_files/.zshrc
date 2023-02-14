@@ -125,6 +125,7 @@ export PATH="$SPARK_HOME/bin/:$PATH"
 #alias ctags="`brew --prefix`/bin/ctags"
 ip255="107.21.178.255"
 ip81="39.105.24.81"
+ip175="34.199.34.175"
 cndev="39.105.208.2"
 #alias updatedb="/usr/libexec/locate.updatedb"
 #
@@ -176,7 +177,6 @@ export PATH=/Users/mobvista/.rbenv/shims:$PATH
 #export PATH="$PATH:$HOME/.rvm/bin"
 eval "$(rbenv init -)"
 #rbenv shell 3.0.5
-___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
 alias emacs_debug="/Applications/Emacs\ 2.app/Contents/MacOS/Emacs --debug-init"
 export PATH=/Users/mobvista/Library/Application\ Support/Coursier/bin/:$PATH
 alias emacs_client="/Applications/Emacs\ 2.app/Contents/MacOS/bin/emacsclient"
@@ -222,3 +222,8 @@ export CLICOLOR=1
 LS_COLORS=:'ow=37;42:'
 alias ls='ls -p'
 export LSCOLORS="exfxcxdxbxegedabagacad"
+histsearch() { fc -lim "*$@*" 1 }
+
+___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
+
+export PATH=/Users/mobvista/go/bin/:$PATH

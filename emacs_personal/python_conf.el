@@ -2,13 +2,10 @@
 ;;; Code:
 ;;; Commentary:
 
-;; python
-;; (use-package elpy
-;;   :disabled
-;;   :init
-;;   (elpy-enable)
-;;   ;; 这个包依赖的company有问题
-;;   )
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable))
 
 (add-hook 'python-mode-hook
           (lambda ()
@@ -19,8 +16,8 @@
 (add-hook 'python-mode-hook
           (lambda ()
             ;; (setq flycheck-python-pylint-executable "/Users/mobvista/miniforge3/envs/tf26/bin/pylint")
-            (setq flycheck-pylintrc "~/.pylintrc")
-            (setq flycheck-flake8rc "~/.config/flake8")
+            ;; (setq flycheck-pylintrc "~/.pylintrc")
+            ;; (setq flycheck-flake8rc "~/.config/flake8")
             )
           )
 
@@ -110,3 +107,5 @@
 
 (use-package ein
   :ensure t)
+
+(use-package python-pytest)

@@ -134,3 +134,8 @@ respectively."
               auto-mode-alist))
 	      )
 
+;; (use-package cmake-idle
+;;   :ensure t
+;;   :config
+;;   (cmake-ide-setup)
+;;   )

@@ -684,3 +684,10 @@
   :config
   (define-key global-map (kbd "C-c q") 'vr/query-replace)
   )
+
+(use-package dash-at-point
+  :ensure t
+  :config
+  (global-set-key (kbd "s-i dp") 'dash-at-point)
+  (global-set-key (kbd "s-i dw") 'dash-at-point-with-docset)
+  )

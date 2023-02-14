@@ -2,7 +2,25 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("quota config"
+(("erised"
+ (filename . "~/Gitlab/offline/ADN/erised/")
+ (front-context-string . ".git\n  -rw-r--r-")
+ (rear-context-string . "84 Feb 14 17:11 ")
+ (position . 99)
+ (last-modified 25579 21799 955472 0))
+("trace_info.proto"
+ (filename . "~/Gitlab/online/protocols/proto/saas_ranker/trace_info.proto")
+ (front-context-string . "syntax = \"proto3")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25579 10819 178059 0))
+("mob_log"
+ (filename . "~/Github/PrivateHub/org/Org/Work/Mobvista/mob_log/")
+ (front-context-string . "dwh.ods_adn_trac")
+ (rear-context-string . "55 Nov 23 10:01 ")
+ (position . 121)
+ (last-modified 25579 3050 63919 0))
+("quota config"
  (filename . "~/Gitlab/online/saas_dsp/src/MNormalProtocolSDK.cpp")
  (front-context-string . "est_quota_config")
  (rear-context-string . "olSDK::parse_abt")
@@ -486,9 +504,10 @@
 #1=(#("demand_context.proto" 0 20
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/online/protocols/proto/core_model/demand_context.proto")
-    (front-context-string . "syntax = \"proto3")
-    (rear-context-string)
-    (position . 1))
+    (front-context-string . "\nenum DemandBidT")
+    (rear-context-string . "= 5; //单子试新预算\n}\n")
+    (position . 2986)
+    (last-modified 25579 10747 547826 0))
 #1=(#("casedebug" 0 9
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/offline/casedebug/")

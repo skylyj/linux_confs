@@ -5,21 +5,19 @@
   :ensure t
   )
 ;; for forge
-(setq auth-sources '("~/.authinfo"))
+;(setq auth-sources '("~/.authinfo"))
+;(use-package forge
+;  :ensure t
+;  )
+;(with-eval-after-load 'magit
+;  (require 'forge))
+;(with-eval-after-load 'forge
+;  (add-to-list 'forge-alist
+;               '("gitlab.mobvista.com"
+;                 "gitlab.mobvista.com/api/v4"
+;                 "gitlab.mobvista.com"
+;                 forge-gitlab-repository)))
 
-(use-package forge
-  :ensure t
-  )
-
-(with-eval-after-load 'magit
-  (require 'forge))
-
-(with-eval-after-load 'forge
-  (add-to-list 'forge-alist
-               '("gitlab.mobvista.com"
-                 "gitlab.mobvista.com/api/v4"
-                 "gitlab.mobvista.com"
-                 forge-gitlab-repository)))
 (setenv "JAVA_HOME" "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home")
 
 (use-package wgrep

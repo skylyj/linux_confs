@@ -2,7 +2,25 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("erised"
+(("pltv_before_cal"
+ (filename . "~/Gitlab/online/saas_dsp/src/LtvLayerExperiment.cpp")
+ (front-context-string . " else if (p_algo")
+ (rear-context-string . "b;\n            }")
+ (position . 5636)
+ (last-modified 25580 22561 860427 0))
+("tmp"
+ (filename . "~/tmp/")
+ (front-context-string . ".mypy_cache\n  -r")
+ (rear-context-string . "60 Jan 25 13:05 ")
+ (position . 78)
+ (last-modified 25580 13250 177572 0))
+("snippets"
+ (filename . "~/.emacs.d/snippets/")
+ (front-context-string)
+ (rear-context-string . "92 Feb 15 09:19 ")
+ (position . 151)
+ (last-modified 25580 13235 424193 0))
+("erised"
  (filename . "~/Gitlab/offline/ADN/erised/")
  (front-context-string . ".git\n  -rw-r--r-")
  (rear-context-string . "84 Feb 14 17:11 ")

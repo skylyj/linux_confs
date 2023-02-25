@@ -4,8 +4,8 @@
 
 ;; 这样mac open file的时候不会重复打开frame了，始终在一个frame里面
 ;; (load-theme 'wombat)
-(load-theme 'misterioso)
-(set-cursor-color "yellow")
+;(load-theme 'misterioso)
+;(set-cursor-color "yellow")
 (setq make-backup-files nil)
 (setq ns-pop-up-frames nil)
 ;; (global-set-key [remap goto-line] 'goto-line-preview)
@@ -73,15 +73,15 @@
 (global-set-key (kbd "s-i hh") 'hs-hide-block)
 
 ;; 系统相关
-(cond ((equal system-type 'gnu/linux)
-       (set-default-font "Monospace-19"))
-      ((equal system-type 'darwin)
-       (tool-bar-mode -1)
-       (set-frame-font "Menlo-16")
-       (set-fontset-font
-        (frame-parameter nil 'font)
-        'han
-        (font-spec :family "Hiragino Sans GB" ))))
+;(cond ((equal system-type 'gnu/linux)
+;       (set-default-font "Monospace-19"))
+;      ((equal system-type 'darwin)
+;       (tool-bar-mode -1)
+;       (set-frame-font "Menlo-16")
+;       (set-fontset-font
+;        (frame-parameter nil 'font)
+;        'han
+;        (font-spec :family "Hiragino Sans GB" ))))
 
 (setq auto-save-default nil)
 
@@ -229,18 +229,18 @@
   :ensure t
   :bind ("C-c d" . docker))
 
-(use-package vterm
-    :ensure t)
+;(use-package vterm
+;    :ensure t)
 
-(use-package multi-vterm :ensure t)
+;(use-package multi-vterm :ensure t)
 
 (use-package dockerfile-mode
   :ensure t)
 
-(use-package helm-tramp
-  :ensure t)
-(use-package docker-tramp
-  :ensure t)
+;(use-package helm-tramp
+;  :ensure t)
+;(use-package docker-tramp
+;  :ensure t)
 
 (add-hook 'dired-after-readin-hook 'hl-line-mode)
 
@@ -254,3 +254,4 @@
   :ensure t
   :config
   (add-hook 'csv-mode-hook 'csv-align-mode))
+(menu-bar-mode -1)

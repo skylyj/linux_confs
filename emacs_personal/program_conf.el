@@ -101,9 +101,9 @@
   ;; https://emacs-lsp.github.io/lsp-mode/page/settings/mode/#lsp-keep-workspace-alive
   (setq lsp-keep-workspace-alive nil))
 
-(use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode)
+;; (use-package lsp-ui
+;;   :ensure t
+;;   :commands lsp-ui-mode)
 
 (setq lsp-pyls-plugins-pycodestyle-enabled nil)
 
@@ -112,14 +112,14 @@
 (use-package lsp-metals
   :ensure t)
 
-(use-package posframe
-  :ensure t)
+;; (use-package posframe
+;;   :ensure t)
 
-(use-package dap-mode
-  :ensure t
-  :hook
-  (lsp-mode . dap-mode)
-  (lsp-mode . dap-ui-mode))
+;; (use-package dap-mode
+;;   :ensure t
+;;   :hook
+;;   (lsp-mode . dap-mode)
+;;   (lsp-mode . dap-ui-mode))
 
 (use-package helm-lsp
   :ensure t
@@ -127,8 +127,8 @@
   (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol)
   )
 
-(use-package lsp-treemacs
-  :ensure t)
+;; (use-package lsp-treemacs
+;;   :ensure t)
 
-(use-package treemacs
-  :ensure t)
+;; (use-package treemacs
+;;   :ensure t)

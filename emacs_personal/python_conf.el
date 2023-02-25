@@ -2,11 +2,13 @@
 ;;; Code:
 ;;; Commentary:
 
-(use-package elpy
-  :ensure t
-  :init
-  (elpy-enable))
-
+(when (display-graphic-p) 
+  ;; Do any keybindings and theme setup here
+  (use-package elpy
+    :ensure t
+    :init
+    (elpy-enable))
+  )
 (add-hook 'python-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil)
@@ -96,19 +98,21 @@
   (setq dap-python-debugger 'debugpy)
   )
 
+(when (display-graphic-p) 
+  ;; Do any keybindings and theme setup here
 
-(use-package realgud
-  :ensure t)
+  (use-package realgud
+    :ensure t)
+  (use-package ein
+    :ensure t)
+  (use-package python-pytest)
+  )
 
 ;; run-python 使用ipython
 (setq python-shell-completion-native-enable nil)
 (when (executable-find "ipython")
   (setq python-shell-interpreter "ipython"))
 
-(use-package ein
-  :ensure t)
-
-(use-package python-pytest)
 
 
 

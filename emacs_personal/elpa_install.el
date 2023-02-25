@@ -200,6 +200,8 @@
   ;; (doom-modeline-persp-name nil)
   (doom-modeline-major-mode-icon t)  
   )
+(when (display-graphic-p) 
+  ;; Do any keybindings and theme setup here
 
 (use-package all-the-icons
   :ensure t)
@@ -216,7 +218,7 @@
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
   )
 
-					;(quelpa
+)					;(quelpa
 					; '(quelpa-use-package
 					;   :fetcher git
 					;   :url "https://github.com/quelpa/quelpa-use-package.git"))
@@ -660,19 +662,8 @@
   ;; 有了helm-show-kill-ring 就够用了
   )
 
-(use-package gnuplot
-  :ensure t)
-(use-package gnuplot-mode
-  :ensure t)
 (use-package diminish
   :ensure t)
-(use-package helm-chrome
-  :ensure t)
-(use-package yaml-mode
-  :ensure t
-  :config
- (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))  
-  )
 
 
 (use-package visual-regexp
@@ -683,9 +674,26 @@
   (define-key global-map (kbd "C-c q") 'vr/query-replace)
   )
 
-(use-package dash-at-point
-  :ensure t
-  :config
-  (global-set-key (kbd "s-i dp") 'dash-at-point)
-  (global-set-key (kbd "s-i dw") 'dash-at-point-with-docset)
+
+(when (display-graphic-p) 
+  ;; Do any keybindings and theme setup here
+  (use-package gnuplot
+    :ensure t)
+  (use-package gnuplot-mode
+    :ensure t)
+  (use-package helm-chrome
+    :ensure t)
+  (use-package yaml-mode
+    :ensure t
+    :config
+    (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))  
+    )
+
+  (use-package dash-at-point
+    :ensure t
+    :config
+    (global-set-key (kbd "s-i dp") 'dash-at-point)
+    (global-set-key (kbd "s-i dw") 'dash-at-point-with-docset)
+    )
+
   )

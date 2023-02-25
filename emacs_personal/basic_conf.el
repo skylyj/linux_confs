@@ -12,7 +12,10 @@
 ;; (setq eshell-last-dir-ring-size 500)
 (add-hook 'sh-mode-hook 'flycheck-mode)
 
-(scroll-bar-mode -1)
+(when (display-graphic-p) 
+  ;; 在图形界面下，非terminal下
+  (scroll-bar-mode -1)
+  )
 (require 'dired-x)
 (setq dired-omit-files
       (concat dired-omit-files "\\|^\\.DS_Store$" "\\|^\\..+$" "\\|__pycache__" "\\|.*\\.pyc$"))
@@ -73,15 +76,17 @@
 (global-set-key (kbd "s-i hh") 'hs-hide-block)
 
 ;; 系统相关
-(cond ((equal system-type 'gnu/linux)
-       (set-default-font "Monospace-19"))
+(cond
+ ((equal system-type 'gnu/linux)
+       (set-frame-font "Monospace-19"))
       ((equal system-type 'darwin)
        (tool-bar-mode -1)
        (set-frame-font "Menlo-16")
-       (set-fontset-font
-        (frame-parameter nil 'font)
-        'han
-        (font-spec :family "Hiragino Sans GB" ))))
+       ;; (set-fontset-font
+       ;;  (frame-parameter nil 'font)
+       ;;  'han
+       ;;  (font-spec :family "Hiragino Sans GB" ))
+       ))
 
 (setq auto-save-default nil)
 
@@ -181,7 +186,9 @@
   :ensure t)
 
 ;; emacs server, client 可以在终端使用 /Applications/Emacs\ 2.app/Contents/MacOS/bin/emacsclient ifuns.el &来启动
-(server-start)
+(when (display-graphic-p) 
+  (server-start)    
+ )
 
 ;; tramp
 ;; (setq recentf-exclude `(,tramp-file-name-regexp
@@ -229,11 +236,6 @@
   :ensure t
   :bind ("C-c d" . docker))
 
-(use-package vterm
-    :ensure t)
-
-(use-package multi-vterm :ensure t)
-
 (use-package dockerfile-mode
   :ensure t)
 
@@ -250,7 +252,15 @@
 (setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
-(use-package csv-mode
-  :ensure t
-  :config
-  (add-hook 'csv-mode-hook 'csv-align-mode))
+(when (display-graphic-p) 
+  (use-package csv-mode
+    :ensure t
+    :config
+    (add-hook 'csv-mode-hook 'csv-align-mode))
+
+  (use-package vterm
+    :ensure t)
+  (use-package multi-vterm
+    :ensure t)
+  )
+

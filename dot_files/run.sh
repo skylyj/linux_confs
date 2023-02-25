@@ -1,2 +1,2 @@
 cp ~/.zshrc .zshrc
-cp ~/.config/pycodestyle  .config/pycodestyle
+OIOIOIOIcp ~/.config/pycodestyle  .config/pycodestyle

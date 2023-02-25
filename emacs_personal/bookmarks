@@ -2,7 +2,19 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("LtvLayerExperiment.cpp"
+(("cndev_gitlab"
+ (filename . "/ssh:cndev:/data/yijiang.lian/Gitlab/")
+ (front-context-string . "offline\n  drwxrw")
+ (rear-context-string . "96 Feb 23 17:25 ")
+ (position . 100)
+ (last-modified 25592 3370 129207 0))
+("mob_vista"
+ (filename . "~/Gitlab/offline/roas_evaluate/roas_evaluate/exp_eval/delayExp20230207/market.py")
+ (front-context-string . "from datetime im")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25589 30296 403332 0))
+("LtvLayerExperiment.cpp"
  (filename . "~/Gitlab/online/saas_dsp/src/LtvLayerExperiment.cpp")
  (front-context-string . "#include \"LtvLay")
  (rear-context-string)

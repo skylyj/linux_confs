@@ -30,7 +30,14 @@
   (setq conda-anaconda-home (expand-file-name "~/miniforge3/"))
   (setq conda-env-home-directory (expand-file-name "~/miniforge3"))
   (setq-default mode-line-format (cons mode-line-format '(:exec conda-env-current-name)))
-  (conda-env-activate "tf26")
+  (if (display-graphic-p)
+      (progn
+      (conda-env-activate "tf26")
+	)
+      (progn
+      (conda-env-activate "py39")
+	)
+      )
   )
 
 ;; anaconda-mode定义了很多跳转功能，比如 anaconda-mode-find-definitions M.,M=

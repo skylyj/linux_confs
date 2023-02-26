@@ -2,29 +2,6 @@
 (add-hook 'c++-mode-hook
           (lambda () (setq flycheck-clang-language-standard "c++11")))
 
-;; 关于semantic
-;; (require 'semantic)
-;; (require 'semantic/sb)
-;; (require 'srecode)
-
-;; (add-hook 'c++-mode-hook
-;;           (lambda ()
-;;             (semantic-mode 1)
-;;             ;; (global-semanticdb-minor-mode 1)
-;;             ;; (global-semantic-idle-scheduler-mode 1)
-;;             ;; (global-semantic-idle-completions-mode 1)
-;;             (semantic-decoration-mode 1)
-;;             (semantic-highlight-func-mode 1)
-;;             (semantic-stickyfunc-mode -1)
-;;             ;; (global-semantic-decoration-mode 1)
-;;             ;; (global-semantic-highlight-func-mode 1)
-;;             ;; (global-semantic-stickyfunc-mode -1)
-;;             ;; (global-semantic-idle-summary-mode 1)
-;;             ;; (global-semantic-mru-bookmark-mode 1)
-;;             )
-;;           )
-
-
 
 (use-package smartparens
   :ensure t

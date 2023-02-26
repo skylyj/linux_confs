@@ -60,14 +60,14 @@
 
 
 ;; eglot metal 的配置
-(use-package eglot
-  :pin melpa-stable
-  ;; (optional) Automatically start metals for Scala files.
-  ;; :hook (scala-mode . eglot-ensure)
-  :config
-  (setq eldoc-echo-area-use-multiline-p nil)
-  ;; (add-hook 'eglot--managed-mode-hook (lambda () (flymake-mode -1)))
-  )
+;; (use-package eglot
+;;   :pin melpa-stable
+;;   ;; (optional) Automatically start metals for Scala files.
+;;   ;; :hook (scala-mode . eglot-ensure)
+;;   :config
+;;   (setq eldoc-echo-area-use-multiline-p nil)
+;;   ;; (add-hook 'eglot--managed-mode-hook (lambda () (flymake-mode -1)))
+;;   )
 
 ;;需要安装metals-emacs
 ;; sudo coursier bootstrap \
@@ -133,4 +133,17 @@
 ;; Add metals backend for lsp-mode
 (use-package lsp-metals
   :ensure t)
+
+
+  (use-package protobuf-mode
+    :ensure t
+    )
+
+
+  (use-package go-mode
+    :ensure t
+    :config
+    (autoload 'go-mode "go-mode" nil t)
+    (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+    )
 

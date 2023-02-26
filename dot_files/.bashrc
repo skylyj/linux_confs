@@ -1,0 +1,7 @@
+export is3="s3://mob-emr-test/yijiang.lian/"
+export idata="/data/yijiang.lian/"
+export feature_dir="s3://mv-mtg-di/product/algorithm/sample-factory/saas-sdk/ranking/imp_join_feature"
+export install_dir="s3://mob-ad/adn/tracking-v3/install"
+export ltv_dir="s3://mob-ad/adn/tracking-v3/roas_event/"
+export candi_offers_dir="s3://mv-mtg-di/product/algorithm/sample-factory/roas/roas-sdk-candi-offers/"
+export model_dir="s3://mv-mtg-di/product/algorithm/model-zoo/SDK/ranking/"

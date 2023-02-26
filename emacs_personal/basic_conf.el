@@ -12,9 +12,13 @@
 ;; (setq eshell-last-dir-ring-size 500)
 (add-hook 'sh-mode-hook 'flycheck-mode)
 
-(when (display-graphic-p) 
-  ;; 在图形界面下，非terminal下
-  (scroll-bar-mode -1)
+(if (display-graphic-p)
+    (progn
+      (scroll-bar-mode -1)
+      )
+  (progn
+    (tool-bar-mode -1)
+    )
   )
 (require 'dired-x)
 (setq dired-omit-files

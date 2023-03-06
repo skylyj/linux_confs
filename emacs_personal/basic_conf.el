@@ -4,7 +4,6 @@
 
 ;; 这样mac open file的时候不会重复打开frame了，始终在一个frame里面
 ;; (load-theme 'wombat)
-(load-theme 'misterioso)
 (set-cursor-color "yellow")
 (setq make-backup-files nil)
 (setq ns-pop-up-frames nil)
@@ -15,11 +14,13 @@
 (if (display-graphic-p)
     (progn
       (scroll-bar-mode -1)
+      (load-theme 'misterioso)
       )
   (progn
     (menu-bar-mode -1) 
     ;; (toggle-scroll-bar -1) 
     (tool-bar-mode -1) 
+      (load-theme 'zenburn)
     )
   )
 (require 'dired-x)

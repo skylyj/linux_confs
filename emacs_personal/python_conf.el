@@ -24,21 +24,21 @@
           )
 
 ;; 关于anaconda，先安装conda，使用conda-activate可以切换conda环境
-(use-package conda
-  :ensure t
-  :init
-  (setq conda-anaconda-home (expand-file-name "~/miniforge3/"))
-  (setq conda-env-home-directory (expand-file-name "~/miniforge3"))
-  (setq-default mode-line-format (cons mode-line-format '(:exec conda-env-current-name)))
-  (if (display-graphic-p)
-      (progn
-      (conda-env-activate "tf26")
-	)
-      (progn
-      (conda-env-activate "py39")
-	)
-      )
-  )
+;; (use-package conda
+;;   :ensure t
+;;   :init
+;;   (setq conda-anaconda-home (expand-file-name "~/miniforge3/"))
+;;   (setq conda-env-home-directory (expand-file-name "~/miniforge3"))
+;;   (setq-default mode-line-format (cons mode-line-format '(:exec conda-env-current-name)))
+;;   (if (display-graphic-p)
+;;       (progn
+;;       (conda-env-activate "tf26")
+;; 	)
+;;       (progn
+;;       (conda-env-activate "py39")
+;; 	)
+;;       )
+;;   )
 
 ;; anaconda-mode定义了很多跳转功能，比如 anaconda-mode-find-definitions M.,M=
 ;; (use-package anaconda-mode

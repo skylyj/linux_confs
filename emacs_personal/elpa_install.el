@@ -158,6 +158,28 @@
 ;;   :ensure t
 ;;   )
 
+(use-package yaml-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))  
+  )
+
+(use-package dashboard
+  :ensure t
+  :config
+  (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
+  (setq dashboard-projects-backend 'projectile) ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
+  (setq dashboard-startup-banner 'official) ;; 也可以自定义图片
+  (setq dashboard-items '((recents  . 15)   ;; 显示多少个最近文件
+			  (bookmarks . 5)  ;; 显示多少个最近书签
+			  (projects . 5)
+			  (agenda . 5)
+                          (registers . 5)
+			  )) ;; 显示多少个最近项目
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (dashboard-setup-startup-hook))
+
 
 
 (when (display-graphic-p) 
@@ -168,11 +190,6 @@
     :ensure t)
   (use-package helm-chrome
     :ensure t)
-  (use-package yaml-mode
-    :ensure t
-    :config
-    (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))  
-    )
 
   (use-package dash-at-point
     :ensure t
@@ -204,23 +221,6 @@
 					;                 "gitlab.mobvista.com/api/v4"
 					;                 "gitlab.mobvista.com"
 					;                 forge-gitlab-repository)))
-
-  (use-package dashboard
-    :ensure t
-    :config
-    (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
-    (setq dashboard-projects-backend 'projectile) ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
-    (setq dashboard-startup-banner 'official) ;; 也可以自定义图片
-    (setq dashboard-items '((recents  . 15)   ;; 显示多少个最近文件
-			    (bookmarks . 5)  ;; 显示多少个最近书签
-			    (projects . 5)
-			    (agenda . 5)
-                            (registers . 5)
-			    )) ;; 显示多少个最近项目
-    (setq dashboard-set-heading-icons t)
-    (setq dashboard-set-file-icons t)
-    (dashboard-setup-startup-hook))
-
 
   ;;google this
   (use-package google-this
@@ -272,9 +272,6 @@
     :config
     (add-hook 'python-mode-hook 'highlight-indent-guides-mode)
     (setq highlight-indent-guides-method 'character))
-
-
-
   )
 ;; (use-package counsel-projectile
 ;;   :ensure t
@@ -287,6 +284,9 @@
 ;;   :init (marginalia-mode)
 ;;   :bind (:map minibuffer-local-map
 ;; 	      ("M-A" . marginalia-cycle)))
+
+  (use-package doom-themes
+    :ensure t)
 
 
 (when (display-graphic-p) 
@@ -307,9 +307,6 @@
     :config
     (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
     )
-  (use-package doom-themes
-    :ensure t)
-
   (use-package doom-modeline
     :ensure t
     :hook (after-init . doom-modeline-mode)
@@ -475,58 +472,6 @@
     )
 
 
-  (use-package transpose-frame
-    :ensure t
-    )
-
-  ;; (use-package neotree
-  ;;   :ensure t
-  ;;   )
-
-  (use-package easy-kill
-    :ensure t
-    :config
-    (global-set-key [remap kill-ring-save] 'easy-kill)
-    (global-set-key [remap mark-sexp] 'easy-mark)
-    )
-
-
-
-  (use-package bookmark-in-project
-    :ensure t
-    :commands (bookmark-in-project-jump
-               bookmark-in-project-jump-next
-               bookmark-in-project-jump-previous
-               bookmark-in-project-delete-all)
-    :bind (
-           ;; ("s-i pbl" . bookmark-in-project-jump)
-           ("s-i pbn" . bookmark-in-project-jump-next)
-           ("s-i pbp" . bookmark-in-project-jump-previous)
-           ("s-i pbd" . bookmark-in-project-delete-all)
-           ))
-  (load-library "bookmark-in-project")
-  (defun my/bookmark-in-project-jump ()
-    "Jump to a bookmark in the current project."
-    (interactive)
-    (bookmark-maybe-load-default-file)
-    (bookmark-in-project--jump-impl #'bookmark-jump))
-
-  (global-set-key (kbd "s-i pbl") 'my/bookmark-in-project-jump)
-
-  (use-package expand-region
-    :bind ("C-=" . er/expand-region))
-
-  (use-package change-inner
-    :ensure t
-    :config
-    :bind (("s-i ci" . change-inner)
-           ("s-i co" . change-outer)
-           )
-    )
-
-
-
-
   (use-package key-chord
     :ensure t
     :config
@@ -600,32 +545,12 @@
     ;; (load-theme 'zenburn t)
     )
 
-  (use-package nlinum
-    :config
-    (global-nlinum-mode t)
-    )
+  ;; (use-package neotree
+  ;;   :ensure t
+  ;;   )
 
-  ;; optional if you want which-key integration
-  (use-package which-key
-    :config
-    (which-key-mode))
 
-  (use-package embrace
-    :ensure t
-    :config
-    (global-set-key (kbd "C-,") #'embrace-commander)
-    )
-
-  (use-package browse-kill-ring
-    :disabled
-    :ensure t
-    :config
-    (browse-kill-ring-default-keybindings)
-    (global-set-key (kbd "s-y") 'browse-kill-ring)
-    ;; 有了helm-show-kill-ring 就够用了
-    )
-
-  )					;(quelpa
+)					;(quelpa
 
 					; '(quelpa-use-package
 					;   :fetcher git
@@ -636,3 +561,70 @@
 ;;   :quelpa (org-sidebar :fetcher github :repo "alphapapa/org-sidebar"))
 
 
+
+(use-package browse-kill-ring
+  :disabled
+  :ensure t
+  :config
+  (browse-kill-ring-default-keybindings)
+  (global-set-key (kbd "s-y") 'browse-kill-ring)
+  ;; 有了helm-show-kill-ring 就够用了
+  )
+
+(use-package transpose-frame
+  :ensure t
+  )
+(use-package easy-kill
+  :ensure t
+  :config
+  (global-set-key [remap kill-ring-save] 'easy-kill)
+  (global-set-key [remap mark-sexp] 'easy-mark)
+  )
+
+
+(use-package bookmark-in-project
+  :ensure t
+  :commands (bookmark-in-project-jump
+             bookmark-in-project-jump-next
+             bookmark-in-project-jump-previous
+             bookmark-in-project-delete-all)
+  :bind (
+         ;; ("s-i pbl" . bookmark-in-project-jump)
+         ("s-i pbn" . bookmark-in-project-jump-next)
+         ("s-i pbp" . bookmark-in-project-jump-previous)
+         ("s-i pbd" . bookmark-in-project-delete-all)
+         ))
+(load-library "bookmark-in-project")
+(defun my/bookmark-in-project-jump ()
+  "Jump to a bookmark in the current project."
+  (interactive)
+  (bookmark-maybe-load-default-file)
+  (bookmark-in-project--jump-impl #'bookmark-jump))
+
+(global-set-key (kbd "s-i pbl") 'my/bookmark-in-project-jump)
+
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
+
+(use-package change-inner
+  :ensure t
+  :config
+  :bind (("s-i ci" . change-inner)
+         ("s-i co" . change-outer)
+         )
+  )
+(use-package nlinum
+  :config
+  (global-nlinum-mode t)
+  )
+
+;; optional if you want which-key integration
+(use-package which-key
+  :config
+  (which-key-mode))
+
+(use-package embrace
+  :ensure t
+  :config
+  (global-set-key (kbd "C-,") #'embrace-commander)
+  )

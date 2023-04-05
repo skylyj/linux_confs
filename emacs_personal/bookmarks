@@ -2,7 +2,109 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("cndev_gitlab"
+(("ltv_layer_exp"
+ (filename . "~/Gitlab/online/saas_dsp/src/LtvLayerExperiment.cpp")
+ (front-context-string . "#include \"LtvLay")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25638 18399 947040 0))
+("CTR_Algorithm"
+ (filename . "~/Github/CTR_Algorithm/")
+ (front-context-string . "pytorch\n  drwxr-")
+ (rear-context-string . "60 Mar 18 13:03 ")
+ (position . 212)
+ (last-modified 25621 25861 730395 0))
+("FuxiCTR"
+ (filename . "~/Github/FuxiCTR/")
+ (front-context-string . "CHANGELOG.md\n  -")
+ (rear-context-string . "29 Mar 18 12:54 ")
+ (position . 88)
+ (last-modified 25621 17549 930830 0))
+("mobvista_share"
+ (filename . "~/Library/CloudStorage/OneDrive-个人/PPT/mobvista_ppt/mobvista_share/")
+ (front-context-string . "C11.pptx\n  -rwx-")
+ (rear-context-string . "82 Jul  7  2022 ")
+ (position . 140)
+ (last-modified 25610 33865 482383 0))
+("adx出价"
+ (filename . "~/Gitlab/online/saas_dsp/src/RankLayerExperimentADX.cpp")
+ (front-context-string . "    RankLayerExp")
+ (rear-context-string . "espace ranker\n{\n")
+ (position . 57)
+ (last-modified 25600 23881 631018 0))
+("adx精排"
+ (filename . "~/Gitlab/online/saas_dsp/src/CampaignLayerExperimentADX.cpp")
+ (front-context-string . "#include \"Campai")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25600 23836 169347 0))
+("sdk精排"
+ (filename . "~/Gitlab/online/saas_dsp/src/CampaignLayerExperiment.cpp")
+ (front-context-string . "ICampaignLayerEx")
+ (rear-context-string . "espace ranker\n{\n")
+ (position . 357)
+ (last-modified 25600 23813 737605 0))
+("sdk出价"
+ (filename . "~/Gitlab/online/saas_dsp/src/RankLayerExperiment.cpp")
+ (front-context-string . "#include \"RankLa")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25600 23768 352615 0))
+("sdk粗排"
+ (filename . "~/Gitlab/online/saas_dsp/src/IRoughRankCampaignLayerExperiment.cpp")
+ (front-context-string . ") {\n            ")
+ (rear-context-string . " i < ad_cnt; i++")
+ (position . 5042)
+ (last-modified 25600 23488 647381 0))
+("adx粗排"
+ (filename . "~/Gitlab/online/saas_dsp/src/IRoughRankCampaignLayerExperimentADX.cpp")
+ (front-context-string . "()\n    {\n       ")
+ (rear-context-string . "ocess_rough_rank")
+ (position . 4949)
+ (last-modified 25600 23444 313204 0))
+("mindalpha.org"
+ (filename . "~/Github/PrivateHub/org/Org/Work/Mobvista/mindalpha.org")
+ (front-context-string)
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25596 22382 367023 0))
+("PyTorchAgent.run"
+ (filename . "~/Gitlab/offline/ps/python/mindalpha/estimator.py")
+ (front-context-string . "elf):\n        if")
+ (rear-context-string . "me\n    def run(s")
+ (position . 3161)
+ (last-modified 25596 7688 659518 0))
+("myproblem_1"
+ (filename . "~/Gitlab/offline/ps/python/mindalpha/ps_launcher.py")
+ (front-context-string . "(args, spark_ses")
+ (rear-context-string . "n(class_._launch")
+ (position . 5784)
+ (last-modified 25596 7605 949383 0))
+("launch_agent"
+ (filename . "~/Gitlab/offline/ps/python/mindalpha/ps_launcher.py")
+ (front-context-string . "launch_agent(sel")
+ (rear-context-string . "  pass\n\n    def ")
+ (position . 4780)
+ (last-modified 25596 7054 377913 0))
+("PyTorchEstimator"
+ (filename . "~/Gitlab/offline/ps/python/mindalpha/estimator.py")
+ (front-context-string . "PyTorchEstimator")
+ (rear-context-string . "tra_kv)\n\n\nclass ")
+ (position . 51205)
+ (last-modified 25596 6968 490386 0))
+("Agent._launch"
+ (filename . "~/Gitlab/offline/ps/python/mindalpha/agent.py")
+ (front-context-string . "ch(cls, args, sp")
+ (rear-context-string . " async def _laun")
+ (position . 12901)
+ (last-modified 25596 6323 200032 0))
+("_launch"
+ (filename . "~/Gitlab/offline/ps/python/mindalpha/agent.py")
+ (front-context-string . "ch(cls, args, sp")
+ (rear-context-string . " async def _laun")
+ (position . 12901)
+ (last-modified 25596 6297 20944 0))
+("cndev_gitlab"
  (filename . "/ssh:cndev:/data/yijiang.lian/Gitlab/")
  (front-context-string . "offline\n  drwxrw")
  (rear-context-string . "96 Feb 23 17:25 ")
@@ -276,9 +378,10 @@
  (position . 7380))
 ("CRModule"
  (filename . "~/Gitlab/online/saas_dsp/src/MNormalCRModule.cpp")
- (front-context-string . "\n    {\n        b")
- (rear-context-string . "le::main_entry()")
- (position . 166))
+ (front-context-string . "            .the")
+ (rear-context-string . "erform();\n			})\n")
+ (position . 377)
+ (last-modified 25600 24028 529484 0))
 ("Emacsorg"
  (filename . "~/Gitlab/offline/ltv_model/roas/reg_cls.py")
  (front-context-string . "th = os.path.joi")
@@ -585,11 +688,11 @@
     (position . 4682))
 #1=(#("itools" 0 6
       (bmkp-full-record #1#))
-    (filename . "~/Gitlab/Private/itools/")
-    (front-context-string . ".DS_Store\n  drwx")
-    (rear-context-string . "96 Nov  3 08:37 ")
-    (position . 94)
-    (last-modified 25555 17674 521986 0))
+    (filename . "~/Gitlab/offline/itools/")
+    (front-context-string . "README.md\n  drwx")
+    (rear-context-string . "16 Mar 14 22:50 ")
+    (position . 93)
+    (last-modified 25617 15115 184924 0))
 #1=(#("jacobi" 0 6
       (bmkp-full-record #1#))
     (filename . "~/Gitlab/offline/jacobi/")

@@ -278,3 +278,6 @@
 ;;  '(org-block-end-line
 ;;    ((t (:overline "#A7A6AA" :foreground "#008ED1" :background "green" :extend t))))
 ;;  )
+(require 'htmlize)
+(setq org-html-htmlize-output-type 'css)
+(setq org-html-htmlize-output-type 'inline-css)

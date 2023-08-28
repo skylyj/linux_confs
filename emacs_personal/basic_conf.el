@@ -193,9 +193,9 @@
   :ensure t)
 
 ;; emacs server, client 可以在终端使用 /Applications/Emacs\ 2.app/Contents/MacOS/bin/emacsclient ifuns.el &来启动
-(when (display-graphic-p) 
-  (server-start)    
- )
+;(when (display-graphic-p) 
+;  (server-start)    
+; )
 
 ;; tramp
 ;; (setq recentf-exclude `(,tramp-file-name-regexp
@@ -248,8 +248,8 @@
 
 (use-package helm-tramp
   :ensure t)
-(use-package docker-tramp
-  :ensure t)
+;; (use-package docker-tramp
+;;   :ensure t)
 
 (add-hook 'dired-after-readin-hook 'hl-line-mode)
 
@@ -265,9 +265,9 @@
     :config
     (add-hook 'csv-mode-hook 'csv-align-mode))
 
-  (use-package vterm
-    :ensure t)
-  (use-package multi-vterm
-    :ensure t)
-  )
+  ;(use-package vterm
+  ;  :ensure t)
+  ;(use-package multi-vterm
+  ;  :ensure t)
+)
 

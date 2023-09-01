@@ -1,0 +1,26 @@
+FROM ubuntu:22.04
+ENV DEBIAN_FRONTEND noninteractive
+ENV TZ=Asia/Shanghai
+ENV LANG C.UTF-8
+
+# chinese
+# RUN apt-get install -y language-pack-zh-hans &&  locale-gen zh_CN.UTF-8
+
+
+
+# install basics
+RUN apt-get update && apt-get install -y git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-dev
+
+# install tools
+RUN apt-get update && apt-get -y install tmux vim git tree emacs
+RUN apt-get install -y zlib1g-dev liblzma-dev
+RUN apt-get install -y libmysqlclient-dev
+
+## basics
+RUN apt-get install -y openssh-server git-core openssh-client curl
+RUN apt-get install -y openssl zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison pkg-config
+RUN apt-get install -y sqlite3 libsqlite3-dev
+
+## python
+#sudo apt install python3
+#sudo apt install python3-pip

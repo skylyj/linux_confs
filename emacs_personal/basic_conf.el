@@ -239,15 +239,15 @@
 (use-package devdocs-browser
   :ensure t)
 
-(use-package docker
-  :ensure t
-  :bind ("C-c d" . docker))
+;; (use-package docker
+;;   :ensure t
+;;   :bind ("C-c d" . docker))
 
-(use-package dockerfile-mode
-  :ensure t)
+;; (use-package dockerfile-mode
+;;   :ensure t)
 
-(use-package helm-tramp
-  :ensure t)
+;; (use-package helm-tramp
+;;   :ensure t)
 ;; (use-package docker-tramp
 ;;   :ensure t)
 

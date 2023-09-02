@@ -1,42 +1,57 @@
 FROM ubuntu_basic_23
-#SHELL ["/bin/zsh", "--login", "-c"]
-#USER root
-#RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
-#    -t https://github.com/denysdovhan/spaceship-prompt \
-#    -a 'SPACESHIP_PROMPT_ADD_NEWLINE="false"' \
-#    -a 'SPACESHIP_PROMPT_SEPARATE_LINE="false"' \
-#    -p git \
-#    -p https://github.com/zsh-users/zsh-autosuggestions \
-#    -p https://github.com/zsh-users/zsh-completions
+SHELL ["/bin/zsh", "--login", "-c"] #按照login的形式来执行每个命令
+USER root
+RUN ssh-agent bash
+RUN apt-get update && apt-get install -y openssh-client tmuxinator
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
+    -t https://github.com/denysdovhan/spaceship-prompt \
+    -a 'SPACESHIP_PROMPT_ADD_NEWLINE="false"' \
+    -a 'SPACESHIP_PROMPT_SEPARATE_LINE="false"' \
+    -p git \
+    -p https://github.com/zsh-users/zsh-autosuggestions \
+    -p https://github.com/zsh-users/zsh-completions
 
-# RUN chsh -s ~/.zshrc
-RUN useradd -m -s /bin/zsh tommy && echo "tommy:tommy" | chpasswd && adduser tommy sudo
-USER tommy
-#RUN chsh -s $(which zsh)
+RUN echo "export TERM=xterm-256color" >> ~/.zshrc
+
+#github access
+RUN mkdir -p /root/configs  /root/Github/PrivateHub/ /root/Notebook
+ADD ./software/id_rsa.pub  /root/configs/id_rsa.pub
+ADD ./software/id_rsa  /root/configs/id_rsa
+ADD dot_files/.gitconfig /root/.gitconfig
+RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+RUN eval $(ssh-agent -s) && cd /root/configs/ && ssh-add id_rsa && cd /root/Github/PrivateHub && git clone git@github.com:skylyj/linux_confs.git
+
 #CMD [ "zsh" ]
+# conda 
 ADD ./software/Anaconda3-2023.07-2-Linux-aarch64.sh /tmp/conda.sh
-RUN bash /tmp/conda.sh -b -p /home/tommy/conda
-ENV PATH /home/tommy/conda/bin:$PATH
+RUN bash /tmp/conda.sh -b -p /root/conda
+ENV PATH /root/conda/bin:$PATH
 
-# config user
 # RUN conda update conda && \
 RUN conda create -n py39 python=3.9
 RUN conda init zsh
-RUN echo "conda activate py39" >> ~/.zshrc
-RUN conda install  numpy pandas jupyter ipython scikit-learn plotly autopep8 && \
+RUN echo "conda activate py39" >> /root/.zshrc
+RUN conda install numpy pandas jupyter ipython scikit-learn plotly autopep8 && \
     conda install pytorch torchvision -c pytorch
 
-
 ## add ConfigFiles
-ADD dot_files/.tmux.conf /home/tommy/.tmux.conf
-ADD dot_files/.gitconfig /home/tommy/.gitconfig
-ADD dot_files/.vim /home/tommy/.vim
-ADD dot_files/.vimrc /home/tommy/.vimrc
-ADD dot_files/MyVim /home/tommy/MyVim
-RUN mkdir -p  ~/Github/PrivateHub/
-RUN echo "export TERM=xterm-256color" >> /home/tommy/.zshrc
+RUN mkdir -p /root/.config /root/.emacs.d
+ADD dot_files/.tmux.conf /root/.tmux.conf
+ADD dot_files/.config/tmuxinator/dream.yml /root/.config/tmuxinator/dream.yml
+ADD dot_files/.emacs.d/init.el /root/.emacs.d/init.el
+ADD dot_files/.vim /root/.vim
+ADD dot_files/.vimrc /root/.vimrc
+ADD dot_files/MyVim /root/MyVim
+
+# ## qlib install 
+# RUN pip install catboost xgboost && \
+#     pip install --upgrade cython 
+# RUN cd /root/Github/PrivateHub/ && git clone https://github.com/microsoft/qlib.git && cd qlib && pip install .
 
 # EXPOSE 8888 
 CMD ["/bin/zsh"]
 
+# RUN chsh -s ~/.zshrc
+#RUN useradd -m -s /bin/zsh tommy && echo "tommy:tommy" | chpasswd && adduser tommy sudo
 
+# config user

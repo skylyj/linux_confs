@@ -48,6 +48,7 @@ windows:
   - terminals:
       layout: main-vertical
       panes:
-        - conda activate tf26 && ipython
-        - scala
-  - notebook: conda activate tf26 && (cd ~/Notebook/; jupyter lab)
+        - conda activate py39 && ipython
+        - vim
+  - notebook: conda activate py39 && (cd ~/Notebook/; jupyter lab)
+  - vim: vim

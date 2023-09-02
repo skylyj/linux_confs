@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/lianyijiang/src/tristram'
+let g:netrw_dirhist_2='/Users/baidu/bin'
+let g:netrw_dirhist_3='/Users/baidu/Documents/ippt/cuanjiang/setup'
+let g:netrw_dirhist_4='/Volumes/WIN/backup_HITCHI/lianyijiang/Work/Douban/Code/Commodity/pshihuoCai'
+let g:netrw_dirhist_5='/Users/baidu/src/code_master/demo'
+let g:netrw_dirhist_6='/Volumes/lianyijiang/SuiDong/Projects/app/ecom/im/im-tools/smdc/proto'
+let g:netrw_dirhist_7='/Users/baidu'
+let g:netrw_dirhist_8='/Users/baidu/bin'
+let g:netrw_dirhist_9='/Users/baidu/.ssh'

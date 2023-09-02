@@ -1,0 +1,2 @@
+supertab.vmb: call delete('/home/lyj/.vim/bundle/superTab//doc/supertab.txt')|call delete('/home/lyj/.vim/bundle/superTab//plugin/supertab.vim')
+supertab.vmb: call delete('/home/lyj/.vim/bundle/superTab//doc/supertab.txt')|call delete('/home/lyj/.vim/bundle/superTab//plugin/supertab.vim')

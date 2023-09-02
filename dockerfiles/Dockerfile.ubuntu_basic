@@ -1,0 +1,29 @@
+FROM arm64v8/ubuntu:23.04
+ENV DEBIAN_FRONTEND noninteractive
+ENV TZ=Asia/Shanghai
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+
+# install basics && tools
+USER root
+RUN yes | unminimize
+RUN apt-get update && \
+    apt-get install -y zlib1g zlib1g-dev liblzma-dev libssl-dev libreadline-dev ncurses-dev libtool bison && \
+    apt-get install -y automake autoconf build-essential pkg-config cmake valgrind libgtest-dev && \
+    apt-get install -y libyaml-dev libncurses5-dev libffi-dev libgdbm-dev && \
+    apt-get install -y libxml2-dev libxslt-dev libc6-dev && \
+    apt-get install -y libmysqlclient-dev libsqlite3-dev sqlite3 && \
+    apt-get install -y sqlite3 libsqlite3-dev && \
+    apt-get install -y openssh-server openssh-client openssl && \
+    apt-get install -y tar curl wget w3m &&\
+    apt-get install -y htop tree sudo &&\
+    apt-get install -y tmux git vim emacs && \
+    apt-get install -y tar man man-db zsh && \
+    apt-get install -y mlocate enca net-tools && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists
+
+# RUN cd /usr/src/googletest && \
+#     cmake . && \
+#     cmake --build . --target install
+# Run a shell
+CMD ["/bin/zsh"]

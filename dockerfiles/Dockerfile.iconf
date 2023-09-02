@@ -31,10 +31,11 @@ ENV PATH /root/conda/bin:$PATH
 RUN conda create -n py39 python=3.9
 RUN conda init zsh
 RUN echo "conda activate py39" >> /root/.zshrc
+SHELL ["conda", "run", "-n", "py39", "/bin/zsh", "-c"]
 RUN conda install numpy pandas jupyter ipython scikit-learn plotly autopep8 && \
     conda install pytorch torchvision -c pytorch
 
-## add ConfigFiles
+# ## add ConfigFiles
 RUN mkdir -p /root/.config /root/.emacs.d
 ADD dot_files/.tmux.conf /root/.tmux.conf
 ADD dot_files/.config/tmuxinator/dream.yml /root/.config/tmuxinator/dream.yml

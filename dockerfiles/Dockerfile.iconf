@@ -14,26 +14,28 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 RUN echo "export TERM=xterm-256color" >> ~/.zshrc
 
 #github access
-RUN mkdir -p /root/configs  /root/Github/PrivateHub/ /root/Notebook
+RUN mkdir -p /root/configs
 ADD ./software/id_rsa.pub  /root/configs/id_rsa.pub
 ADD ./software/id_rsa  /root/configs/id_rsa
 ADD dot_files/.gitconfig /root/.gitconfig
 RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
-RUN eval $(ssh-agent -s) && cd /root/configs/ && ssh-add id_rsa && cd /root/Github/PrivateHub && git clone git@github.com:skylyj/linux_confs.git
+RUN eval $(ssh-agent -s) && cd /root/configs/ && ssh-add id_rsa
+# RUN cd /root/Github/PrivateHub && git clone git@github.com:skylyj/linux_confs.git 
 
 #CMD [ "zsh" ]
-# conda 
+# conda install
 ADD ./software/Anaconda3-2023.07-2-Linux-aarch64.sh /tmp/conda.sh
 RUN bash /tmp/conda.sh -b -p /root/conda
 ENV PATH /root/conda/bin:$PATH
 
-# RUN conda update conda && \
+# conda create env
 RUN conda create -n py39 python=3.9
 RUN conda init zsh
 RUN echo "conda activate py39" >> /root/.zshrc
 SHELL ["conda", "run", "-n", "py39", "/bin/zsh", "-c"]
 RUN conda install numpy pandas jupyter ipython scikit-learn plotly autopep8 && \
-    conda install pytorch torchvision -c pytorch
+    conda install pytorch torchvision -c pytorch 
+RUN conda install yfinance 
 
 # ## add ConfigFiles
 RUN mkdir -p /root/.config /root/.emacs.d
@@ -45,14 +47,14 @@ ADD dot_files/.vimrc /root/.vimrc
 ADD dot_files/MyVim /root/MyVim
 
 # ## qlib install 
-# RUN pip install catboost xgboost && \
-#     pip install --upgrade cython 
+RUN pip install catboost xgboost && \
+    pip install --upgrade cython 
+RUN cd /root/Github/qlib && pip install .
 # RUN cd /root/Github/PrivateHub/ && git clone https://github.com/microsoft/qlib.git && cd qlib && pip install .
 
 # EXPOSE 8888 
 CMD ["/bin/zsh"]
+CMD ["emacs"]
 
 # RUN chsh -s ~/.zshrc
 #RUN useradd -m -s /bin/zsh tommy && echo "tommy:tommy" | chpasswd && adduser tommy sudo
-
-# config user

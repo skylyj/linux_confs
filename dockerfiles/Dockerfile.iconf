@@ -1,8 +1,7 @@
-FROM ubuntu_basic_23
+FROM ubuntu23
 SHELL ["/bin/zsh", "--login", "-c"] #按照login的形式来执行每个命令
 USER root
 RUN ssh-agent bash
-RUN apt-get update && apt-get install -y openssh-client tmuxinator
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
     -t https://github.com/denysdovhan/spaceship-prompt \
     -a 'SPACESHIP_PROMPT_ADD_NEWLINE="false"' \
@@ -50,7 +49,12 @@ ADD dot_files/MyVim /root/MyVim
 RUN pip install catboost xgboost && \
     pip install --upgrade cython 
 RUN cd /root/Github/qlib && pip install .
-# RUN cd /root/Github/PrivateHub/ && git clone https://github.com/microsoft/qlib.git && cd qlib && pip install .
+
+
+# config local dirs
+RUN mkdir -p /root/Github/PrivateHub
+RUN cd /root/Github/PrivateHub/ && git clone git@github.com:skylyj/linux_confs.git
+#RUN cd /root/Github/PrivateHub/ && git clone https://github.com/microsoft/qlib.git && cd qlib && pip install .
 
 # EXPOSE 8888 
 CMD ["/bin/zsh"]

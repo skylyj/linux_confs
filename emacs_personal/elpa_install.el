@@ -642,21 +642,28 @@
   (global-set-key (kbd "C-,") #'embrace-commander)
   )
 
-(use-package s
-  :ensure t)
-
-(use-package dash
-  :ensure t)
-
-(use-package editorconfig
-  :ensure t)
-
-
 ;;copilot
-;; (add-to-list 'load-path
-;; 	     (expand-file-name (concat user-emacs-directory "copilot.el")))
-;; (require 'copilot)
-;; copilot automatically provide completions
+;; (use-package s
+;;   :ensure t)
+
+;; (use-package dash
+;;   :ensure t)
+;; make some explanation here
+
+;; (use-package editorconfig
+;;   :ensure t)
+
+;; (require 'cl)
+;; (let ((pkg-list '(use-package
+;; 		          s
+;; 		          dash
+;; 		          editorconfig
+;;                   company)))
+;;   (package-initialize)
+;;   (when-let ((to-install (map-filter (lambda (pkg _) (not (package-installed-p pkg))) pkg-list)))
+;;     (package-refresh-contents)
+;;     (mapc (lambda (pkg) (package-install pkg)) pkg-list)))
+
 (use-package copilot
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :ensure t)
@@ -679,7 +686,6 @@
   (org-ai-install-yasnippets)) ; if you are using yasnippet and want `ai` snippets
 
 (setq org-ai-openai-api-token "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")
-;; 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
 
 
 ;; (use-package codeium

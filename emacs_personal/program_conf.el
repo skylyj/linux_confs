@@ -1,14 +1,13 @@
 ;;; package --- Summary
 ;;; Code:
 ;;; Commentary:
+;; Add melpa-stable to your packages repositories
 
 ;; flycheck
 (use-package flycheck
   :init (global-flycheck-mode))
-;; Force flycheck to always use c++11 support. We use
-;; the clang language backend so this is set to clang
-;; Turn flycheck on everywhere
 
+;; AI related
 (use-package company
   :ensure t
   :hook (scala-mode . company-mode)
@@ -50,23 +49,6 @@
 
 
 
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(company-tooltip ((t (:background "blue" :foreground "#fff")))))
-
-;; (require 'package)
-
-;; Add melpa-stable to your packages repositories
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-
-;; (package-initialize)
-
-;; Enable defer and ensure by default for use-package
-;; (setq use-package-always-defer t
-;;       use-package-always-ensure t)
 
 ;; Enable scala-mode and sbt-mode
 (use-package scala-mode
@@ -82,8 +64,8 @@
    'minibuffer-complete-word
    'self-insert-command
    minibuffer-local-completion-map)
-   ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
-   (setq sbt:program-options '("-Dsbt.supershell=false")))
+  ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
+  (setq sbt:program-options '("-Dsbt.supershell=false")))
 
 
 ;; eglot metal 的配置
@@ -105,8 +87,7 @@
 ;;   org.scalameta:metals_2.13:0.11.10 \
 ;;   -o /usr/local/bin/metals-emacs -f
 
-;; lsp mode
-
+;; lsp related
 (use-package lsp-mode
   :ensure t
   :hook
@@ -129,7 +110,7 @@
   (setq lsp-keep-workspace-alive nil))
 
 (when (display-graphic-p) 
-    ;; Do any keybindings and theme setup here
+  ;; Do any keybindings and theme setup here
   (use-package lsp-ui
     :ensure t
     :commands lsp-ui-mode)
@@ -162,15 +143,199 @@
   :ensure t)
 
 
-  (use-package protobuf-mode
-    :ensure t
-    )
+(use-package protobuf-mode
+  :ensure t
+  )
 
 
-  (use-package go-mode
+(use-package go-mode
+  :ensure t
+  :config
+  (autoload 'go-mode "go-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+  )
+
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-global-mode)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (setq projectile-switch-project-action 'projectile-dired)
+  (setq projectile-project-search-path '("~/Gitlab/offline/" "~/Gitlab/online/" "~/Github/PrivateHub"))
+  (projectile-register-project-type 'java '("pom.xml")
+                                    :compile "mvn compile"
+                                    :test "mvn test"
+                                    :run "mvn package"
+                                    :test-suffix "Test")
+  )
+
+;; helm
+(use-package helm
+  :ensure t
+  :config
+  (setq helm-locate-fuzzy-match nil)
+  (setq helm-locate-command "mdfind -name %s %s")
+  (setq locate-command "mdfind")
+  ;; (setq helm-follow-mode-persistent t)
+  (global-set-key (kbd "C-c h") 'helm-command-prefix)
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+  (global-set-key (kbd "C-x b") 'helm-mini)
+  (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+  (set-face-attribute 'helm-selection nil
+		      :background "lime green"
+		      :foreground "black")
+  (setq
+   helm-split-window-in-side-p           t
+                                        ; open helm buffer inside current window,
+                                        ; not occupy whole other window
+   helm-move-to-line-cycle-in-source     t
+                                        ; move to end or beginning of source when
+                                        ; reaching top or bottom of source.
+   helm-ff-search-library-in-sexp        t
+                                        ; search for library in `require' and `declare-function' sexp.
+   helm-scroll-amount                    8
+                                        ; scroll 8 lines other window using M-<next>/M-<prior>
+   helm-ff-file-name-history-use-recentf t
+   ;; Allow fuzzy matches in helm semantic
+   helm-semantic-fuzzy-match t
+   helm-imenu-fuzzy-match    t)
+  ;; Have helm automaticaly resize the window
+  (helm-autoresize-mode 1)
+  (setq rtags-use-helm t)
+  (setq helm-buffer-max-length nil)
+  )
+
+(use-package helm-projectile
+  :ensure t
+  :config
+  (helm-projectile-on)
+  (setq projectile-completion-system 'helm)
+  )
+
+(use-package helm-swoop
+  :ensure t
+  :config
+  (global-set-key (kbd "M-i") 'helm-swoop)
+  (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
+  (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+
+  ;; When doing isearch, hand the word over to helm-swoop
+  (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+  ;; From helm-swoop to helm-multi-swoop-all
+  (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+  ;; When doing evil-search, hand the word over to helm-swoop
+  ;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
+
+  ;; Instead of helm-multi-swoop-all, you can also use helm-multi-swoop-current-mode
+  (define-key helm-swoop-map (kbd "M-m") 'helm-multi-swoop-current-mode-from-helm-swoop)
+
+  ;; Move up and down like isearch
+  (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+  (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
+  (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
+  (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
+  )
+
+(use-package helm-ag
+  :ensure t)
+
+(defun my-helm-ag-thing-at-point ()
+  "Search the symbol at point with `helm-ag'."
+  (interactive)
+  (let ((helm-ag-insert-at-point 'symbol))
+    (helm-projectile-ag)
+    ;; (helm-do-ag-project-root)
+    ))
+(global-set-key (kbd "M-I") 'my-helm-ag-thing-at-point)
+
+
+;; other important
+(use-package magit
+  :ensure t
+  )
+(use-package wgrep
+  :ensure t)
+
+(use-package multiple-cursors
+  :ensure t
+  :bind (("C->"           . mc/mark-next-like-this)
+         ("C-<"           . mc/mark-previous-like-this)
+         ("C-M->"         . mc/skip-to-next-like-this)
+         ("C-M-<"         . mc/skip-to-previous-like-this)
+         ("C-c C-<"       . mc/mark-all-like-this)
+         ("C-S-c C-S-c"   . mc/edit-lines)
+         ("C-S-<mouse-1>" . mc/add-cursor-on-click)
+         :map mc/keymap
+         ("C-|" . mc/vertical-align-with-space))
+  :config
+  (setq mc/insert-numbers-default 1))
+
+(use-package smartscan
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'smartscan-mode)
+  (add-hook 'org-mode-hook 'smartscan-mode)
+  (add-hook 'dired-mode-hook 'smartscan-mode)
+  )
+
+;; yasnippet
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1)
+  )
+(use-package yasnippet-snippets
+  :ensure t
+  )
+
+;; enable a more powerful jump back function from ace jump mode
+(use-package ace-jump-mode
+  :ensure t
+  :config
+  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+  (autoload
+    'ace-jump-mode-pop-mark
+    "ace-jump-mode"
+    "Ace jump back:-)"
+    t)
+  (eval-after-load "ace-jump-mode"
+    '(ace-jump-mode-enable-mark-sync))
+  )
+
+
+
+;; (use-package helm-config
+;;   :ensure t
+;;   )
+
+(use-package yaml-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))  
+  )
+
+
+(when (display-graphic-p) 
+  (use-package auto-highlight-symbol
     :ensure t
     :config
-    (autoload 'go-mode "go-mode" nil t)
-    (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+    (global-auto-highlight-symbol-mode t)
     )
 
+
+  (use-package projectile-rails
+    :ensure t
+    :config
+    (projectile-rails-global-mode)
+    )
+
+  (use-package highlight-indent-guides
+    :ensure t
+    :config
+    (add-hook 'python-mode-hook 'highlight-indent-guides-mode)
+    (setq highlight-indent-guides-method 'character))
+
+  )

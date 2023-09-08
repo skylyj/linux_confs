@@ -4,6 +4,19 @@
 
 ;; 这样mac open file的时候不会重复打开frame了，始终在一个frame里面
 ;; (load-theme 'wombat)
+;; straight
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 (set-cursor-color "yellow")
 (setq make-backup-files nil)
 (setq ns-pop-up-frames nil)
@@ -20,7 +33,7 @@
     (menu-bar-mode -1) 
     ;; (toggle-scroll-bar -1) 
     (tool-bar-mode -1) 
-      ;(load-theme 'zenburn)
+					;(load-theme 'zenburn)
     )
   )
 (require 'dired-x)
@@ -85,15 +98,15 @@
 ;; 系统相关
 (cond
  ((equal system-type 'gnu/linux)
-       (set-frame-font "Monospace-19"))
-      ((equal system-type 'darwin)
-       (tool-bar-mode -1)
-       (set-frame-font "Menlo-16")
-       ;; (set-fontset-font
-       ;;  (frame-parameter nil 'font)
-       ;;  'han
-       ;;  (font-spec :family "Hiragino Sans GB" ))
-       ))
+  (set-frame-font "Monospace-19"))
+ ((equal system-type 'darwin)
+  (tool-bar-mode -1)
+  (set-frame-font "Menlo-16")
+  ;; (set-fontset-font
+  ;;  (frame-parameter nil 'font)
+  ;;  'han
+  ;;  (font-spec :family "Hiragino Sans GB" ))
+  ))
 
 (setq auto-save-default nil)
 
@@ -193,9 +206,9 @@
   :ensure t)
 
 ;; emacs server, client 可以在终端使用 /Applications/Emacs\ 2.app/Contents/MacOS/bin/emacsclient ifuns.el &来启动
-;(when (display-graphic-p) 
-;  (server-start)    
-; )
+					;(when (display-graphic-p) 
+					;  (server-start)    
+					; )
 
 ;; tramp
 ;; (setq recentf-exclude `(,tramp-file-name-regexp
@@ -265,9 +278,74 @@
     :config
     (add-hook 'csv-mode-hook 'csv-align-mode))
 
-  ;(use-package vterm
-  ;  :ensure t)
-  ;(use-package multi-vterm
-  ;  :ensure t)
-)
+					;(use-package vterm
+					;  :ensure t)
+					;(use-package multi-vterm
+					;  :ensure t)
+  )
 
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+(when (display-graphic-p) 
+  ;; Do any keybindings and theme setup here
+  (use-package gnuplot
+    :ensure t)
+  (use-package gnuplot-mode
+    :ensure t)
+  (use-package helm-chrome
+    :ensure t)
+
+  (use-package dash-at-point
+    :ensure t
+    :config
+    (global-set-key (kbd "s-i dp") 'dash-at-point)
+    (global-set-key (kbd "s-i dw") 'dash-at-point-with-docset)
+    )
+  (use-package diminish
+    :ensure t)
+
+  (use-package visual-regexp
+    :ensure t)
+  (use-package visual-regexp-steroids
+    :ensure t
+    :config
+    (define-key global-map (kbd "C-c q") 'vr/query-replace)
+    )
+  ;; for forge
+					;(setq auth-sources '("~/.authinfo"))
+					;(use-package forge
+					;  :ensure t
+					;  )
+					;(with-eval-after-load 'magit
+					;  (require 'forge))
+					;(with-eval-after-load 'forge
+					;  (add-to-list 'forge-alist
+					;               '("gitlab.mobvista.com"
+					;                 "gitlab.mobvista.com/api/v4"
+					;                 "gitlab.mobvista.com"
+					;                 forge-gitlab-repository)))
+
+  ;;google this
+  (use-package google-this
+    :ensure t
+    :config
+    (google-this-mode 1)
+    (global-set-key (kbd "C-c g") 'google-this-mode-submap)
+    )
+
+  (use-package good-scroll
+    :ensure t
+    :config
+    (good-scroll-mode -1)
+    )
+
+  (use-package beacon
+    :ensure t
+    :config
+    (beacon-mode -1)
+    )
+
+
+  ;; HIGHLIGHT 自动高亮
+  
+  )

@@ -14,12 +14,12 @@ RUN echo "export TERM=xterm-256color" >> ~/.zshrc
 
 #github access
 RUN mkdir -p /root/configs
+RUN mkdir -p /root/Github/PrivateHub 
 ADD ./software/id_rsa.pub  /root/configs/id_rsa.pub
 ADD ./software/id_rsa  /root/configs/id_rsa
 ADD dot_files/.gitconfig /root/.gitconfig
-RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
-RUN eval $(ssh-agent -s) && cd /root/configs/ && ssh-add id_rsa
-# RUN cd /root/Github/PrivateHub && git clone git@github.com:skylyj/linux_confs.git 
+RUN mkdir -p -m 0600 /root/.ssh && ssh-keyscan github.com >> /root/.ssh/known_hosts
+RUN eval $(ssh-agent -s) && cd /root/configs/ && ssh-add id_rsa && cd /root/Github/PrivateHub && git clone git@github.com:skylyj/linux_confs.git 
 
 #CMD [ "zsh" ]
 # conda install
@@ -34,7 +34,7 @@ RUN echo "conda activate py39" >> /root/.zshrc
 SHELL ["conda", "run", "-n", "py39", "/bin/zsh", "-c"]
 RUN conda install numpy pandas jupyter ipython scikit-learn plotly autopep8 && \
     conda install pytorch torchvision -c pytorch 
-RUN conda install yfinance 
+RUN conda install -c conda-forge yfinance 
 
 # ## add ConfigFiles
 RUN mkdir -p /root/.config /root/.emacs.d
@@ -48,13 +48,10 @@ ADD dot_files/MyVim /root/MyVim
 # ## qlib install 
 RUN pip install catboost xgboost && \
     pip install --upgrade cython 
-RUN cd /root/Github/qlib && pip install .
-
 
 # config local dirs
-RUN mkdir -p /root/Github/PrivateHub
-RUN cd /root/Github/PrivateHub/ && git clone git@github.com:skylyj/linux_confs.git
-#RUN cd /root/Github/PrivateHub/ && git clone https://github.com/microsoft/qlib.git && cd qlib && pip install .
+#RUN cd /root/Github/PrivateHub/ && git clone git@github.com:skylyj/linux_confs.git
+RUN cd /root/Github/PrivateHub/ && git clone https://github.com/microsoft/qlib.git && cd qlib && pip install .
 
 # EXPOSE 8888 
 CMD ["/bin/zsh"]

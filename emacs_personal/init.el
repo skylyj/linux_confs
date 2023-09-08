@@ -1,5 +1,5 @@
 (load "~/Github/PrivateHub/linux_confs/emacs_personal/basic_conf.el")
-(load "~/Github/PrivateHub/linux_confs/emacs_personal/elpa_install.el")
+;; (load "~/Github/PrivateHub/linux_confs/emacs_personal/elpa_install.el")
 (load "~/Github/PrivateHub/linux_confs/emacs_personal/program_conf.el")
 (load "~/Github/PrivateHub/linux_confs/emacs_personal/python_conf.el")
 (when (display-graphic-p) 
@@ -8,5 +8,5 @@
   (load "~/Github/PrivateHub/linux_confs/emacs_personal/ifuns.el")
   (load "~/Github/PrivateHub/linux_confs/emacs_personal/manual_install.el")
   )
-(load "~/Github/PrivateHub/linux_confs/emacs_personal/keybindings.el")
+;; (load "~/Github/PrivateHub/linux_confs/emacs_personal/keybindings.el")
 

@@ -347,5 +347,141 @@
 
 
   ;; HIGHLIGHT 自动高亮
-  
+
+  (use-package key-chord
+    :ensure t
+    :config
+    (key-chord-mode 1)
+    (key-chord-define-global "hj"     'undo)
+    )
+
+
+  (use-package which-key
+    :ensure t
+    :config
+    (which-key-mode)
+    )
+
+  (use-package zop-to-char
+    :ensure t
+    :config
+    (global-set-key (kbd "M-z") 'zop-up-to-char)
+    (global-set-key (kbd "M-Z") 'zop-to-char)
+    )
+
+  (setq package-check-signature nil)
+  (use-package undo-tree
+    :ensure t
+    :config
+    (undo-tree-mode)
+    (setq undo-tree-history-directory-alist
+	  `((".*" . ,temporary-file-directory)))
+    (setq undo-tree-auto-save-history t)
+    (global-undo-tree-mode)
+
+    )
+
+
+  (use-package crux
+    :ensure t)
+
+  (use-package anzu
+    :ensure t
+    :config
+    (global-anzu-mode)
+    (global-set-key (kbd "M-%") 'anzu-query-replace)
+    (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+    )
+
+  (use-package zenburn-theme
+    :ensure t
+    ;; :config
+    ;; (load-theme 'zenburn t)
+    ) 
   )
+
+(use-package browse-kill-ring
+  :disabled
+  :ensure t
+  :config
+  (browse-kill-ring-default-keybindings)
+  (global-set-key (kbd "s-y") 'browse-kill-ring)
+  ;; 有了helm-show-kill-ring 就够用了
+  )
+
+(use-package transpose-frame
+  :ensure t
+  )
+(use-package easy-kill
+  :ensure t
+  :config
+  (global-set-key [remap kill-ring-save] 'easy-kill)
+  (global-set-key [remap mark-sexp] 'easy-mark)
+  )
+
+
+(use-package bookmark-in-project
+  :ensure t
+  :commands (bookmark-in-project-jump
+             bookmark-in-project-jump-next
+             bookmark-in-project-jump-previous
+             bookmark-in-project-delete-all)
+  :bind (
+         ;; ("s-i pbl" . bookmark-in-project-jump)
+         ("s-i pbn" . bookmark-in-project-jump-next)
+         ("s-i pbp" . bookmark-in-project-jump-previous)
+         ("s-i pbd" . bookmark-in-project-delete-all)
+         ))
+(load-library "bookmark-in-project")
+(defun my/bookmark-in-project-jump ()
+  "Jump to a bookmark in the current project."
+  (interactive)
+  (bookmark-maybe-load-default-file)
+  (bookmark-in-project--jump-impl #'bookmark-jump))
+
+(global-set-key (kbd "s-i pbl") 'my/bookmark-in-project-jump)
+
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
+
+(use-package change-inner
+  :ensure t
+  :config
+  :bind (("s-i ci" . change-inner)
+         ("s-i co" . change-outer)
+         )
+  )
+(use-package nlinum
+  :config
+  (global-nlinum-mode t)
+  )
+
+(use-package which-key
+  :config
+  (which-key-mode))
+
+(use-package embrace
+  :ensure t
+  :config
+  (global-set-key (kbd "C-,") #'embrace-commander)
+  )
+
+;; (use-package ace-pinyin
+;;   :ensure t
+;;   :config
+;;   (setq ace-pinyin-use-avy nil)
+;;   (ace-pinyin-global-mode +1)
+;;   (global-set-key (kbd "s-i pj") 'ace-pinyin-jump-char)
+;;   )
+
+;; (use-package evil-numbers
+;;   :ensure t
+;;   :config
+;;   (global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
+;;   (global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
+;;   (global-set-key (kbd "C-c C-+") 'evil-numbers/inc-at-pt-incremental)
+;;   (global-set-key (kbd "C-c C--") 'evil-numbers/dec-at-pt-incremental)
+;;   )
+
+
+

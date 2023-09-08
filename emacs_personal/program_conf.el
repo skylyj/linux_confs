@@ -338,4 +338,30 @@
     (add-hook 'python-mode-hook 'highlight-indent-guides-mode)
     (setq highlight-indent-guides-method 'character))
 
+  (use-package helm-ls-git
+    :ensure t
+    )
+
+  (use-package helm-ctest
+    :ensure t
+    )
+
+
+  (use-package helm-flycheck
+    :ensure t
+    :config
+    (eval-after-load 'flycheck
+      '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
+    )
+  ;; (require 'swiper-helm)
+
+  (use-package helm-themes
+    :ensure t
+    )
+
+  (use-package helm-bm
+    :ensure t
+    )
+
+
   )

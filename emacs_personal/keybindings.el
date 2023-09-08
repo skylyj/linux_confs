@@ -84,3 +84,25 @@
   (global-set-key (kbd "C-S-<up>") 'move-text-up)
   (global-set-key (kbd "C-S-<down>") 'move-text-down)
   )
+
+  ;; My-Mode
+  (defvar my-keys-minor-mode-map
+    (let ((map (make-sparse-keymap)))
+      ;; (define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)
+      (define-key map  (kbd "C-x g") 'magit-status)
+      (define-key map  (kbd "C-s") 'isearch-forward)
+      (define-key map (kbd "C-c SPC") 'ace-jump-mode)
+      (define-key map (kbd "C-x SPC") 'rectangle-mark-mode)
+      (global-set-key (kbd "C-c g") 'google-this-mode-submap)
+      ;; (move-text-default-bindings)
+      map)
+    "my-keys-minor-mode keymap.")
+
+  (define-minor-mode my-mode
+    "A minor mode so that my key settings override annoying major modes."
+    :init-value t
+    :lighter  my-mode
+    :keymap my-keys-minor-mode-map
+    )
+
+  (my-mode 1)

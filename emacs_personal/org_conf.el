@@ -17,7 +17,6 @@
 			"~/Github/PrivateHub/org/Org/todo/tech_todo.org"
 			"~/Github/PrivateHub/org/Org/Work/Mobvista/Projects/roas.org"
 			"~/Github/PrivateHub/org/Org/todo/home_todo.org"
-			"/Users/mobvista/Github/PrivateHub/org/Org/Work/Mobvista/mob_todo.org"
 			"~/Github/PrivateHub/org/Org/todo/program_todo.org"
 			))
 (define-key global-map "\C-ca" 'org-agenda)
@@ -276,3 +275,53 @@
 (require 'htmlize)
 (setq org-html-htmlize-output-type 'css)
 (setq org-html-htmlize-output-type 'inline-css)
+(set-cursor-color "yellow")
+
+;; about org-capture
+(define-key global-map "\C-cc" 'org-capture)
+(setq org-default-notes-file (concat org-directory "~/notes.org"))
+
+(setq org-capture-templates nil)
+(add-to-list 'org-capture-templates '("t" "TODOS"))
+(add-to-list 'org-capture-templates
+             '("th" "TODO HOME" entry
+               (file+headline "~/Github/PrivateHub/life_org/todos.org" "Home")
+               "* TODO %^{任务名}\n%u\n%a\n" ))
+(add-to-list 'org-capture-templates
+             '("tt" "TODO TECH" entry
+               (file+headline "~/Github/PrivateHub/life_org/todos.org" "Technology")
+               "* TODO %^{任务名}\n%u\n%a\n"))
+
+;; 记录日志
+(add-to-list 'org-capture-templates
+             '("j" "Journal" entry (file+datetree "~/Github/PrivateHub/life_org/journal.org")
+               "* %U - %^{heading}\n  %?"))
+(add-to-list 'org-capture-templates
+             '("b" "Billing" plain
+               (file+function "~/Github/PrivateHub/life_org/billing.org" find-month-tree)
+               " | %U | %^{类别} | %^{描述} | %^{金额} |" :kill-buffer t))
+(defun get-year-and-month ()
+  (list (format-time-string "%Y年") (format-time-string "%m月")))
+
+
+(defun find-month-tree ()
+  (let* ((path (get-year-and-month))
+         (level 1)
+         end)
+    (unless (derived-mode-p 'org-mode)
+      (error "Target buffer \"%s\" should be in Org mode" (current-buffer)))
+    (goto-char (point-min))             ;移动到 buffer 的开始位置
+    ;; 先定位表示年份的 headline，再定位表示月份的 headline
+    (dolist (heading path)
+      (let ((re (format org-complex-heading-regexp-format
+                        (regexp-quote heading)))
+            (cnt 0))
+        (if (re-search-forward re end t)
+            (goto-char (point-at-bol))  ;如果找到了 headline 就移动到对应的位置
+          (progn                        ;否则就新建一个 headline
+            (or (bolp) (insert "\n"))
+            (if (/= (point) (point-min)) (org-end-of-subtree t t))
+            (insert (make-string level ?*) " " heading "\n"))))
+      (setq level (1+ level))
+      (setq end (save-excursion (org-end-of-subtree t t))))
+    (org-end-of-subtree)))

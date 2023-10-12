@@ -49,7 +49,7 @@
     (doom-modeline-buffer-encoding t)
     (doom-modeline-battery t)
     
-    ;; (doom-modeline-minor-modes t)
+    (doom-modeline-minor-modes t)
     ;; (doom-modeline-persp-name nil)
     (doom-modeline-major-mode-icon t)  
     )

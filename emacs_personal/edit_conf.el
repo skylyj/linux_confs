@@ -45,6 +45,15 @@
     (global-set-key (kbd "C-c g") 'google-this-mode-submap)
     )
 
+  ;; youtube
+  (use-package helm-youtube
+    :ensure t
+    :config
+    (setq helm-youtube-key "AIzaSyAQB8odOXYv46YR-x0Dk7BZbVTnWVYL4oM")
+    (define-key global-map (kbd "C-c y") 'helm-youtube)
+    )
+
+  
   (use-package good-scroll
     :ensure t
     :config

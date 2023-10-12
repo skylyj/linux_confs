@@ -1,14 +1,4 @@
-;; [[file:../../tech_org/dotfiles/emacs_conf.org::*program][program:1]]
-;;; package --- Summary
-;;; Code:
-;;; Commentary:
-;; Add melpa-stable to your packages repositories
-
-;; flycheck
-(use-package flycheck
-  :init (global-flycheck-mode))
-
-;; AI related
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*补全][补全:1]]
 (use-package company
   :ensure t
   :hook (scala-mode . company-mode)
@@ -32,8 +22,6 @@
 (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
 (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
 
-;; org-ai
-
 (use-package org-ai
   :ensure t
   :commands (org-ai-mode
@@ -46,130 +34,9 @@
   (org-ai-install-yasnippets)) ; if you are using yasnippet and want `ai` snippets
 
 (setq org-ai-openai-api-token "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")
+;; 补全:1 ends here
 
-
-
-
-
-;; Enable scala-mode and sbt-mode
-(use-package scala-mode
-  :interpreter ("scala" . scala-mode))
-
-;; Enable sbt mode for executing sbt commands
-(use-package sbt-mode
-  :commands sbt-start sbt-command
-  :config
-  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
-  ;; allows using SPACE when in the minibuffer
-  (substitute-key-definition
-   'minibuffer-complete-word
-   'self-insert-command
-   minibuffer-local-completion-map)
-  ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
-  (setq sbt:program-options '("-Dsbt.supershell=false")))
-
-
-;; eglot metal 的配置
-;; (use-package eglot
-;;   :pin melpa-stable
-;;   ;; (optional) Automatically start metals for Scala files.
-;;   ;; :hook (scala-mode . eglot-ensure)
-;;   :config
-;;   (setq eldoc-echo-area-use-multiline-p nil)
-;;   ;; (add-hook 'eglot--managed-mode-hook (lambda () (flymake-mode -1)))
-;;   )
-
-;;需要安装metals-emacs
-;; sudo coursier bootstrap \
-;;   --java-opt -XX:+UseG1GC \
-;;   --java-opt -XX:+UseStringDeduplication  \
-;;   --java-opt -Xss4m \
-;;   --java-opt -Xms100m \
-;;   org.scalameta:metals_2.13:0.11.10 \
-;;   -o /usr/local/bin/metals-emacs -f
-
-;; lsp related
-(use-package lsp-mode
-  :ensure t
-  :hook
-  (scala-mode . lsp)
-  (lsp-mode . lsp-lens-mode)
-  (python-mode . lsp)
-  (sh-mode . lsp)
-  (yaml-mode . lsp)
-  :config
-  ;; Uncomment following section if you would like to tune lsp-mode performance according to
-  ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
-  ;; (setq gc-cons-threshold 100000000) ;; 100mb
-  ;; (setq read-process-output-max (* 1024 1024)) ;; 1mb
-  ;; (setq lsp-idle-delay 0.500)
-  ;; (setq lsp-log-io nil)
-  ;; (setq lsp-completion-provider :capf)
-  (setq lsp-prefer-flymake nil)
-  ;; Makes LSP shutdown the metals server when all buffers in the project are closed.
-  ;; https://emacs-lsp.github.io/lsp-mode/page/settings/mode/#lsp-keep-workspace-alive
-  (setq lsp-keep-workspace-alive nil))
-
-(when (display-graphic-p) 
-  ;; Do any keybindings and theme setup here
-  (use-package lsp-ui
-    :ensure t
-    :commands lsp-ui-mode)
-  (use-package posframe
-    :ensure t)
-
-  (use-package dap-mode
-    :ensure t
-    :hook
-    (lsp-mode . dap-mode)
-    (lsp-mode . dap-ui-mode))
-  (use-package helm-lsp
-    :ensure t
-    :config
-    (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol)
-    )
-
-  (use-package lsp-treemacs
-    :ensure t)
-
-  (use-package treemacs
-    :ensure t)
-  )
-
-(setq lsp-pyls-plugins-pycodestyle-enabled nil)
-
-
-;; Add metals backend for lsp-mode
-(use-package lsp-metals
-  :ensure t)
-
-
-(use-package protobuf-mode
-  :ensure t
-  )
-
-
-(use-package go-mode
-  :ensure t
-  :config
-  (autoload 'go-mode "go-mode" nil t)
-  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
-  )
-
-(use-package projectile
-  :ensure t
-  :config
-  (projectile-global-mode)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (setq projectile-switch-project-action 'projectile-dired)
-  (setq projectile-project-search-path '("~/Gitlab/offline/" "~/Gitlab/online/" "~/Github/PrivateHub"))
-  (projectile-register-project-type 'java '("pom.xml")
-                                    :compile "mvn compile"
-                                    :test "mvn test"
-                                    :run "mvn package"
-                                    :test-suffix "Test")
-  )
-
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*helm][helm:1]]
 ;; helm
 (use-package helm
   :ensure t
@@ -252,6 +119,168 @@
     ))
 (global-set-key (kbd "M-I") 'my-helm-ag-thing-at-point)
 
+(use-package helm-ls-git
+  :ensure t
+  )
+
+(use-package helm-ctest
+  :ensure t
+  )
+
+
+(use-package helm-flycheck
+  :ensure t
+  :config
+  (eval-after-load 'flycheck
+    '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
+  )
+;; (require 'swiper-helm)
+
+(use-package helm-themes
+  :ensure t
+  )
+
+(use-package helm-bm
+  :ensure t
+  )
+;; helm:1 ends here
+
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*lsp][lsp:1]]
+;; lsp related
+  (use-package lsp-mode
+    :ensure t
+    :hook
+    (scala-mode . lsp)
+    (lsp-mode . lsp-lens-mode)
+    (python-mode . lsp)
+    (sh-mode . lsp)
+    (yaml-mode . lsp)
+    :config
+    ;; Uncomment following section if you would like to tune lsp-mode performance according to
+    ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
+    ;; (setq gc-cons-threshold 100000000) ;; 100mb
+    ;; (setq read-process-output-max (* 1024 1024)) ;; 1mb
+    ;; (setq lsp-idle-delay 0.500)
+    ;; (setq lsp-log-io nil)
+    ;; (setq lsp-completion-provider :capf)
+    (setq lsp-prefer-flymake nil)
+    ;; Makes LSP shutdown the metals server when all buffers in the project are closed.
+    ;; https://emacs-lsp.github.io/lsp-mode/page/settings/mode/#lsp-keep-workspace-alive
+    (setq lsp-keep-workspace-alive nil))
+
+;; Add metals backend for lsp-mode
+(use-package lsp-metals
+  :ensure t)
+
+
+  (when (display-graphic-p) 
+    ;; Do any keybindings and theme setup here
+    (use-package lsp-ui
+      :ensure t
+      :commands lsp-ui-mode)
+    (use-package posframe
+      :ensure t)
+
+    (use-package dap-mode
+      :ensure t
+      :hook
+      (lsp-mode . dap-mode)
+      (lsp-mode . dap-ui-mode))
+    (use-package helm-lsp
+      :ensure t
+      :config
+      (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol)
+      )
+
+    (use-package lsp-treemacs
+      :ensure t)
+    )
+;; lsp:1 ends here
+
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*各种小语言][各种小语言:1]]
+(use-package protobuf-mode
+  :ensure t
+  )
+
+(use-package yaml-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))  
+  )
+
+(use-package go-mode
+  :ensure t
+  :config
+  (autoload 'go-mode "go-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+  )
+(use-package scala-mode
+  :interpreter ("scala" . scala-mode))
+
+;; Enable sbt mode for executing sbt commands
+(use-package sbt-mode
+  :commands sbt-start sbt-command
+  :config
+  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
+  ;; allows using SPACE when in the minibuffer
+  (substitute-key-definition
+   'minibuffer-complete-word
+   'self-insert-command
+   minibuffer-local-completion-map)
+  ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
+  (setq sbt:program-options '("-Dsbt.supershell=false")))
+;; 各种小语言:1 ends here
+
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*other][other:1]]
+;; flycheck
+(use-package flycheck
+  :init (global-flycheck-mode))
+
+;; Enable scala-mode and sbt-mode
+
+;; eglot metal 的配置
+;; (use-package eglot
+;;   :pin melpa-stable
+;;   ;; (optional) Automatically start metals for Scala files.
+;;   ;; :hook (scala-mode . eglot-ensure)
+;;   :config
+;;   (setq eldoc-echo-area-use-multiline-p nil)
+;;   ;; (add-hook 'eglot--managed-mode-hook (lambda () (flymake-mode -1)))
+;;   )
+
+;;需要安装metals-emacs
+;; sudo coursier bootstrap \
+;;   --java-opt -XX:+UseG1GC \
+;;   --java-opt -XX:+UseStringDeduplication  \
+;;   --java-opt -Xss4m \
+;;   --java-opt -Xms100m \
+;;   org.scalameta:metals_2.13:0.11.10 \
+;;   -o /usr/local/bin/metals-emacs -f
+
+
+(when (display-graphic-p) 
+
+  (use-package treemacs
+    :ensure t)
+  )
+
+(setq lsp-pyls-plugins-pycodestyle-enabled nil)
+
+
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-global-mode)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (setq projectile-switch-project-action 'projectile-dired)
+  (setq projectile-project-search-path '("~/Gitlab/offline/" "~/Gitlab/online/" "~/Github/PrivateHub"))
+  (projectile-register-project-type 'java '("pom.xml")
+                                    :compile "mvn compile"
+                                    :test "mvn test"
+                                    :run "mvn package"
+                                    :test-suffix "Test")
+  )
+
 
 ;; other important
 (use-package magit
@@ -306,17 +335,9 @@
     '(ace-jump-mode-enable-mark-sync))
   )
 
-
-
 ;; (use-package helm-config
 ;;   :ensure t
 ;;   )
-
-(use-package yaml-mode
-  :ensure t
-  :config
-  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))  
-  )
 
 
 (when (display-graphic-p) 
@@ -339,31 +360,6 @@
     (add-hook 'python-mode-hook 'highlight-indent-guides-mode)
     (setq highlight-indent-guides-method 'character))
 
-  (use-package helm-ls-git
-    :ensure t
-    )
-
-  (use-package helm-ctest
-    :ensure t
-    )
-
-
-  (use-package helm-flycheck
-    :ensure t
-    :config
-    (eval-after-load 'flycheck
-      '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
-    )
-  ;; (require 'swiper-helm)
-
-  (use-package helm-themes
-    :ensure t
-    )
-
-  (use-package helm-bm
-    :ensure t
-    )
-
 
   )
-;; program:1 ends here
+;; other:1 ends here

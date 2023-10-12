@@ -1,9 +1,4 @@
 ;; [[file:../../tech_org/dotfiles/emacs_conf.org::*ifuns][ifuns:1]]
-;;; package --- Summary
-;;; Code:
-;;; Commentary:
-
-;; ctags 使用的方法
 (setq path-to-ctags "/opt/homebrew/opt/ctags/bin/ctags")
 (defun create-tags (dir-name)
   "Create tags file."

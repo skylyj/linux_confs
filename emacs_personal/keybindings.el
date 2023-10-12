@@ -1,8 +1,4 @@
 ;; [[file:../../tech_org/dotfiles/emacs_conf.org::*keybiddings][keybiddings:1]]
-;;; package --- Summary
-;;; Code:
-;;; Commentary:
-
 (global-set-key (kbd "C-x m") 'eshell)
 
 ;; (define-key map (kbd "C-a") 'crux-move-beginning-of-line)

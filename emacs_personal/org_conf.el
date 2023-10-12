@@ -1,8 +1,4 @@
 ;; [[file:../../tech_org/dotfiles/emacs_conf.org::*org][org:1]]
-;;; package --- Summary
-;;; Code:
-;;; Commentary:
-
 (require 'org)
 (defun my-tbl-export (name)
   "Search for table named `NAME` and export."

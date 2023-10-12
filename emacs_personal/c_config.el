@@ -1,3 +1,4 @@
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*c_config][c_config:1]]
 (require 'cc-mode)
 (add-hook 'c++-mode-hook
           (lambda () (setq flycheck-clang-language-standard "c++11")))
@@ -109,9 +110,9 @@ respectively."
     :ensure t
     :config
     (setq auto-mode-alist
-	  (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+          (append '(("CMakeLists\\.txt\\'" . cmake-mode)
                     ("\\.cmake\\'" . cmake-mode))
-		  auto-mode-alist))
+                  auto-mode-alist))
     )
   )
 ;; (use-package cmake-idle
@@ -119,3 +120,4 @@ respectively."
 ;;   :config
 ;;   (cmake-ide-setup)
 ;;   )
+;; c_config:1 ends here

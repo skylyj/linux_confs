@@ -1,3 +1,4 @@
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*basic][basic:1]]
 ;;; package --- Summary
 ;;; Code:
 ;;; Commentary:
@@ -33,7 +34,7 @@
     (menu-bar-mode -1) 
     ;; (toggle-scroll-bar -1) 
     (tool-bar-mode -1) 
-					;(load-theme 'zenburn)
+                                        ;(load-theme 'zenburn)
     )
   )
 (require 'dired-x)
@@ -206,9 +207,9 @@
   :ensure t)
 
 ;; emacs server, client 可以在终端使用 /Applications/Emacs\ 2.app/Contents/MacOS/bin/emacsclient ifuns.el &来启动
-					;(when (display-graphic-p) 
-					;  (server-start)    
-					; )
+                                        ;(when (display-graphic-p) 
+                                        ;  (server-start)    
+                                        ; )
 
 ;; tramp
 ;; (setq recentf-exclude `(,tramp-file-name-regexp
@@ -278,11 +279,11 @@
     :config
     (add-hook 'csv-mode-hook 'csv-align-mode))
 
-					;(use-package vterm
-					;  :ensure t)
-					;(use-package multi-vterm
-					;  :ensure t)
+                                        ;(use-package vterm
+                                        ;  :ensure t)
+                                        ;(use-package multi-vterm
+                                        ;  :ensure t)
   )
 
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-
+;; basic:1 ends here

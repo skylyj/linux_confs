@@ -1,8 +1,6 @@
-
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*appearance][appearance:1]]
 (use-package doom-themes
   :ensure t)
-
-
 (when (display-graphic-p) 
   ;; Do any keybindings and theme setup here
   (setenv "JAVA_HOME" "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home")
@@ -48,7 +46,7 @@
     (doom-modeline-irc t)
     (doom-modeline-buffer-encoding t)
     (doom-modeline-battery t)
-    
+
     (doom-modeline-minor-modes t)
     ;; (doom-modeline-persp-name nil)
     (doom-modeline-major-mode-icon t)  
@@ -65,4 +63,4 @@
   ;;   :ensure t
   ;;   )
 )
-
+;; appearance:1 ends here

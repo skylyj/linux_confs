@@ -1,3 +1,4 @@
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*program][program:1]]
 ;;; package --- Summary
 ;;; Code:
 ;;; Commentary:
@@ -185,8 +186,8 @@
   (global-set-key (kbd "C-x C-f") 'helm-find-files)
   (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
   (set-face-attribute 'helm-selection nil
-		      :background "lime green"
-		      :foreground "black")
+                      :background "lime green"
+                      :foreground "black")
   (setq
    helm-split-window-in-side-p           t
                                         ; open helm buffer inside current window,
@@ -365,3 +366,4 @@
 
 
   )
+;; program:1 ends here

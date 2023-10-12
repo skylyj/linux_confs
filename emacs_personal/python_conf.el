@@ -1,3 +1,4 @@
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*python][python:1]]
 ;;; package --- Summary
 ;;; Code:
 ;;; Commentary:
@@ -61,15 +62,15 @@
 ;;   (eval-after-load "company"
 ;;     '(add-to-list 'company-backends '(company-shell company-shell-env))))
 
-					;(use-package company-jedi
-					;  :ensure t
-					;  )
+                                        ;(use-package company-jedi
+                                        ;  :ensure t
+                                        ;  )
 
-					;(use-package company-irony
-					;  :ensure t
-					;  :config
-					;  (eval-after-load "company"
-					;    '(add-to-list 'company-backends '(company-irony))))
+                                        ;(use-package company-irony
+                                        ;  :ensure t
+                                        ;  :config
+                                        ;  (eval-after-load "company"
+                                        ;    '(add-to-list 'company-backends '(company-irony))))
 
 ;; PYTHON CONFIG END
 ;; 可以让imenu 平铺起来flat
@@ -168,3 +169,4 @@
 ;;   :path-mappings '(("~/Gitlab/offline/ltv_model" . "/projects"))
 ;;   :client-packages lsp-docker-client-packages
 ;;   :client-configs lsp-docker-client-configs)
+;; python:1 ends here

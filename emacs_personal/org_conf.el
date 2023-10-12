@@ -1,3 +1,4 @@
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*org][org:1]]
 ;;; package --- Summary
 ;;; Code:
 ;;; Commentary:
@@ -14,11 +15,11 @@
           (org-table-export (format "%s.csv" name) "orgtbl-to-csv")))))
 
 (setq org-agenda-files (list
-			"~/Github/PrivateHub/org/Org/todo/tech_todo.org"
-			"~/Github/PrivateHub/org/Org/Work/Mobvista/Projects/roas.org"
-			"~/Github/PrivateHub/org/Org/todo/home_todo.org"
-			"~/Github/PrivateHub/org/Org/todo/program_todo.org"
-			))
+                        "~/Github/PrivateHub/org/Org/todo/tech_todo.org"
+                        "~/Github/PrivateHub/org/Org/Work/Mobvista/Projects/roas.org"
+                        "~/Github/PrivateHub/org/Org/todo/home_todo.org"
+                        "~/Github/PrivateHub/org/Org/todo/program_todo.org"
+                        ))
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 
@@ -145,7 +146,7 @@
         org-capture-bookmark nil)
 
   (setq org-modules
-	'(org-crypt
+        '(org-crypt
           org-habit
           org-bookmark
           org-eshell
@@ -325,3 +326,4 @@
       (setq level (1+ level))
       (setq end (save-excursion (org-end-of-subtree t t))))
     (org-end-of-subtree)))
+;; org:1 ends here

@@ -1,3 +1,4 @@
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*keybiddings][keybiddings:1]]
 ;;; package --- Summary
 ;;; Code:
 ;;; Commentary:
@@ -106,3 +107,4 @@
     )
 
   (my-mode 1)
+;; keybiddings:1 ends here

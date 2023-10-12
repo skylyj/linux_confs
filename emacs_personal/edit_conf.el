@@ -1,3 +1,4 @@
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*edit][edit:1]]
 (when (display-graphic-p) 
   ;; Do any keybindings and theme setup here
   (use-package gnuplot
@@ -24,18 +25,18 @@
     (define-key global-map (kbd "C-c q") 'vr/query-replace)
     )
   ;; for forge
-					;(setq auth-sources '("~/.authinfo"))
-					;(use-package forge
-					;  :ensure t
-					;  )
-					;(with-eval-after-load 'magit
-					;  (require 'forge))
-					;(with-eval-after-load 'forge
-					;  (add-to-list 'forge-alist
-					;               '("gitlab.mobvista.com"
-					;                 "gitlab.mobvista.com/api/v4"
-					;                 "gitlab.mobvista.com"
-					;                 forge-gitlab-repository)))
+                                        ;(setq auth-sources '("~/.authinfo"))
+                                        ;(use-package forge
+                                        ;  :ensure t
+                                        ;  )
+                                        ;(with-eval-after-load 'magit
+                                        ;  (require 'forge))
+                                        ;(with-eval-after-load 'forge
+                                        ;  (add-to-list 'forge-alist
+                                        ;               '("gitlab.mobvista.com"
+                                        ;                 "gitlab.mobvista.com/api/v4"
+                                        ;                 "gitlab.mobvista.com"
+                                        ;                 forge-gitlab-repository)))
 
   ;;google this
   (use-package google-this
@@ -53,7 +54,7 @@
     (define-key global-map (kbd "C-c y") 'helm-youtube)
     )
 
-  
+
   (use-package good-scroll
     :ensure t
     :config
@@ -96,7 +97,7 @@
     :config
     (undo-tree-mode)
     (setq undo-tree-history-directory-alist
-	  `((".*" . ,temporary-file-directory)))
+          `((".*" . ,temporary-file-directory)))
     (setq undo-tree-auto-save-history t)
     (global-undo-tree-mode)
 
@@ -286,3 +287,4 @@
 ;;   (global-set-key (kbd "C-c C-+") 'evil-numbers/inc-at-pt-incremental)
 ;;   (global-set-key (kbd "C-c C--") 'evil-numbers/dec-at-pt-incremental)
 ;;   )
+;; edit:1 ends here

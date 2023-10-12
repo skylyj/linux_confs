@@ -1,3 +1,4 @@
+;; [[file:../../tech_org/dotfiles/emacs_conf.org::*ifuns][ifuns:1]]
 ;;; package --- Summary
 ;;; Code:
 ;;; Commentary:
@@ -52,8 +53,8 @@
     (setq relative-file-name (file-relative-name buffer-file-name (projectile-project-root)))
     (setq icmd (format "python ~/bin/share_git.py %s" relative-file-name))
     (setq fin-path (substring 
-		    (shell-command-to-string icmd) 
-		    0 -1))
+                    (shell-command-to-string icmd) 
+                    0 -1))
     (clipboard/set fin-path)
     (message (format "sharing-path is %s" fin-path))
     (browse-url fin-path)
@@ -66,8 +67,8 @@
   (progn
     (setq icmd (format "python ~/bin/git_merge_url.py"))
     (setq myurl (substring 
-		    (shell-command-to-string icmd) 
-		    0 -1))
+                    (shell-command-to-string icmd) 
+                    0 -1))
     (clipboard/set myurl)
     (message myurl)
     (browse-url merge-url)
@@ -82,8 +83,8 @@
   (let*
       ((icmd (format "python ~/bin/git_merge_url.py"))
        (merge-url (substring 
-			(shell-command-to-string icmd) 
-			0 -1)))
+                        (shell-command-to-string icmd) 
+                        0 -1)))
     (clipboard/set merge-url)
 
     ;; (message (format "merge url is %s" merge-url))
@@ -91,4 +92,4 @@
     )
   )
 ;;; ifuns.el ends here
-
+;; ifuns:1 ends here
